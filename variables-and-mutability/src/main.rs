@@ -1,7 +1,7 @@
 fn main() {
   let apples = 50;
   let oranges = 14 + 6;
-  let fruits = apples + oranges;
+  let _fruits = apples + oranges;
 
-  println!("This year, my garden has {0} apples and {1} oranges. I cannot believe i have {1} oranges", apples, oranges);
+  println!("This year, my garden has {0} apples and {1} oranges. I cannot believe i have {1} oranges.", apples, oranges);
 }
