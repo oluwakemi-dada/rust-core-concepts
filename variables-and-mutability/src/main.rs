@@ -49,10 +49,19 @@
 // }
 
 // ---- Type Aliases ----
+// type Meters = i32;
+
+// fn main() {
+//   let mile_race_length: Meters = 1600;
+//   let two_miles_race_length: Meters = 3200;
+//   println!("A one miles race is {mile_race_length} meters long and a two miles race is {two_miles_race_length} meters long")
+// }
+
+// ---- Compiler Directives ----
+#![allow(unused_variables)]
 type Meters = i32;
 
 fn main() {
   let mile_race_length: Meters = 1600;
   let two_miles_race_length: Meters = 3200;
-  println!("A one miles race is {mile_race_length} meters long and a two miles race is {two_miles_race_length} meters long")
 }
