@@ -41,9 +41,18 @@
 // }
 
 // ---- Constants ----
-const TAX_RATE: f64 = 7.25; 
+// const TAX_RATE: f64 = 7.25; 
+
+// fn main() {
+//   let income = 100000;
+//   println!("My income is {income} and my tax rate is {TAX_RATE}")
+// }
+
+// ---- Type Aliases ----
+type Meters = i32;
 
 fn main() {
-  let income = 100000;
-  println!("My income is {income} and my tax rate is {TAX_RATE}")
+  let mile_race_length: Meters = 1600;
+  let two_miles_race_length: Meters = 3200;
+  println!("A one miles race is {mile_race_length} meters long and a two miles race is {two_miles_race_length} meters long")
 }
