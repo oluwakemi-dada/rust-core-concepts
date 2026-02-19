@@ -29,13 +29,21 @@
 // }
 
 // ---- Scopes ----
+// fn main() {
+//   let coffee_price = 5.99;
+
+//   {
+//     let coffee_price = 1.99;
+//       println!("The coffee price is {coffee_price}")
+//   }
+
+//   println!("The coffee price is {coffee_price}")
+// }
+
+// ---- Constants ----
+const TAX_RATE: f64 = 7.25; 
+
 fn main() {
-  let coffee_price = 5.99;
-
-  {
-    let coffee_price = 1.99;
-      println!("The coffee price is {coffee_price}")
-  }
-
-  println!("The coffee price is {coffee_price}")
+  let income = 100000;
+  println!("My income is {income} and my tax rate is {TAX_RATE}")
 }
