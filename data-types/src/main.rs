@@ -15,7 +15,16 @@
 // }
 
 // ---- The usize and isize types ----
+// fn main() {
+//   let days: usize = 55;
+//   let years: isize = -15_000;
+// } 
+
+//  ---- Strings and Raw Strings ----
 fn main() {
-  let days: usize = 55;
-  let years: isize = -15_000;
-} 
+  println!("Dear Emily,\nHow have you been?");
+  println!("\tOnce upon a time");
+  println!("Juliet said \"I love you Romeo\"");
+  let filepath = r"C:\My Documents\new\videos";
+  println!("{filepath}")
+}
