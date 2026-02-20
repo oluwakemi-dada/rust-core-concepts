@@ -10,6 +10,12 @@
 // }
 
 // ---- Underscore "_" as visual separator
+// fn main() {
+//   let sixteen_bit_signed: i32 = 320_500;
+// }
+
+// ---- The usize and isize types ----
 fn main() {
-  let sixteen_bit_signed: i32 = 320_500;
-}
+  let days: usize = 55;
+  let years: isize = -15_000;
+} 
