@@ -21,10 +21,22 @@
 // } 
 
 //  ---- Strings and Raw Strings ----
-fn main() {
-  println!("Dear Emily,\nHow have you been?");
-  println!("\tOnce upon a time");
-  println!("Juliet said \"I love you Romeo\"");
-  let filepath = r"C:\My Documents\new\videos";
-  println!("{filepath}")
+// fn main() {
+//   println!("Dear Emily,\nHow have you been?");
+//   println!("\tOnce upon a time");
+//   println!("Juliet said \"I love you Romeo\"");
+//   let filepath = r"C:\My Documents\new\videos";
+//   println!("{filepath}")
+// }
+
+//  ---- Intro to Methods ----
+fn main(){
+  let value: i32 = -15;
+  println!("{}", value.abs());
+
+  let empty_space = "    my content ";
+  println!("{}", empty_space.trim());
+
+  println!("{}", value.pow(2));
+  println!("{}", value.pow(3));
 }
