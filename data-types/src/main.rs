@@ -87,17 +87,30 @@
 // }
 
 //  ---- Augmented Assignment Operator ----
+// fn main() {
+//   let mut year = 2026;
+//   year += 1;
+//   println!("The new year is {year}");
+
+//   year -= 5;
+//   println!("The new year is {year}");
+
+//   year *= 2;
+//   println!("The new year is {year}");
+
+//   year /= 4;
+//   println!("The new year is {year}");
+// }
+
+//  ---- Intro to Booleans ----
 fn main() {
-  let mut year = 2026;
-  year += 1;
-  println!("The new year is {year}");
+  let is_handsome = true;
+  let is_silly = false;
 
-  year -= 5;
-  println!("The new year is {year}");
+  println!("Handsome: {is_handsome}. Silly: {is_silly}");
 
-  year *= 2;
-  println!("The new year is {year}");
-
-  year /= 4;
-  println!("The new year is {year}");
+  let age: i32 = -40;
+  let is_young = age < 35;
+  println!("{is_young}");
+  println!("{} {}", age.is_positive(), age.is_negative())
 }
