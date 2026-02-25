@@ -30,13 +30,23 @@
 // }
 
 //  ---- Intro to Methods ----
+// fn main(){
+//   let value: i32 = -15;
+//   println!("{}", value.abs());
+
+//   let empty_space = "    my content ";
+//   println!("{}", empty_space.trim());
+
+//   println!("{}", value.pow(2));
+//   println!("{}", value.pow(3));
+// }
+
+//  ---- Floating Point Types ----
 fn main(){
-  let value: i32 = -15;
-  println!("{}", value.abs());
+  let pi: f64 = 3.141593458972679344785973674;
+  println!("The current value of pi is {pi}");
 
-  let empty_space = "    my content ";
-  println!("{}", empty_space.trim());
-
-  println!("{}", value.pow(2));
-  println!("{}", value.pow(3));
+  println!("{}", pi.floor());
+  println!("{}", pi.ceil());
+  println!("{}", pi.round());
 }
