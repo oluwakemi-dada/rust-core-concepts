@@ -103,14 +103,26 @@
 // }
 
 //  ---- Intro to Booleans ----
+// fn main() {
+//   let is_handsome = true;
+//   let is_silly = false;
+
+//   println!("Handsome: {is_handsome}. Silly: {is_silly}");
+
+//   let age: i32 = -40;
+//   let is_young = age < 35;
+//   println!("{is_young}");
+//   println!("{} {}", age.is_positive(), age.is_negative())
+// }
+
+//  ---- Booleans Inversion with ! ----
 fn main() {
-  let is_handsome = true;
-  let is_silly = false;
+  println!("{}", !true);
+  println!("{}", !false);
 
-  println!("Handsome: {is_handsome}. Silly: {is_silly}");
+  let age = 13;
+  let can_see_rated_r_movie = age >= 17;
+  let cannot_see_rated_r_movie = !can_see_rated_r_movie;
 
-  let age: i32 = -40;
-  let is_young = age < 35;
-  println!("{is_young}");
-  println!("{} {}", age.is_positive(), age.is_negative())
+  println!("I am {age} years old. Can I not see this scary movie? {cannot_see_rated_r_movie}");
 }
