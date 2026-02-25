@@ -42,11 +42,17 @@
 // }
 
 //  ---- Floating Point Types ----
+// fn main(){
+//   let pi: f64 = 3.141593458972679344785973674;
+//   println!("The current value of pi is {pi}");
+
+//   println!("{}", pi.floor());
+//   println!("{}", pi.ceil());
+//   println!("{}", pi.round());
+// }
+
+//  ---- Formatting Floats with Format Specifier ----
 fn main(){
   let pi: f64 = 3.141593458972679344785973674;
-  println!("The current value of pi is {pi}");
-
-  println!("{}", pi.floor());
-  println!("{}", pi.ceil());
-  println!("{}", pi.round());
+  println!("The current value of pi is {0} and the formatted value of pi is {0:.3}", pi);
 }
