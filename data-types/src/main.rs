@@ -116,13 +116,34 @@
 // }
 
 //  ---- Booleans Inversion with ! ----
+// fn main() {
+//   println!("{}", !true);
+//   println!("{}", !false);
+
+//   let age = 13;
+//   let can_see_rated_r_movie = age >= 17;
+//   let cannot_see_rated_r_movie = !can_see_rated_r_movie;
+
+//   println!("I am {age} years old. Can I not see this scary movie? {cannot_see_rated_r_movie}");
+// }
+
+//  ---- Equality and Inequality Operators ----
 fn main() {
-  println!("{}", !true);
-  println!("{}", !false);
+  println!("{}", "Coke" == "Pepsi");
+  println!("{}", "Coke" != "Pepsi");
+  println!("{}", "Coke" == "coke");
+  println!("{}", "Coke" == "Coke ");
+  println!("{}", "Coke" == "Coke");
 
-  let age = 13;
-  let can_see_rated_r_movie = age >= 17;
-  let cannot_see_rated_r_movie = !can_see_rated_r_movie;
+  println!("{}", 13 == 13);
+  println!("{}", 13 != 13);
 
-  println!("I am {age} years old. Can I not see this scary movie? {cannot_see_rated_r_movie}");
+  println!("{}", 26.1 == 26.1);
+  println!("{}", 26.1 == 26.14);
+
+  println!("{}", 13 == 13.2 as i32);
+
+  println!("{}", true == true);
+  println!("{}", false == false);
+  println!("{}", true != false);
 }
