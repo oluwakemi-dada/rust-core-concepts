@@ -149,10 +149,18 @@
 // }
 
 //  ---- And Logic with && ----
-fn main() {
-  let purchased_ticket = true;
-  let plane_on_time = false;
-  let making_event = purchased_ticket && plane_on_time;
+// fn main() {
+//   let purchased_ticket = true;
+//   let plane_on_time = false;
+//   let making_event = purchased_ticket && plane_on_time;
 
-  println!("It is {} that i will arrive as expected.", making_event);
+//   println!("It is {} that i will arrive as expected.", making_event);
+// }
+
+//  ---- Or Logic with || ----
+fn main() {
+  let user_has_paid_for_subscription = false;
+  let user_is_admin = false;
+  let user_can_see_premium_experience = user_has_paid_for_subscription || user_is_admin;
+  println!("Can this user see my site? {user_can_see_premium_experience}");
 }
