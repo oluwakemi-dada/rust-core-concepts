@@ -180,11 +180,20 @@
 // }
 
 //  ---- The Array Type ----
+// fn main() {
+//     let numbers = [4, 8, 15, 16, 23, 42];
+
+//     let apples = ["Granny Smith", "McIntosh", "Red Delicious"];
+//     println!("Length: {}", apples.len());
+
+//     let currency_rates: [f64; 0] = [];
+// }
+
+//  ---- Reading and Writing Array Elements ----
 fn main() {
-    let numbers = [4, 8, 15, 16, 23, 42];
+    let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
 
-    let apples = ["Granny Smith", "McIntosh", "Red Delicious"];
-    println!("Length: {}", apples.len());
-
-    let currency_rates: [f64; 0] = [];
+    println!("{}", seasons[2]);
+    seasons[2] = "Autumn";
+    println!("{}", seasons[2]);
 }
