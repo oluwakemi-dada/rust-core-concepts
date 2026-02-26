@@ -190,10 +190,22 @@
 // }
 
 //  ---- Reading and Writing Array Elements ----
+// fn main() {
+//     let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
+
+//     println!("{}", seasons[2]);
+//     seasons[2] = "Autumn";
+//     println!("{}", seasons[2]);
+// }
+
+//  ---- The Display Trait, Debug Traitand dbg! Macro----
 fn main() {
     let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
 
-    println!("{}", seasons[2]);
-    seasons[2] = "Autumn";
-    println!("{}", seasons[2]);
+    println!("{}", 5);
+    println!("{}", 3.14);
+    println!("{}", true);
+    println!("{seasons:#?}");
+
+    dbg!(seasons);
 }
