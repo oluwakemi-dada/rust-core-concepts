@@ -166,15 +166,25 @@
 // }
 
 //  ---- The Character Type ----
+// fn main() {
+//     let first_initial = 'b';
+//     let emoji = '🫵';
+
+//     println!(
+//         "{} {}",
+//         first_initial.is_alphabetic(),
+//         emoji.is_alphabetic()
+//     );
+
+//     println!("{} {}", first_initial.is_lowercase(), emoji.is_uppercase());
+// }
+
+//  ---- The Array Type ----
 fn main() {
-    let first_initial = 'b';
-    let emoji = '🫵';
+    let numbers = [4, 8, 15, 16, 23, 42];
 
-    println!(
-        "{} {}",
-        first_initial.is_alphabetic(),
-        emoji.is_alphabetic()
-    );
+    let apples = ["Granny Smith", "McIntosh", "Red Delicious"];
+    println!("Length: {}", apples.len());
 
-    println!("{} {}", first_initial.is_lowercase(), emoji.is_uppercase());
+    let currency_rates: [f64; 0] = [];
 }
