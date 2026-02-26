@@ -128,22 +128,31 @@
 // }
 
 //  ---- Equality and Inequality Operators ----
+// fn main() {
+//   println!("{}", "Coke" == "Pepsi");
+//   println!("{}", "Coke" != "Pepsi");
+//   println!("{}", "Coke" == "coke");
+//   println!("{}", "Coke" == "Coke ");
+//   println!("{}", "Coke" == "Coke");
+
+//   println!("{}", 13 == 13);
+//   println!("{}", 13 != 13);
+
+//   println!("{}", 26.1 == 26.1);
+//   println!("{}", 26.1 == 26.14);
+
+//   println!("{}", 13 == 13.2 as i32);
+
+//   println!("{}", true == true);
+//   println!("{}", false == false);
+//   println!("{}", true != false);
+// }
+
+//  ---- And Logic with && ----
 fn main() {
-  println!("{}", "Coke" == "Pepsi");
-  println!("{}", "Coke" != "Pepsi");
-  println!("{}", "Coke" == "coke");
-  println!("{}", "Coke" == "Coke ");
-  println!("{}", "Coke" == "Coke");
+  let purchased_ticket = true;
+  let plane_on_time = false;
+  let making_event = purchased_ticket && plane_on_time;
 
-  println!("{}", 13 == 13);
-  println!("{}", 13 != 13);
-
-  println!("{}", 26.1 == 26.1);
-  println!("{}", 26.1 == 26.14);
-
-  println!("{}", 13 == 13.2 as i32);
-
-  println!("{}", true == true);
-  println!("{}", false == false);
-  println!("{}", true != false);
+  println!("It is {} that i will arrive as expected.", making_event);
 }
