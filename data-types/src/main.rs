@@ -18,7 +18,7 @@
 // fn main() {
 //   let days: usize = 55;
 //   let years: isize = -15_000;
-// } 
+// }
 
 //  ---- Strings and Raw Strings ----
 // fn main() {
@@ -158,9 +158,23 @@
 // }
 
 //  ---- Or Logic with || ----
+// fn main() {
+//   let user_has_paid_for_subscription = false;
+//   let user_is_admin = false;
+//   let user_can_see_premium_experience = user_has_paid_for_subscription || user_is_admin;
+//   println!("Can this user see my site? {user_can_see_premium_experience}");
+// }
+
+//  ---- The Character Type ----
 fn main() {
-  let user_has_paid_for_subscription = false;
-  let user_is_admin = false;
-  let user_can_see_premium_experience = user_has_paid_for_subscription || user_is_admin;
-  println!("Can this user see my site? {user_can_see_premium_experience}");
+    let first_initial = 'b';
+    let emoji = '🫵';
+
+    println!(
+        "{} {}",
+        first_initial.is_alphabetic(),
+        emoji.is_alphabetic()
+    );
+
+    println!("{} {}", first_initial.is_lowercase(), emoji.is_uppercase());
 }
