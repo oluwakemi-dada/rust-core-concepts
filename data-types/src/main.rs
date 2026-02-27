@@ -198,7 +198,7 @@
 //     println!("{}", seasons[2]);
 // }
 
-//  ---- The Display Trait, Debug Traitand dbg! Macro----
+//  ---- The Display Trait, Debug Traitand dbg! Macro ----
 // fn main() {
 //     let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
 
@@ -211,17 +211,42 @@
 // }
 
 //  ---- The Tuple Type----
+// fn main() {
+//     let employee = ("Molly", 32, "Marketing");
+
+//     // let name = employee.0;
+//     // let age = employee.1;
+//     // let department = employee.2;
+
+//     let (name, age, department) = employee;
+
+//     println!("Name: {name}, Age: {age}, Department: {department} ");
+
+//     print!("{employee:#?}");
+//     dbg!(employee);
+// }
+
+//  ---- Ranges and Range Iteration ----
 fn main() {
-    let employee = ("Molly", 32, "Marketing");
+    let month_days = 1..31;
+    println!("{month_days:?}");
 
-    // let name = employee.0;
-    // let age = employee.1;
-    // let department = employee.2;
+    let month_days = 1..=31;
+    println!("{month_days:?}");
 
-    let (name, age, department) = employee;
+    for number in month_days {
+        println!("{number}")
+    }
 
-    println!("Name: {name}, Age: {age}, Department: {department} ");
+    let letters = 'b'..'f';
 
-    print!("{employee:#?}");
-    dbg!(employee);
+    for letter in letters {
+        println!("{letter}")
+    }
+
+    let colors = ["Red", "Green", "Yellow"];
+
+    for color in colors {
+      println!("{color} is a great color!")
+    }
 }
