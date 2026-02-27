@@ -199,13 +199,29 @@
 // }
 
 //  ---- The Display Trait, Debug Traitand dbg! Macro----
+// fn main() {
+//     let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
+
+//     println!("{}", 5);
+//     println!("{}", 3.14);
+//     println!("{}", true);
+//     println!("{seasons:#?}");
+
+//     dbg!(seasons);
+// }
+
+//  ---- The Tuple Type----
 fn main() {
-    let mut seasons = ["Spring", "Summer", "Fall", "Winter"];
+    let employee = ("Molly", 32, "Marketing");
 
-    println!("{}", 5);
-    println!("{}", 3.14);
-    println!("{}", true);
-    println!("{seasons:#?}");
+    // let name = employee.0;
+    // let age = employee.1;
+    // let department = employee.2;
 
-    dbg!(seasons);
+    let (name, age, department) = employee;
+
+    println!("Name: {name}, Age: {age}, Department: {department} ");
+
+    print!("{employee:#?}");
+    dbg!(employee);
 }
