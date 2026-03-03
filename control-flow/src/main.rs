@@ -27,14 +27,24 @@
 // }
 
 // ---- The else Statement ----
-fn main() {
-    let season = "spring";
+// fn main() {
+//     let season = "spring";
 
-    if season == "summer" {
-        println!("School's out!");
-    } else if season == "winter" {
-        println!("Brr, so cold!");
-    } else {
-        println!("Lots of rain!");
-    }
+//     if season == "summer" {
+//         println!("School's out!");
+//     } else if season == "winter" {
+//         println!("Brr, so cold!");
+//     } else {
+//         println!("Lots of rain!");
+//     }
+// }
+
+// ---- Assigning Result of if else Statement to Variable ----
+fn even_or_odd(number: i32) {
+    let result = if number % 2 == 0 { "even" } else { "odd" };
+    println!("The number is {result}")
+}
+fn main() {
+    even_or_odd(17);
+    even_or_odd(100);
 }
