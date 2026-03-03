@@ -36,10 +36,22 @@
 // }
 
 // ---- The Unit as a Return Type ----
-fn main() {
-    let result = mystery();
-}
+// fn main() {
+//     let result = mystery();
+// }
 
-fn mystery() {
-    println!("Hello there");
+// fn mystery() {
+//     println!("Hello there");
+// }
+
+// ---- Block in Functions ----
+fn main() {
+    let multiplier = 3;
+
+    let calculation = {
+        let value = 5 + 4;
+        value * multiplier
+    };
+
+    println!("{calculation}")
 }
