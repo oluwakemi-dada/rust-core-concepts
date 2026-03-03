@@ -21,7 +21,7 @@
 //     println!("So much $$$, so little time");
 // }
 
-// ---- Explicit Return Values ----
+// ---- Explicit Return Values | Implicit Return Values ----
 fn main() {
     let result = square(5);
     println!("The square of 5 is {result}");
@@ -31,5 +31,6 @@ fn main() {
 }
 
 fn square(number: i32) -> i32 {
-    return number * number;
+    // return number * number;
+    number * number
 }
