@@ -40,11 +40,23 @@
 // }
 
 // ---- Assigning Result of if else Statement to Variable ----
-fn even_or_odd(number: i32) {
-    let result = if number % 2 == 0 { "even" } else { "odd" };
-    println!("The number is {result}")
-}
+// fn even_or_odd(number: i32) {
+//     let result = if number % 2 == 0 { "even" } else { "odd" };
+//     println!("The number is {result}")
+// }
+// fn main() {
+//     even_or_odd(17);
+//     even_or_odd(100);
+// }
+
+// ---- The Match Statement ----
 fn main() {
-    even_or_odd(17);
-    even_or_odd(100);
+    let evaluation = true;
+
+    let value = match evaluation {
+        true => 20,
+        false => 40,
+    };
+
+    println!("{value}")
 }
