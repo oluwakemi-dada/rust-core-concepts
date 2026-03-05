@@ -50,13 +50,24 @@
 // }
 
 // ---- The Match Statement ----
+// fn main() {
+//     let evaluation = true;
+
+//     let value = match evaluation {
+//         true => 20,
+//         false => 40,
+//     };
+
+//     println!("{value}")
+// }
+
+// ---- Underscore in a Match Arm ----
 fn main() {
-    let evaluation = true;
+    let season = "spring";
 
-    let value = match evaluation {
-        true => 20,
-        false => 40,
-    };
-
-    println!("{value}")
+    match season {
+        "summer" => println!("School's out!"),
+        "winter" => println!("Brr, so cold!"),
+        _ => println!("Lots of rain!"),
+    }
 }
