@@ -73,12 +73,27 @@
 // }
 
 // ---- The match Statement with Multiple Values and Conditionals ----
-fn main() {
-    let number = 3;
+// fn main() {
+//     let number = 3;
 
-    match number {
-        value if value % 2 == 0 => println!("{value} is an even number"),
-        value if value % 2 != 0 => println!("{value} is an odd number"),
-        _ => unreachable!(),
+//     match number {
+//         value if value % 2 == 0 => println!("{value} is an even number"),
+//         value if value % 2 != 0 => println!("{value} is an odd number"),
+//         _ => unreachable!(),
+//     }
+// }
+
+// The loop and break Keywords
+fn main() {
+    let mut seconds = 10;
+
+    loop {
+        if seconds == 0 {
+            println!("Blastoff!");
+            break;
+        }
+
+        println!("{seconds} seconds to blastoff...");
+        seconds -= 1;
     }
 }
