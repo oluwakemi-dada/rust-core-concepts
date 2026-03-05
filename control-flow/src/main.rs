@@ -120,19 +120,32 @@
 // }
 
 // ---- While loop ----
-fn main() {
-    let mut seconds = 21;
+// fn main() {
+//     let mut seconds = 21;
 
-    while seconds > 0 {
-        if seconds % 2 == 0 {
-            println!("{seconds} seconds (even number), skipping 3 seconds...");
-            seconds -= 3;
-            continue;
-        }
+//     while seconds > 0 {
+//         if seconds % 2 == 0 {
+//             println!("{seconds} seconds (even number), skipping 3 seconds...");
+//             seconds -= 3;
+//             continue;
+//         }
 
+//         println!("{seconds} seconds to blastoff...");
+//         seconds -= 1;
+//     }
+
+//     println!("Blastoff!");
+// }
+
+// ---- Recursion ----
+fn countdown(seconds: i32) {
+    if seconds == 0 {
+        println!("Blastoff!");
+    } else {
         println!("{seconds} seconds to blastoff...");
-        seconds -= 1;
+        countdown(seconds - 1);
     }
-
-    println!("Blastoff!");
+}
+fn main() {
+    countdown(5);
 }
