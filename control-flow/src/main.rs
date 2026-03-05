@@ -62,12 +62,23 @@
 // }
 
 // ---- Underscore in a Match Arm ----
-fn main() {
-    let season = "spring";
+// fn main() {
+//     let season = "spring";
 
-    match season {
-        "summer" => println!("School's out!"),
-        "winter" => println!("Brr, so cold!"),
-        _ => println!("Lots of rain!"),
+//     match season {
+//         "summer" => println!("School's out!"),
+//         "winter" => println!("Brr, so cold!"),
+//         _ => println!("Lots of rain!"),
+//     }
+// }
+
+// ---- The match Statement with Multiple Values and Conditionals ----
+fn main() {
+    let number = 3;
+
+    match number {
+        value if value % 2 == 0 => println!("{value} is an even number"),
+        value if value % 2 != 0 => println!("{value} is an odd number"),
+        _ => unreachable!(),
     }
 }
