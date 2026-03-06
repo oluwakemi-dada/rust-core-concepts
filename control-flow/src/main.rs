@@ -138,6 +138,19 @@
 // }
 
 // ---- Recursion ----
+// fn countdown(seconds: i32) {
+//     if seconds == 0 {
+//         println!("Blastoff!");
+//     } else {
+//         println!("{seconds} seconds to blastoff...");
+//         countdown(seconds - 1);
+//     }
+// }
+// fn main() {
+//     countdown(5);
+// }
+
+// ---- Debugging ----
 fn countdown(seconds: i32) {
     if seconds == 0 {
         println!("Blastoff!");
@@ -147,5 +160,9 @@ fn countdown(seconds: i32) {
     }
 }
 fn main() {
+    countdown(6);
+
     countdown(5);
+
+    countdown(4);
 }
