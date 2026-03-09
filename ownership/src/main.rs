@@ -44,14 +44,22 @@
 // }
 
 // ---- The drop Function ----
+// fn main() {
+//     let person = String::from("Oluwakemi");
+
+//     drop(person);
+
+//     println!("{person}");
+
+//     let genius = person;
+
+//     println!("Genius {genius}");
+// }
+
+// ---- The clone Method ----
 fn main() {
     let person = String::from("Oluwakemi");
+    let genius = person.clone();
 
-    drop(person);
-
-    println!("{person}");
-
-    let genius = person;
-
-    println!("Genius {genius}");
+    println!("My name is {person}")
 }
