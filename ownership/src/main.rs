@@ -36,9 +36,22 @@
 // }
 
 // ---- Moves and Ownership ----
+// fn main() {
+//     let person = String::from("Oluwakemi");
+//     let genius = person;
+
+//     // println!("My name is {person}")
+// }
+
+// ---- The drop Function ----
 fn main() {
     let person = String::from("Oluwakemi");
+
+    drop(person);
+
+    println!("{person}");
+
     let genius = person;
 
-    // println!("My name is {person}")
+    println!("Genius {genius}");
 }
