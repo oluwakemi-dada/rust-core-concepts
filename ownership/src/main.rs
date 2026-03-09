@@ -10,9 +10,15 @@
 // } // is_handsome goes out of scope, then age variable goes out of scope here
 
 // ---- The Copy Trait ----
-fn main() {
-    let time = 2026;
-    let years = time;
+// fn main() {
+//     let time = 2026;
+//     let years = time;
 
-    println!("The time is {time}. It is the year {years}.");
+//     println!("The time is {time}. It is the year {years}.");
+// }
+
+// ---- The String Type ----
+fn main() {
+    let text = String::new();
+    let candy = String::from("KitKat");
 }
