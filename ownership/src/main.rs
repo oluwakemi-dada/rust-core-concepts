@@ -18,7 +18,19 @@
 // }
 
 // ---- The String Type ----
+// fn main() {
+//     let text = String::new();
+//     let candy = String::from("KitKat");
+// }
+
+// ---- The push_str Method on a String Type ----
 fn main() {
-    let text = String::new();
-    let candy = String::from("KitKat");
+    let mut name = String::from("Oluwakemi");
+    println!("{name}");
+
+    name.push_str(" Olayemi");
+    println!("{name}");
+    
+    name.push_str(" Dada");
+    println!("{name}");
 }
