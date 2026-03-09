@@ -24,13 +24,21 @@
 // }
 
 // ---- The push_str Method on a String Type ----
-fn main() {
-    let mut name = String::from("Oluwakemi");
-    println!("{name}");
+// fn main() {
+//     let mut name = String::from("Oluwakemi");
+//     println!("{name}");
 
-    name.push_str(" Olayemi");
-    println!("{name}");
-    
-    name.push_str(" Dada");
-    println!("{name}");
+//     name.push_str(" Olayemi");
+//     println!("{name}");
+
+//     name.push_str(" Dada");
+//     println!("{name}");
+// }
+
+// ---- Moves and Ownership ----
+fn main() {
+    let person = String::from("Oluwakemi");
+    let genius = person;
+
+    // println!("My name is {person}")
 }
