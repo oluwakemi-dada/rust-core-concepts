@@ -111,11 +111,28 @@
 // }
 
 // ---- Return Values 1 ----
+// fn main() {
+//     let cake = bake_cake();
+//     println!("I now have a {cake} cake");
+// }
+
+// fn bake_cake() -> String {
+//     String::from("Chocolate Mousse")
+// }
+
+// ---- Return Values 2 ----
 fn main() {
-    let cake = bake_cake();
-    println!("I now have a {cake} cake");
+    let mut current_meal = String::new();
+    current_meal = add_flour(current_meal);
+    current_meal = add_sugar(current_meal);
 }
 
-fn bake_cake() -> String {
-    String::from("Chocolate Mousse")
+fn add_flour(mut meal: String) -> String {
+    meal.push_str("Add flour");
+    meal
+}
+
+fn add_sugar(mut meal: String) -> String {
+    meal.push_str("Add sugar");
+    meal
 }
