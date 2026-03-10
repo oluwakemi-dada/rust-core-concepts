@@ -100,12 +100,22 @@
 // }
 
 // ---- Mutable Parameters ----
+// fn main() {
+//     let burger = String::from("Burger");
+//     add_fries(burger);
+// }
+
+// fn add_fries(mut meal: String) {
+//     meal.push_str(" and Fries");
+//     println!("{meal}");
+// }
+
+// ---- Return Values 1 ----
 fn main() {
-    let burger = String::from("Burger");
-    add_fries(burger);
+    let cake = bake_cake();
+    println!("I now have a {cake} cake");
 }
 
-fn add_fries(mut meal: String) {
-    meal.push_str(" and Fries");
-    println!("{meal}");
+fn bake_cake() -> String {
+    String::from("Chocolate Mousse")
 }
