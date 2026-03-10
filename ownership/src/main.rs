@@ -74,16 +74,27 @@
 // }
 
 // ---- Dereference Operator ----
+// fn main() {
+//     let my_stack_value = 2;
+//     let my_integer_reference = &my_stack_value;
+
+//     println!("{}", my_integer_reference);
+//     println!("{}", *my_integer_reference);
+
+//     let my_heap_value = String::from("Toyota");
+//     let my_heap_reference = &my_heap_value;
+
+//     println!("{}", my_heap_reference);
+//     println!("{}", *my_heap_reference);
+// }
+
+// ---- Ownership and Function Parameters ----
 fn main() {
-    let my_stack_value = 2;
-    let my_integer_reference = &my_stack_value;
+    let oranges = String::from("Oranges");
+    print_my_value(oranges);
+    println!("{oranges} is still valid");
+}
 
-    println!("{}", my_integer_reference);
-    println!("{}", *my_integer_reference);
-
-    let my_heap_value = String::from("Toyota");
-    let my_heap_reference = &my_heap_value;
-
-    println!("{}", my_heap_reference);
-    println!("{}", *my_heap_reference);
+fn print_my_value(value: String) {
+    println!("Your value is {value}");
 }
