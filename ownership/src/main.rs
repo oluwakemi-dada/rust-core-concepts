@@ -89,12 +89,23 @@
 // }
 
 // ---- Ownership and Function Parameters ----
+// fn main() {
+//     let oranges = String::from("Oranges");
+//     print_my_value(oranges);
+//     println!("{oranges} is still valid");
+// }
+
+// fn print_my_value(value: String) {
+//     println!("Your value is {value}");
+// }
+
+// ---- Mutable Parameters ----
 fn main() {
-    let oranges = String::from("Oranges");
-    print_my_value(oranges);
-    println!("{oranges} is still valid");
+    let burger = String::from("Burger");
+    add_fries(burger);
 }
 
-fn print_my_value(value: String) {
-    println!("Your value is {value}");
+fn add_fries(mut meal: String) {
+    meal.push_str(" and Fries");
+    println!("{meal}");
 }
