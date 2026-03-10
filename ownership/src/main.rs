@@ -121,18 +121,45 @@
 // }
 
 // ---- Return Values 2 ----
+// fn main() {
+//     let mut current_meal = String::new();
+//     current_meal = add_flour(current_meal);
+//     current_meal = add_sugar(current_meal);
+// }
+
+// fn add_flour(mut meal: String) -> String {
+//     meal.push_str("Add flour");
+//     meal
+// }
+
+// fn add_sugar(mut meal: String) -> String {
+//     meal.push_str("Add sugar");
+//     meal
+// }
+
+// ---- Coding Challenge ----
 fn main() {
-    let mut current_meal = String::new();
-    current_meal = add_flour(current_meal);
-    current_meal = add_sugar(current_meal);
+    let is_concert = true;
+    let is_event = is_concert; // A copy is made
+    println!("{is_concert} {is_event}");
+
+    let sushi = "Salmon";
+    let dinner = sushi; // A copy of reference is made
+    println!("{sushi} {dinner}");
+
+    let sushi = String::from("Salmon");
+    let dinner = sushi; // Ownership is moved because String does not implement the copy traits
+    // println!("{sushi}");
+    println!("{dinner}");
+
+    let fish = eat_meal(dinner); // New owner
+    // Ownership of dinner is moved into the function parameter "meal"
+    // When the function ends, meal goes out of scope and the String is dropped.
+
+    println!("Ta-da! {fish}");
 }
 
-fn add_flour(mut meal: String) -> String {
-    meal.push_str("Add flour");
-    meal
-}
-
-fn add_sugar(mut meal: String) -> String {
-    meal.push_str("Add sugar");
+fn eat_meal(mut meal: String) -> String {
+    // meal.clear();
     meal
 }
