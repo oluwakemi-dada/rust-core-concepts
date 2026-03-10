@@ -57,9 +57,18 @@
 // }
 
 // ---- The clone Method ----
-fn main() {
-    let person = String::from("Oluwakemi");
-    let genius = person.clone();
+// fn main() {
+//     let person = String::from("Oluwakemi");
+//     let genius = person.clone();
 
-    println!("My name is {person}")
+//     println!("My name is {person}")
+// }
+
+// ---- References and Borrowing ----
+fn main() {
+    let my_stack_value = 2;
+    let my_integer_reference = &my_stack_value;
+
+    let my_heap_value = String::from("Toyota");
+    let my_heap_reference = &my_heap_value;
 }
