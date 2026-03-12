@@ -188,11 +188,15 @@
 //     println!("Meal steps: {meal}")
 // }
 
-// ---- Multiple Immutable References ----
+// ---- Multiple Immutable References | Multiple Reference Restrictions ----
 fn main() {
-    let car = String::from("Red");
-    let ref1 = &car;
+    let mut car = String::from("Red");
+    let ref1 = &mut car;
+    ref1.push_str(" and Silver");
+    println!("{ref1}");
+
     let ref2 = &car;
 
-    println!("{ref1} and {ref2} and {}", &car);
+    // print!("{ref1}");
+    println!(" and {ref2}");
 }
