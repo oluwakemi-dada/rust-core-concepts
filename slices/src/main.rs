@@ -9,11 +9,20 @@
 // }
 
 // ---- String Slices and String Literals ----
-fn main() {
-    let first_name = {
-        let action_hero = "Arnold Schwarzenegger";
-        &action_hero[0..6]
-    };
+// fn main() {
+//     let first_name = {
+//         let action_hero = "Arnold Schwarzenegger";
+//         &action_hero[0..6]
+//     };
 
-    println!("{first_name}");
+//     println!("{first_name}");
+// }
+
+// ---- String Slice Lengths ----
+fn main() {
+    let food = "🍕";
+    println!("{}", food.len());
+
+    let pizza_slice = &food[0..4];
+    println!("{}", pizza_slice.len())
 }
