@@ -202,12 +202,24 @@
 // }
 
 // ---- Ownership with Immutable and Mutable References ----
-fn main() {
-    let mut coffee = String::from("Mocha");
-    let a = &mut coffee;
-    println!("{a}");
-    
-    let b = a;
+// fn main() {
+//     let mut coffee = String::from("Mocha");
+//     let a = &mut coffee;
+//     println!("{a}");
 
-    println!(" and {b}")
+//     let b = a;
+
+//     println!(" and {b}")
+// }
+
+// ---- Dangling References ----
+fn main() {
+    let city = create_city();
+    println!("{city}")
+}
+
+// -> &String
+fn create_city() -> String {
+    String::from("Nueva York")
+    // &city
 }
