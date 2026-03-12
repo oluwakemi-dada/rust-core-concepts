@@ -169,21 +169,30 @@
 // }
 
 // ---- Immutable and Mutable Reference Parameters ----
+// fn main() {
+//     let mut current_meal = String::new();
+//     add_flour(&mut current_meal);
+//     show_my_meal(&current_meal);
+// }
+
+// // meal: String -> Full ownership
+// // mut meal: String -> Full ownership + Mutability
+// // meal: &String -> Reference to a String
+// // meal: &mut String -> Reference to a String + Mutability
+
+// fn add_flour(meal: &mut String) {
+//     meal.push_str("Add flour");
+// }
+
+// fn show_my_meal(meal: &String) {
+//     println!("Meal steps: {meal}")
+// }
+
+// ---- Multiple Immutable References ----
 fn main() {
-    let mut current_meal = String::new();
-    add_flour(&mut current_meal);
-    show_my_meal(&current_meal);
-}
+    let car = String::from("Red");
+    let ref1 = &car;
+    let ref2 = &car;
 
-// meal: String -> Full ownership
-// mut meal: String -> Full ownership + Mutability
-// meal: &String -> Reference to a String
-// meal: &mut String -> Reference to a String + Mutability
-
-fn add_flour(meal: &mut String) {
-    meal.push_str("Add flour");
-}
-
-fn show_my_meal(meal: &String) {
-    println!("Meal steps: {meal}")
+    println!("{ref1} and {ref2} and {}", &car);
 }
