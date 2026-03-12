@@ -189,14 +189,25 @@
 // }
 
 // ---- Multiple Immutable References | Multiple Reference Restrictions ----
+// fn main() {
+//     let mut car = String::from("Red");
+//     let ref1 = &mut car;
+//     ref1.push_str(" and Silver");
+//     println!("{ref1}");
+
+//     let ref2 = &car;
+
+//     // print!("{ref1}");
+//     println!(" and {ref2}");
+// }
+
+// ---- Ownership with Immutable and Mutable References ----
 fn main() {
-    let mut car = String::from("Red");
-    let ref1 = &mut car;
-    ref1.push_str(" and Silver");
-    println!("{ref1}");
+    let mut coffee = String::from("Mocha");
+    let a = &mut coffee;
+    println!("{a}");
+    
+    let b = a;
 
-    let ref2 = &car;
-
-    // print!("{ref1}");
-    println!(" and {ref2}");
+    println!(" and {b}")
 }
