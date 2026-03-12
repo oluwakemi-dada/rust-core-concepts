@@ -28,14 +28,27 @@
 // }
 
 // ---- Syntactic Shortcuts ----
+// fn main() {
+//     let action_hero = String::from("Arnold Schwarzenegger");
+//     let first_name = &action_hero[..6];
+//     println!("His first name is {first_name}");
+
+//     let last_name = &action_hero[7..];
+//     println!("His last name is {last_name}");
+
+//     let full_name = &action_hero[..];
+//     println!("His full name is {full_name}");
+// }
+
+// ---- String Slices as Function Parameters ----
+fn do_hero_stuff(hero_name: &str) { // &String -> &str
+    println!("{hero_name} saves the day");
+}
+
 fn main() {
     let action_hero = String::from("Arnold Schwarzenegger");
-    let first_name = &action_hero[..6];
-    println!("His first name is {first_name}");
+    do_hero_stuff(&action_hero);
 
-    let last_name = &action_hero[7..];
-    println!("His last name is {last_name}");
-
-    let full_name = &action_hero[..];
-    println!("His full name is {full_name}");
+    let another_action_hero = "Sylvester Stallone";
+    do_hero_stuff(another_action_hero);
 }
