@@ -1,33 +1,71 @@
 // ---- Coding Challenge 1 ----
-// fn main_1() {
-//     let is_concert = true;
-//     let is_event = is_concert; // A copy is made
-//     println!("{is_concert} {is_event}");
+fn main_1() {
+    let is_concert = true;
+    let is_event = is_concert; // A copy is made
+    println!("{is_concert} {is_event}");
 
-//     let sushi = "Salmon";
-//     let dinner = sushi; // A copy of reference is made
-//     println!("{sushi} {dinner}");
+    let sushi = "Salmon";
+    let dinner = sushi; // A copy of reference is made
+    println!("{sushi} {dinner}");
 
-//     let sushi = String::from("Salmon");
-//     let dinner = sushi; // Ownership is moved because String does not implement the copy traits
-//     // println!("{sushi}");
-//     println!("{dinner}");
+    let sushi = String::from("Salmon");
+    let dinner = sushi; // Ownership is moved because String does not implement the copy traits
+    // println!("{sushi}");
+    println!("{dinner}");
 
-//     let fish = eat_meal(dinner); // New owner
-//     // Ownership of dinner is moved into the function parameter "meal"
-//     // When the function ends, meal goes out of scope and the String is dropped.
+    let fish = eat_meal(dinner); // New owner
+    // Ownership of dinner is moved into the function parameter "meal"
+    // When the function ends, meal goes out of scope and the String is dropped.
 
-//     println!("Ta-da! {fish}");
-// }
+    println!("Ta-da! {fish}");
+}
 
-// fn eat_meal(mut meal: String) -> String {
-//     // meal.clear();
-//     meal
-// }
+fn eat_meal(meal: String) -> String {
+    // meal.clear();
+    meal
+}
 
-// fn main() {
-//     main_1()
-// }
+// ---- Coding Challenge 2 ----
+fn main_2() {
+    let mut trip = start_trip();
+
+    visit_philadelphia(&mut trip);
+    trip.push_str(" and ");
+
+    visit_new_york(&mut trip);
+    trip.push_str(" and ");
+
+    visit_boston(&mut trip);
+    trip.push('.');
+
+    show_itinerary(&trip)
+}
+
+fn start_trip() -> String {
+    String::from("The plan is...")
+}
+
+fn visit_philadelphia(msg: &mut String) {
+    msg.push_str("Philadephia");
+}
+
+fn visit_new_york(msg: &mut String) {
+    msg.push_str("New York");
+}
+
+fn visit_boston(msg: &mut String) {
+    msg.push_str("Boston");
+}
+
+fn show_itinerary(msg: &String) {
+    println!("{msg}")
+}
+
+// ----------------------------
+fn main() {
+    main_1();
+    main_2();
+}
 
 // ---- Scope and Ownership ----
 // fn main() {
@@ -225,12 +263,12 @@
 // }
 
 // ---- Ownership with Arrays and Tuples ----
-fn main() {
-    let registrations = (true, false, true);
-    let first = registrations.0;
-    println!("{first} and {registrations:?}");
+// fn main() {
+//     let registrations = (true, false, true);
+//     let first = registrations.0;
+//     println!("{first} and {registrations:?}");
 
-    let languages = (String::from("Rust"), String::from("JavaScript"));
-    let first = &languages.0;
-    println!("{first} and {languages:?}");
-}
+//     let languages = (String::from("Rust"), String::from("JavaScript"));
+//     let first = &languages.0;
+//     println!("{first} and {languages:?}");
+// }
