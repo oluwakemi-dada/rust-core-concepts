@@ -1,3 +1,25 @@
+// ---- Coding Challenge ----
+fn main() {
+    let distance = 1_337;
+    let miles = distance as i16;
+
+    let height = 175.142315;
+    println!("{height:.3}");
+
+    let with_milk = true;
+    let with_sugar = true;
+
+    let is_my_type_of_coffee = with_milk && with_sugar;
+    let is_acceptable_coffee = with_milk || with_sugar;
+
+    let numbers: [i8; 4] = [2, 4, 6, 8];
+    println!("{:?}", numbers);
+    dbg!(numbers);
+
+    let combo = (miles, height, is_my_type_of_coffee, numbers);
+    println!("{combo:#?}");
+}
+
 // ---- Integers ----
 // fn main() {
 //   let sixteen_bit_signed: i16 = -32500;
@@ -256,25 +278,3 @@
 //     let month_days: std::ops::Range<i8> = 1..31;
 //     let letters: std::ops::Range<char> = 'b'..'f';
 // }
-
-// ---- Coding Challenge ----
-fn main() {
-    let distance = 1_337;
-    let miles = distance as i16;
-
-    let height = 175.142315;
-    println!("{height:.3}");
-
-    let with_milk = true;
-    let with_sugar = true;
-
-    let is_my_type_of_coffee = with_milk && with_sugar;
-    let is_acceptable_coffee = with_milk || with_sugar;
-
-    let numbers: [i8; 4] = [2, 4, 6, 8];
-    println!("{:?}", numbers);
-    dbg!(numbers);
-
-    let combo = (miles, height, is_my_type_of_coffee, numbers);
-    println!("{combo:#?}");
-}

@@ -1,3 +1,34 @@
+// ---- Coding Challenge 1 ----
+fn main_1() {
+    let is_concert = true;
+    let is_event = is_concert; // A copy is made
+    println!("{is_concert} {is_event}");
+
+    let sushi = "Salmon";
+    let dinner = sushi; // A copy of reference is made
+    println!("{sushi} {dinner}");
+
+    let sushi = String::from("Salmon");
+    let dinner = sushi; // Ownership is moved because String does not implement the copy traits
+    // println!("{sushi}");
+    println!("{dinner}");
+
+    let fish = eat_meal(dinner); // New owner
+    // Ownership of dinner is moved into the function parameter "meal"
+    // When the function ends, meal goes out of scope and the String is dropped.
+
+    println!("Ta-da! {fish}");
+}
+
+fn eat_meal(mut meal: String) -> String {
+    // meal.clear();
+    meal
+}
+
+fn main() {
+    main_1()
+}
+
 // ---- Scope and Ownership ----
 // fn main() {
 //     let age = 33;
@@ -137,29 +168,5 @@
 //     meal
 // }
 
-// ---- Coding Challenge ----
-fn main() {
-    let is_concert = true;
-    let is_event = is_concert; // A copy is made
-    println!("{is_concert} {is_event}");
-
-    let sushi = "Salmon";
-    let dinner = sushi; // A copy of reference is made
-    println!("{sushi} {dinner}");
-
-    let sushi = String::from("Salmon");
-    let dinner = sushi; // Ownership is moved because String does not implement the copy traits
-    // println!("{sushi}");
-    println!("{dinner}");
-
-    let fish = eat_meal(dinner); // New owner
-    // Ownership of dinner is moved into the function parameter "meal"
-    // When the function ends, meal goes out of scope and the String is dropped.
-
-    println!("Ta-da! {fish}");
-}
-
-fn eat_meal(mut meal: String) -> String {
-    // meal.clear();
-    meal
-}
+// ---- xxxxxxxx ----
+fn main() {}

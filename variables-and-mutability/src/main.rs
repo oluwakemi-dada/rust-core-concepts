@@ -1,3 +1,26 @@
+// ---- Coding Challenge ----
+const TOUCHDOWN_POINTS: i32 = 6;
+fn main() {
+    let season = "Harmattan";
+    let mut points_scored = 28;
+    points_scored = 35;
+
+    let event_time = "06:00";
+    let event_time = 6;
+
+    println!(
+        "My favorite season is {season}. The team scored {points_scored}. The event started at {event_time}. A touchdown is worth {TOUCHDOWN_POINTS} points"
+    );
+
+    println!(
+        "My favorite season is {0}. The team scored {1}. The event started at {2}. A touchdown is worth {3} points",
+        season, points_scored, event_time, TOUCHDOWN_POINTS
+    );
+
+    #[allow(unused_variables)]
+    let favorite_beverage = "Water";
+}
+
 // ---- Variables ----
 // fn main() {
 //   let apples = 50;
@@ -41,7 +64,7 @@
 // }
 
 // ---- Constants ----
-// const TAX_RATE: f64 = 7.25; 
+// const TAX_RATE: f64 = 7.25;
 
 // fn main() {
 //   let income = 100000;
@@ -65,21 +88,3 @@
 //   let mile_race_length: Meters = 1600;
 //   let two_miles_race_length: Meters = 3200;
 // }
-
-// ---- Coding Challenge ----
-const TOUCHDOWN_POINTS: i32 = 6;
-fn main() {
-  let season = "Harmattan";
-  let mut points_scored = 28;
-  points_scored = 35;
-
-  let event_time = "06:00";
-  let event_time = 6;
-  
-  println!("My favorite season is {season}. The team scored {points_scored}. The event started at {event_time}. A touchdown is worth {TOUCHDOWN_POINTS} points");
-
-  println!("My favorite season is {0}. The team scored {1}. The event started at {2}. A touchdown is worth {3} points", season, points_scored, event_time, TOUCHDOWN_POINTS);
-
-  #[allow(unused_variables)]
-  let favorite_beverage = "Water";
-}

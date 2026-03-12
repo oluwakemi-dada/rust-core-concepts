@@ -1,3 +1,26 @@
+// ---- Coding Challenge ----
+fn apply_to_jobs(number: i32, title: &str) {
+    println!("I'm applying to {number} {title} jobs");
+}
+
+fn is_even(number: i32) -> bool {
+    number % 2 == 0
+}
+
+fn alphabets(text: &str) -> (bool, bool) {
+    (text.contains('a'), text.contains('b'))
+}
+
+fn main() {
+    apply_to_jobs(35, "Rust Developer");
+    println!("{}", is_even(6));
+    println!("{}", is_even(3));
+
+    println!("{:?}", alphabets("aardvark"));
+    println!("{:?}", alphabets("zoology"));
+    println!("{:?}", alphabets("zebra"));
+}
+
 // ---- Intro to Functions | Parameters and Arguments ----
 // fn main() {
 //     open_store("Brooklyn");
@@ -55,26 +78,3 @@
 
 //     println!("{calculation}")
 // }
-
-// ---- Coding Challenge ----
-fn apply_to_jobs(number: i32, title: &str) {
-    println!("I'm applying to {number} {title} jobs");
-}
-
-fn is_even(number: i32) -> bool {
-    number % 2 == 0
-}
-
-fn alphabets(text: &str) -> (bool, bool) {
-    (text.contains('a'), text.contains('b'))
-}
-
-fn main() {
-    apply_to_jobs(35, "Rust Developer");
-    println!("{}", is_even(6));
-    println!("{}", is_even(3));
-
-    println!("{:?}", alphabets("aardvark"));
-    println!("{:?}", alphabets("zoology"));
-    println!("{:?}", alphabets("zebra"));
-}
