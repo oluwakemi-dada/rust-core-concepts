@@ -213,13 +213,24 @@
 // }
 
 // ---- Dangling References ----
-fn main() {
-    let city = create_city();
-    println!("{city}")
-}
+// fn main() {
+//     let city = create_city();
+//     println!("{city}")
+// }
 
-// -> &String
-fn create_city() -> String {
-    String::from("Nueva York")
-    // &city
+// // -> &String
+// fn create_city() -> String {
+//     String::from("Nueva York")
+//     // &city
+// }
+
+// ---- Ownership with Arrays and Tuples ----
+fn main() {
+    let registrations = (true, false, true);
+    let first = registrations.0;
+    println!("{first} and {registrations:?}");
+
+    let languages = (String::from("Rust"), String::from("JavaScript"));
+    let first = &languages.0;
+    println!("{first} and {languages:?}");
 }
