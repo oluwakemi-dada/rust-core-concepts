@@ -1,33 +1,33 @@
 // ---- Coding Challenge 1 ----
-fn main_1() {
-    let is_concert = true;
-    let is_event = is_concert; // A copy is made
-    println!("{is_concert} {is_event}");
+// fn main_1() {
+//     let is_concert = true;
+//     let is_event = is_concert; // A copy is made
+//     println!("{is_concert} {is_event}");
 
-    let sushi = "Salmon";
-    let dinner = sushi; // A copy of reference is made
-    println!("{sushi} {dinner}");
+//     let sushi = "Salmon";
+//     let dinner = sushi; // A copy of reference is made
+//     println!("{sushi} {dinner}");
 
-    let sushi = String::from("Salmon");
-    let dinner = sushi; // Ownership is moved because String does not implement the copy traits
-    // println!("{sushi}");
-    println!("{dinner}");
+//     let sushi = String::from("Salmon");
+//     let dinner = sushi; // Ownership is moved because String does not implement the copy traits
+//     // println!("{sushi}");
+//     println!("{dinner}");
 
-    let fish = eat_meal(dinner); // New owner
-    // Ownership of dinner is moved into the function parameter "meal"
-    // When the function ends, meal goes out of scope and the String is dropped.
+//     let fish = eat_meal(dinner); // New owner
+//     // Ownership of dinner is moved into the function parameter "meal"
+//     // When the function ends, meal goes out of scope and the String is dropped.
 
-    println!("Ta-da! {fish}");
-}
+//     println!("Ta-da! {fish}");
+// }
 
-fn eat_meal(mut meal: String) -> String {
-    // meal.clear();
-    meal
-}
+// fn eat_meal(mut meal: String) -> String {
+//     // meal.clear();
+//     meal
+// }
 
-fn main() {
-    main_1()
-}
+// fn main() {
+//     main_1()
+// }
 
 // ---- Scope and Ownership ----
 // fn main() {
@@ -168,5 +168,22 @@ fn main() {
 //     meal
 // }
 
-// ---- xxxxxxxx ----
-fn main() {}
+// ---- Immutable and Mutable Reference Parameters ----
+fn main() {
+    let mut current_meal = String::new();
+    add_flour(&mut current_meal);
+    show_my_meal(&current_meal);
+}
+
+// meal: String -> Full ownership
+// mut meal: String -> Full ownership + Mutability
+// meal: &String -> Reference to a String
+// meal: &mut String -> Reference to a String + Mutability
+
+fn add_flour(meal: &mut String) {
+    meal.push_str("Add flour");
+}
+
+fn show_my_meal(meal: &String) {
+    println!("Meal steps: {meal}")
+}
