@@ -41,14 +41,34 @@
 // }
 
 // ---- String Slices as Function Parameters ----
-fn do_hero_stuff(hero_name: &str) { // &String -> &str
-    println!("{hero_name} saves the day");
-}
+// fn do_hero_stuff(hero_name: &str) { // &String -> &str
+//     println!("{hero_name} saves the day");
+// }
 
+// fn main() {
+//     let action_hero = String::from("Arnold Schwarzenegger");
+//     do_hero_stuff(&action_hero);
+
+//     let another_action_hero = "Sylvester Stallone";
+//     do_hero_stuff(another_action_hero);
+// }
+
+// ---- Array Slices ----
 fn main() {
-    let action_hero = String::from("Arnold Schwarzenegger");
-    do_hero_stuff(&action_hero);
+    let values = [4, 8, 15, 16, 23, 42];
 
-    let another_action_hero = "Sylvester Stallone";
-    do_hero_stuff(another_action_hero);
+    let my_slice = &values[..4];
+    println!("{my_slice:?}");
+
+    let my_slice = &values[2..4];
+    println!("{my_slice:?}");
+
+    let my_slice = &values[2..];
+    println!("{my_slice:?}");
+
+    let my_slice = &values[..];
+    println!("{my_slice:?}");
+
+    let my_slice = &values;
+    println!("{my_slice:?}");
 }

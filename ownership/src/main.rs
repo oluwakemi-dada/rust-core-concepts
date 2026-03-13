@@ -27,7 +27,7 @@ fn eat_meal(meal: String) -> String {
 
 // ---- Coding Challenge 2 ----
 fn main_2() {
-    let mut trip = start_trip();
+    let mut trip: String = start_trip();
 
     visit_philadelphia(&mut trip);
     trip.push_str(" and ");
