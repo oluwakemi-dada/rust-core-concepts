@@ -1,3 +1,36 @@
+// ---- Coding Challenge ----
+fn main() {
+    let mut cereals = [
+        String::from("Cookie Crisp"),
+        String::from("Cinnamon Toast Crunch"),
+        String::from("Frosted Flakes"),
+        String::from("Cocoa Puffs"),
+        String::from("Captain Crunch"),
+    ];
+
+    let first_two = &cereals[..2];
+    println!("First two: {:?}", first_two);
+
+    let mid_three = &cereals[1..4];
+    println!("Mid three: {:?}", mid_three);
+
+    let last_three = &mut cereals[2..];
+    println!("Last three: {:?}", last_three);
+
+    last_three[2] = String::from("Lucky Charms");
+    println!("{:?}", cereals);
+
+    let cookie_crisp = &cereals[0];
+
+    let cookie = &cookie_crisp[..6];
+    println!("{} ", cookie);
+
+    let cocoa_puffs = &cereals[3];
+
+    let puffs = &cocoa_puffs[6..];
+    println!("{} ", puffs);
+}
+
 // ---- Create a String Slice from a String ----
 // fn main() {
 //     let action_hero = String::from("Arnold Schwarzenegger");
@@ -89,12 +122,12 @@
 // }
 
 // ---- Mutable Array Slices ----
-fn main() {
-    let mut my_array = [10, 15, 20, 25, 30];
-    let my_slice = &mut my_array[2..4];
-    println!("My slice: {:?}", my_slice);
+// fn main() {
+//     let mut my_array = [10, 15, 20, 25, 30];
+//     let my_slice = &mut my_array[2..4];
+//     println!("My slice: {:?}", my_slice);
 
-    my_slice[0] = 100;
-    println!("My mut slice: {:?}", my_slice);
-    println!("My array: {:?}", my_array);
-}
+//     my_slice[0] = 100;
+//     println!("My mut slice: {:?}", my_slice);
+//     println!("My array: {:?}", my_array);
+// }
