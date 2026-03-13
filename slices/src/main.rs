@@ -74,16 +74,27 @@
 // }
 
 // ---- Deref Coersion with Array Slices ----
+// fn main() {
+//     let values = [4, 8, 15, 16, 23, 42];
+
+//     let regular_reference = &values;
+//     print_length(regular_reference);
+
+//     let slice_of_three = &values[..3];
+//     print_length(slice_of_three);
+// }
+
+// fn print_length(reference: &[i32]) {
+//     println!("{}", reference.len());
+// }
+
+// ---- Mutable Array Slices ----
 fn main() {
-    let values = [4, 8, 15, 16, 23, 42];
+    let mut my_array = [10, 15, 20, 25, 30];
+    let my_slice = &mut my_array[2..4];
+    println!("My slice: {:?}", my_slice);
 
-    let regular_reference = &values;
-    print_length(regular_reference);
-
-    let slice_of_three = &values[..3];
-    print_length(slice_of_three);
-}
-
-fn print_length(reference: &[i32]) {
-    println!("{}", reference.len());
+    my_slice[0] = 100;
+    println!("My mut slice: {:?}", my_slice);
+    println!("My array: {:?}", my_array);
 }
