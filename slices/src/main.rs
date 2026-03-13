@@ -54,21 +54,36 @@
 // }
 
 // ---- Array Slices ----
+// fn main() {
+//     let values = [4, 8, 15, 16, 23, 42];
+
+//     let my_slice = &values[..4];
+//     println!("{my_slice:?}");
+
+//     let my_slice = &values[2..4];
+//     println!("{my_slice:?}");
+
+//     let my_slice = &values[2..];
+//     println!("{my_slice:?}");
+
+//     let my_slice = &values[..];
+//     println!("{my_slice:?}");
+
+//     let my_slice = &values;
+//     println!("{my_slice:?}");
+// }
+
+// ---- Deref Coersion with Array Slices ----
 fn main() {
     let values = [4, 8, 15, 16, 23, 42];
 
-    let my_slice = &values[..4];
-    println!("{my_slice:?}");
+    let regular_reference = &values;
+    print_length(regular_reference);
 
-    let my_slice = &values[2..4];
-    println!("{my_slice:?}");
+    let slice_of_three = &values[..3];
+    print_length(slice_of_three);
+}
 
-    let my_slice = &values[2..];
-    println!("{my_slice:?}");
-
-    let my_slice = &values[..];
-    println!("{my_slice:?}");
-
-    let my_slice = &values;
-    println!("{my_slice:?}");
+fn print_length(reference: &[i32]) {
+    println!("{}", reference.len());
 }
