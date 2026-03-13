@@ -23,25 +23,50 @@
 // }
 
 // ---- Overwrite Struct Fields ----
+// fn main() {
+//     struct Coffee {
+//         name: String,
+//         price: f64,
+//         is_hot: bool,
+//     }
+
+//     let mut beverage = Coffee {
+//         name: String::from("Mocha"),
+//         price: 4.99,
+//         is_hot: false,
+//     };
+
+//     beverage.name = String::from("Caramel Macchiato");
+//     beverage.price = 6.99;
+//     beverage.is_hot = true;
+
+//     println!(
+//         "My {} this morning cost {}. It is {} that it was hot",
+//         beverage.name, beverage.price, beverage.is_hot
+//     );
+// }
+
+// ---- Create Structs in a Function ----
+struct Coffee {
+    name: String,
+    price: f64,
+    is_hot: bool,
+}
+
 fn main() {
-    struct Coffee {
-        name: String,
-        price: f64,
-        is_hot: bool,
-    }
-
-    let mut beverage = Coffee {
-        name: String::from("Mocha"),
-        price: 4.99,
-        is_hot: false,
-    };
-
-    beverage.name = String::from("Caramel Macchiato");
-    beverage.price = 6.99;
-    beverage.is_hot = true;
-
+    let name = String::from("Latte");
+    let coffee = make_coffee(name, 4.99, true);
     println!(
-        "My {} this morning cost {}. It is {} that it was hot",
-        beverage.name, beverage.price, beverage.is_hot
+        "My {} this morning cost {}. It is {} that it was hot.",
+        coffee.name, coffee.price, coffee.is_hot
     );
+    // println!("{name}");
+}
+
+fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
+    Coffee {
+        name: name,
+        price: price,
+        is_hot: is_hot,
+    }
 }
