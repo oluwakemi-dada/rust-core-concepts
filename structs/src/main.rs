@@ -137,32 +137,59 @@
 // }
 
 // ---- Deriving Debug Trait for Struct ----
+// #[derive(Debug)]
+// struct Coffee {
+//     name: String,
+//     price: f64,
+//     is_hot: bool,
+// }
+
+// fn main() {
+//     let mocha = make_coffee(String::from("Mocha"), 4.99, true);
+
+//     let values = ["hello", "world"];
+
+//     println!("{:?}", mocha);
+//     println!("{:#?}", mocha);
+// }
+
+// fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
+//     Coffee {
+//         name,
+//         price,
+//         is_hot,
+//     }
+// }
+
+// fn drink_coffee(coffee: &mut Coffee) {
+//     println!("Drinking my delicious {}", coffee.name);
+//     coffee.is_hot = false;
+//     coffee.price = 10.99;
+// }
+
+// ---- Derive Struct Methods ----
 #[derive(Debug)]
-struct Coffee {
-    name: String,
-    price: f64,
-    is_hot: bool,
+struct TaylorSwiftSong {
+    title: String,
+    release_year: u32,
+    duration_secs: u32,
 }
 
-fn main() {
-    let mocha = make_coffee(String::from("Mocha"), 4.99, true);
-
-    let values = ["hello", "world"];
-
-    println!("{:?}", mocha);
-    println!("{:#?}", mocha);
-}
-
-fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
-    Coffee {
-        name,
-        price,
-        is_hot,
+impl TaylorSwiftSong {
+    fn display_song_info(self: Self) {
+        println!("Title: {}", self.title);
+        println!("Release Year: {}", self.release_year);
+        println!("Duration: {}", self.duration_secs);
     }
 }
 
-fn drink_coffee(coffee: &mut Coffee) {
-    println!("Drinking my delicious {}", coffee.name);
-    coffee.is_hot = false;
-    coffee.price = 10.99;
+fn main() {
+    let song = TaylorSwiftSong {
+        title: String::from("Blank Space"),
+        release_year: 2014,
+        duration_secs: 231,
+    };
+
+    song.display_song_info(); // song transfers ownership to display_song_info as "self" indirectly
+    // println!("{}", song.title);
 }
