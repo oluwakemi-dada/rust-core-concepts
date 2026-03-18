@@ -484,25 +484,31 @@
 
 // ---- Tuple Structs ----
 // Hours, minutes
-struct ShortDuration(u32, u32);
+// struct ShortDuration(u32, u32);
 
-// Years, months
-struct LongDuration(u32, u32);
+// // Years, months
+// struct LongDuration(u32, u32);
+// fn main() {
+//     let work_shift = ShortDuration(8, 0);
+//     println!("{} hours {} minutea", work_shift.0, work_shift.1);
+
+//     let era: LongDuration = LongDuration(5, 3);
+//     println!("{} years {} months", era.0, era.1);
+
+//     go_to_work(work_shift);
+//     // go_to_work(era);
+//     // accept_tuple(work_shift);
+//     // accept_tuple(era);
+// }
+
+// fn go_to_work(length: ShortDuration) {
+//     println!("Passing time {} hours {} minutes", length.0, length.1);
+// }
+
+// fn accept_tuple(length: (u32, u32)) {}
+
+// ---- Unit-Like Structs ----
+struct Empty;
 fn main() {
-    let work_shift = ShortDuration(8, 0);
-    println!("{} hours {} minutea", work_shift.0, work_shift.1);
-
-    let era: LongDuration = LongDuration(5, 3);
-    println!("{} years {} months", era.0, era.1);
-
-    go_to_work(work_shift);
-    // go_to_work(era);
-    // accept_tuple(work_shift);
-    // accept_tuple(era);
+    let my_empty_struct = Empty;
 }
-
-fn go_to_work(length: ShortDuration) {
-    println!("Passing time {} hours {} minutes", length.0, length.1);
-}
-
-fn accept_tuple(length: (u32, u32)) {}
