@@ -1,3 +1,63 @@
+// ---- Coding Challenge ----
+#[derive(Debug)]
+struct Flight {
+    origin: String,
+    destination: String,
+    price: f64,
+    passengers: u32,
+}
+
+impl Flight {
+    fn new(origin: String, destination: String, price: f64, passengers: u32) -> Self {
+        Self {
+            origin,
+            destination,
+            price,
+            passengers,
+        }
+    }
+
+    fn change_destination(&mut self, new_destination: String) -> &mut Self {
+        self.destination = new_destination;
+        self
+    }
+
+    fn increase_price(&mut self) -> &mut Self {
+        self.price *= 1.2;
+        self
+    }
+
+    fn itinerary(&self) {
+        println!("{} -> {}", self.origin, self.destination);
+    }
+}
+
+fn main() {
+    let mut my_flight = Flight::new(
+        String::from("Lagos"),
+        String::from("Switzerland"),
+        1250.59,
+        150,
+    );
+
+    println!("{:#?}", my_flight);
+
+    my_flight
+        .change_destination(String::from("Sweden"))
+        .increase_price()
+        .itinerary();
+
+    println!("{:#?}", my_flight);
+
+    let new_flight = Flight {
+        origin: String::from("Abuja"),
+        destination: String::from("Barcelona"),
+        ..my_flight
+    };
+
+    println!("{:#?}", new_flight)
+}
+
 // ---- Define a Struct | Struct instance | Access Struct Fields ----
 // fn main() {
 //     struct Coffee {
@@ -508,7 +568,7 @@
 // fn accept_tuple(length: (u32, u32)) {}
 
 // ---- Unit-Like Structs ----
-struct Empty;
-fn main() {
-    let my_empty_struct = Empty;
-}
+// struct Empty;
+// fn main() {
+//     let my_empty_struct = Empty;
+// }
