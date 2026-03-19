@@ -159,28 +159,56 @@
 // }
 
 // ---- The match Keyword - Catching Multiple Values ----
-#[derive(Debug)]
+// #[derive(Debug)]
+// enum OnlineOrderStatus {
+//     Ordered,
+//     Packed,
+//     Shipped,
+//     Delivered,
+// }
 
-enum OnlineOrderStatus {
-    Ordered,
-    Packed,
-    Shipped,
-    Delivered,
+// impl OnlineOrderStatus {
+//     fn check(&self) {
+//         match self {
+//             OnlineOrderStatus::Delivered => {
+//                 println!("Your item has been delivered")
+//             }
+//             order_status => {
+//                 println!("Your item is {order_status:?}")
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     OnlineOrderStatus::Shipped.check();
+// }
+
+// ---- The match Keyword - match with Exact Value ----
+#[derive(Debug)]
+enum Milk {
+    LowFat(i32),
+    Whole,
 }
 
-impl OnlineOrderStatus {
-    fn check(&self) {
+impl Milk {
+    fn drink(self) {
         match self {
-            OnlineOrderStatus::Delivered => {
-                println!("Your item has been delivered")
+            Milk::LowFat(2) => {
+                println!("Delicious, 2% milk is my favourite!");
             }
-            order_status => {
-                println!("Your item is {order_status:?}")
+            Milk::LowFat(percent) => {
+                println!("You've got the lowfat {percent} percent version!")
+            }
+            Milk::Whole => {
+                println!("You've got the whole milk");
             }
         }
     }
 }
 
 fn main() {
-    OnlineOrderStatus::Shipped.check();
+    Milk::LowFat(1).drink();
+    Milk::LowFat(2).drink();
+    Milk::Whole.drink();
 }
