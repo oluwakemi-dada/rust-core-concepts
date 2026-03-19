@@ -1,3 +1,50 @@
+// ---- Coding Challenge ----
+#[derive(Debug)]
+enum Tier {
+    Gold,
+    Silver,
+    Platinum,
+}
+
+#[derive(Debug)]
+enum Subscription {
+    Free,
+    Basic(f64, u32),
+    Premium { tier: Tier },
+}
+
+impl Subscription {
+    fn summarize(&self) {
+        match self {
+            Subscription::Free => {
+                println!("You have limited access to the site")
+            }
+            Subscription::Basic(price, months) => {
+                println!(
+                    "You have limited access to the site's premium features for {price} for {months} months"
+                )
+            }
+            Subscription::Premium { tier } => {
+                println!(
+                    "You have full access to the site's premium features. Your tier is {tier:?}"
+                )
+            }
+        }
+    }
+}
+
+fn main() {
+    Subscription::Free.summarize();
+
+    let basic = Subscription::Basic(125.5, 3);
+    basic.summarize();
+
+    let premium = Subscription::Premium {
+        tier: Tier::Platinum,
+    };
+    premium.summarize();
+}
+
 // ---- Intro to Enums ----
 // #[derive(Debug)]
 // enum CardSuit {
@@ -240,20 +287,20 @@
 // }
 
 // ---- The let else Construct ----
-#[derive(Debug)]
-enum Milk {
-    LowFat(i32),
-    Whole,
-    NonDairy { kind: String },
-}
+// #[derive(Debug)]
+// enum Milk {
+//     LowFat(i32),
+//     Whole,
+//     NonDairy { kind: String },
+// }
 
-fn main() {
-    let my_beverage = Milk::LowFat(2);
+// fn main() {
+//     let my_beverage = Milk::LowFat(2);
 
-    let Milk::LowFat(percent) = my_beverage else {
-        println!("You do not have the lowfat milk");
-        return;
-    };
+//     let Milk::LowFat(percent) = my_beverage else {
+//         println!("You do not have the lowfat milk");
+//         return;
+//     };
 
-    println!("{percent}% milk is available here")
-}
+//     println!("{percent}% milk is available here")
+// }
