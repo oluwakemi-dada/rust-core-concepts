@@ -24,17 +24,38 @@
 // }
 
 // ---- Enum with Associated Values ----
+// #[derive(Debug)]
+// enum PaymentMethodType {
+//     CreditCard(String),
+//     DebitCard(String),
+//     PayPal(String, String),
+// }
+// fn main() {
+//     let mut my_payment_method = PaymentMethodType::CreditCard(String::from("0012-3456"));
+
+//     my_payment_method =
+//         PaymentMethodType::PayPal(String::from("john@email.com"), String::from("password"));
+
+//     println!("{:?}", my_payment_method)
+// }
+
+// ---- Struct Variants ----
 #[derive(Debug)]
 enum PaymentMethodType {
     CreditCard(String),
     DebitCard(String),
-    PayPal(String, String),
+    PayPal { username: String, password: String },
+    Cash,
 }
+
 fn main() {
-    let mut my_payment_method = PaymentMethodType::CreditCard(String::from("0012-3456"));
+    let visa = PaymentMethodType::CreditCard(String::from("1234-5678"));
 
-    my_payment_method =
-        PaymentMethodType::PayPal(String::from("john@email.com"), String::from("password"));
+    let paypal = PaymentMethodType::PayPal {
+        username: String::from("bob@gmail.com"),
+        password: String::from("password"),
+    };
 
-    println!("{:?}", my_payment_method)
+    println!("{:?}", visa);
+    println!("{:?}", paypal);
 }
