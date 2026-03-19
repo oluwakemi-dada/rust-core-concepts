@@ -214,6 +214,32 @@
 // }
 
 // ---- The if let Construct ----
+// #[derive(Debug)]
+// enum Milk {
+//     LowFat(i32),
+//     Whole,
+//     NonDairy { kind: String },
+// }
+
+// fn main() {
+//     // let my_beverage = Milk::LowFat(2);
+
+//     // if let Milk::LowFat(percent) = my_beverage {
+//     //     println!("Your beverage is {percent}% milk");
+//     // }
+
+//     let my_beverage = Milk::NonDairy {
+//         kind: String::from("Oat"),
+//     };
+
+//     if let Milk::NonDairy { kind } = my_beverage {
+//         println!("Your beverage is {kind} milk");
+//     } else {
+//         println!("You have some othe rmilk variant");
+//     }
+// }
+
+// ---- The let else Construct ----
 #[derive(Debug)]
 enum Milk {
     LowFat(i32),
@@ -222,19 +248,12 @@ enum Milk {
 }
 
 fn main() {
-    // let my_beverage = Milk::LowFat(2);
+    let my_beverage = Milk::LowFat(2);
 
-    // if let Milk::LowFat(percent) = my_beverage {
-    //     println!("Your beverage is {percent}% milk");
-    // }
-
-    let my_beverage = Milk::NonDairy {
-        kind: String::from("Oat"),
+    let Milk::LowFat(percent) = my_beverage else {
+        println!("You do not have the lowfat milk");
+        return;
     };
 
-    if let Milk::NonDairy { kind } = my_beverage {
-        println!("Your beverage is {kind} milk");
-    } else {
-        println!("You have some othe rmilk variant");
-    }
+    println!("{percent}% milk is available here")
 }
