@@ -96,30 +96,64 @@
 // }
 
 // ---- The match Keyword I ----
+// #[derive(Debug)]
+// enum OperatingSystem {
+//     Windows,
+//     MacOS,
+//     Linux,
+// }
+
+// fn main() {
+//     let my_computer = OperatingSystem::MacOS;
+//     let age = years_since_release(my_computer);
+//     println!("My computer's operating system is {age} years old");
+
+//     let dads_computer = OperatingSystem::Windows;
+//     let age = years_since_release(dads_computer);
+//     println!("My dad's computer is {age} years old");
+// }
+
+// fn years_since_release(os: OperatingSystem) -> u32 {
+//     match os {
+//         OperatingSystem::Windows => {
+//             println!("Quite an old operating system");
+//             39
+//         }
+//         OperatingSystem::MacOS => 23,
+//         OperatingSystem::Linux => 34,
+//     }
+// }
+
+// ---- Methods on Enums ----
 #[derive(Debug)]
-enum OperatingSystem {
-    Windows,
-    MacOS,
-    Linux,
+enum LaundryCycle {
+    Cold,
+    Hot { temperature: u32 },
+    Delicate(String),
+}
+
+impl LaundryCycle {
+    fn wash_laundry(&self) {
+        match self {
+            LaundryCycle::Cold => {
+                println!("Running the laundry with cold temperature")
+            },
+            LaundryCycle::Hot { temperature } => {
+                println!("Running the laundry with a temperature of {temperature}")
+            },
+            LaundryCycle::Delicate(fabric_type) => {
+                println!("Running the laundry with delicate cycle for {fabric_type}")
+            }
+        }
+    }
 }
 
 fn main() {
-    let my_computer = OperatingSystem::MacOS;
-    let age = years_since_release(my_computer);
-    println!("My computer's operating system is {age} years old");
+    LaundryCycle::Cold.wash_laundry();
 
-    let dads_computer = OperatingSystem::Windows;
-    let age = years_since_release(dads_computer);
-    println!("My dad's computer is {age} years old");
-}
+    let hot_cycle = LaundryCycle::Hot { temperature: 100 };
+    hot_cycle.wash_laundry();
 
-fn years_since_release(os: OperatingSystem) -> u32 {
-    match os {
-        OperatingSystem::Windows => {
-            println!("Quite an old operating system");
-            39
-        }
-        OperatingSystem::MacOS => 23,
-        OperatingSystem::Linux => 34,
-    }
+    let delicate_cycle = LaundryCycle::Delicate(String::from("Silk"));
+    delicate_cycle.wash_laundry();
 }
