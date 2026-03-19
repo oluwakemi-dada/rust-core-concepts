@@ -185,30 +185,56 @@
 // }
 
 // ---- The match Keyword - match with Exact Value ----
+// #[derive(Debug)]
+// enum Milk {
+//     LowFat(i32),
+//     Whole,
+// }
+
+// impl Milk {
+//     fn drink(self) {
+//         match self {
+//             Milk::LowFat(2) => {
+//                 println!("Delicious, 2% milk is my favourite!");
+//             }
+//             Milk::LowFat(percent) => {
+//                 println!("You've got the lowfat {percent} percent version!")
+//             }
+//             Milk::Whole => {
+//                 println!("You've got the whole milk");
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     Milk::LowFat(1).drink();
+//     Milk::LowFat(2).drink();
+//     Milk::Whole.drink();
+// }
+
+// ---- The if let Construct ----
 #[derive(Debug)]
 enum Milk {
     LowFat(i32),
     Whole,
-}
-
-impl Milk {
-    fn drink(self) {
-        match self {
-            Milk::LowFat(2) => {
-                println!("Delicious, 2% milk is my favourite!");
-            }
-            Milk::LowFat(percent) => {
-                println!("You've got the lowfat {percent} percent version!")
-            }
-            Milk::Whole => {
-                println!("You've got the whole milk");
-            }
-        }
-    }
+    NonDairy { kind: String },
 }
 
 fn main() {
-    Milk::LowFat(1).drink();
-    Milk::LowFat(2).drink();
-    Milk::Whole.drink();
+    // let my_beverage = Milk::LowFat(2);
+
+    // if let Milk::LowFat(percent) = my_beverage {
+    //     println!("Your beverage is {percent}% milk");
+    // }
+
+    let my_beverage = Milk::NonDairy {
+        kind: String::from("Oat"),
+    };
+
+    if let Milk::NonDairy { kind } = my_beverage {
+        println!("Your beverage is {kind} milk");
+    } else {
+        println!("You have some othe rmilk variant");
+    }
 }
