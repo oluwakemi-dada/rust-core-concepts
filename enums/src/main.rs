@@ -40,22 +40,57 @@
 // }
 
 // ---- Struct Variants ----
+// #[derive(Debug)]
+// enum PaymentMethodType {
+//     CreditCard(String),
+//     DebitCard(String),
+//     PayPal { username: String, password: String },
+//     Cash,
+// }
+
+// fn main() {
+//     let visa = PaymentMethodType::CreditCard(String::from("1234-5678"));
+
+//     let paypal = PaymentMethodType::PayPal {
+//         username: String::from("bob@gmail.com"),
+//         password: String::from("password"),
+//     };
+
+//     println!("{:?}", visa);
+//     println!("{:?}", paypal);
+// }
+
+// ---- Nesting Enums in Enums ----
 #[derive(Debug)]
-enum PaymentMethodType {
-    CreditCard(String),
-    DebitCard(String),
-    PayPal { username: String, password: String },
-    Cash,
+enum Beans {
+    Pinto,
+    Black,
+}
+
+#[derive(Debug)]
+enum Meat {
+    Chicken,
+    Steak,
+}
+
+#[derive(Debug)]
+enum RestaurantItem {
+    Burrito { meat: Meat, beans: Beans },
+    Bowl { meat: Meat, beans: Beans },
+    VeganPlate,
 }
 
 fn main() {
-    let visa = PaymentMethodType::CreditCard(String::from("1234-5678"));
-
-    let paypal = PaymentMethodType::PayPal {
-        username: String::from("bob@gmail.com"),
-        password: String::from("password"),
+    let lunch = RestaurantItem::Burrito {
+        meat: Meat::Steak,
+        beans: Beans::Pinto,
     };
+    let dinner = RestaurantItem::Bowl {
+        meat: Meat::Chicken,
+        beans: Beans::Black,
+    };
+    let abandoned_meal = RestaurantItem::VeganPlate;
 
-    println!("{:?}", visa);
-    println!("{:?}", paypal);
+    println!("Lunch was {lunch:?} and dinner was {dinner:?}");
+    println!("Nobody ate {abandoned_meal:?}");
 }
