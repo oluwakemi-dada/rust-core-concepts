@@ -61,36 +61,65 @@
 // }
 
 // ---- Nesting Enums in Enums ----
-#[derive(Debug)]
-enum Beans {
-    Pinto,
-    Black,
-}
+// #[derive(Debug)]
+// enum Beans {
+//     Pinto,
+//     Black,
+// }
 
-#[derive(Debug)]
-enum Meat {
-    Chicken,
-    Steak,
-}
+// #[derive(Debug)]
+// enum Meat {
+//     Chicken,
+//     Steak,
+// }
 
+// #[derive(Debug)]
+// enum RestaurantItem {
+//     Burrito { meat: Meat, beans: Beans },
+//     Bowl { meat: Meat, beans: Beans },
+//     VeganPlate,
+// }
+
+// fn main() {
+//     let lunch = RestaurantItem::Burrito {
+//         meat: Meat::Steak,
+//         beans: Beans::Pinto,
+//     };
+//     let dinner = RestaurantItem::Bowl {
+//         meat: Meat::Chicken,
+//         beans: Beans::Black,
+//     };
+//     let abandoned_meal = RestaurantItem::VeganPlate;
+
+//     println!("Lunch was {lunch:?} and dinner was {dinner:?}");
+//     println!("Nobody ate {abandoned_meal:?}");
+// }
+
+// ---- The match Keyword I ----
 #[derive(Debug)]
-enum RestaurantItem {
-    Burrito { meat: Meat, beans: Beans },
-    Bowl { meat: Meat, beans: Beans },
-    VeganPlate,
+enum OperatingSystem {
+    Windows,
+    MacOS,
+    Linux,
 }
 
 fn main() {
-    let lunch = RestaurantItem::Burrito {
-        meat: Meat::Steak,
-        beans: Beans::Pinto,
-    };
-    let dinner = RestaurantItem::Bowl {
-        meat: Meat::Chicken,
-        beans: Beans::Black,
-    };
-    let abandoned_meal = RestaurantItem::VeganPlate;
+    let my_computer = OperatingSystem::MacOS;
+    let age = years_since_release(my_computer);
+    println!("My computer's operating system is {age} years old");
 
-    println!("Lunch was {lunch:?} and dinner was {dinner:?}");
-    println!("Nobody ate {abandoned_meal:?}");
+    let dads_computer = OperatingSystem::Windows;
+    let age = years_since_release(dads_computer);
+    println!("My dad's computer is {age} years old");
+}
+
+fn years_since_release(os: OperatingSystem) -> u32 {
+    match os {
+        OperatingSystem::Windows => {
+            println!("Quite an old operating system");
+            39
+        }
+        OperatingSystem::MacOS => 23,
+        OperatingSystem::Linux => 34,
+    }
 }
