@@ -33,25 +33,47 @@
 // }
 
 // ---- The match Keyword with Option Enum ----
-fn main() {
-    let musical_instruments = [
-        String::from("Guitar"),
-        String::from("Drums"),
-        String::from("Bass"),
-    ];
+// fn main() {
+//     let musical_instruments = [
+//         String::from("Guitar"),
+//         String::from("Drums"),
+//         String::from("Bass"),
+//     ];
 
-    let bass = musical_instruments.get(2);
+//     let bass = musical_instruments.get(2);
 
-    play(bass); // copy trait implemented here
+//     play(bass); // copy trait implemented here
 
-    let invalid_instrument = musical_instruments.get(10);
+//     let invalid_instrument = musical_instruments.get(10);
 
-    play(invalid_instrument); // copy trait implemented here
+//     play(invalid_instrument); // copy trait implemented here
+// }
+
+// fn play(instrument_option: Option<&String>) {
+//     match instrument_option {
+//         Option::Some(instrument_option) => println!("Playing the {instrument_option}"),
+//         Option::None => println!("Singing with my voice"),
+//     }
+// }
+
+// ---- Returning an Option Enum from a Function ----
+fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
+    if item_is_in_system && item_is_in_stock {
+        Option::Some(true)
+    } else if item_is_in_system {
+        Option::Some(false)
+    } else {
+        Option::None
+    }
 }
 
-fn play(instrument_option: Option<&String>) {
-    match instrument_option {
-        Option::Some(instrument_option) => println!("Playing the {instrument_option}"),
-        Option::None => println!("Singing with my voice"),
+fn main() {
+    let availability = is_item_in_stock(true, false);
+
+    match availability {
+        // Option::Some(value) => println!("Item is available: {value}"),
+        Option::Some(true) => println!("Yes, the item is available"),
+        Option::Some(false) => println!("No, the item is not in stock"),
+        Option::None => println!("Your item doesn't exist in our system"),
     }
 }
