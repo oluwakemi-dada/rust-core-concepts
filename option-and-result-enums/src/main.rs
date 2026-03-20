@@ -101,10 +101,43 @@
 // }
 
 // ---- The unwrap_or Method ----
-fn main() {
-    let present_value = Some(13);
-    let missing_value: Option<bool> = None;
+// fn main() {
+//     let present_value = Some(13);
+//     let missing_value: Option<bool> = None;
 
-    println!("{}", present_value.unwrap_or(0));
-    println!("{}", missing_value.unwrap_or(true));
+//     println!("{}", present_value.unwrap_or(0));
+//     println!("{}", missing_value.unwrap_or(true));
+// }
+
+// ---- Building Option from Scratch ----
+#[derive(Debug, Copy, Clone)]
+enum MyOption {
+    Some(i32),
+    None,
+}
+
+impl MyOption {
+    fn unwrap(self) -> i32 {
+        match self {
+            MyOption::Some(value) => value,
+            MyOption::None => panic!("Uh oh"),
+        }
+    }
+
+    fn unwrap_or(self, fallback_value: i32) -> i32 {
+        match self {
+            MyOption::Some(value) => value,
+            MyOption::None => fallback_value,
+        }
+    }
+}
+
+fn main() {
+    let some_option = MyOption::Some(100);
+    println!("{}", some_option.unwrap());
+    println!("{}", some_option.unwrap_or(25));
+
+    let none_option = MyOption::None;
+    // println!("{}", none_option.unwrap());
+    println!("{}", none_option.unwrap_or(25));
 }
