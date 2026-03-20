@@ -79,23 +79,32 @@
 // }
 
 // ---- Top-Level Option Variants ----
-fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
-    if item_is_in_system && item_is_in_stock {
-        Some(true)
-    } else if item_is_in_system {
-        Some(false)
-    } else {
-        None
-    }
-}
+// fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
+//     if item_is_in_system && item_is_in_stock {
+//         Some(true)
+//     } else if item_is_in_system {
+//         Some(false)
+//     } else {
+//         None
+//     }
+// }
 
+// fn main() {
+//     let availability = is_item_in_stock(true, false);
+
+//     match availability {
+//         // Option::Some(value) => println!("Item is available: {value}"),
+//         Some(true) => println!("Yes, the item is available"),
+//         Some(false) => println!("No, the item is not in stock"),
+//         None => println!("Your item doesn't exist in our system"),
+//     }
+// }
+
+// ---- The unwrap_or Method ----
 fn main() {
-    let availability = is_item_in_stock(true, false);
+    let present_value = Some(13);
+    let missing_value: Option<bool> = None;
 
-    match availability {
-        // Option::Some(value) => println!("Item is available: {value}"),
-        Some(true) => println!("Yes, the item is available"),
-        Some(false) => println!("No, the item is not in stock"),
-        None => println!("Your item doesn't exist in our system"),
-    }
+    println!("{}", present_value.unwrap_or(0));
+    println!("{}", missing_value.unwrap_or(true));
 }
