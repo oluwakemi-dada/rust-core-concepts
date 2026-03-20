@@ -143,9 +143,20 @@
 // }
 
 // ---- The Result Enum ----
+// fn main() {
+//     let ok: Result<i32, &str> = Ok(5);
+//     println!("{ok:?}");
+//     let disaster: Result<i32, &str> = Err("Something went wrong");
+//     println!("{:?}", disaster);
+// }
+
+// ---- The Result Enum Example ----
 fn main() {
-    let ok: Result<i32, &str> = Ok(5);
-    println!("{ok:?}");
-    let disaster: Result<i32, &str> = Err("Something went wrong");
-    println!("{:?}", disaster);
+    let text = "50";
+    let text_as_number: Result<_, _> = text.parse::<i32>();
+    println!("{:?}", text_as_number);
+
+    let text = "Alabama";
+    let text_as_number: Result<_, _> = text.parse::<i32>();
+    println!("{:?}", text_as_number);
 }
