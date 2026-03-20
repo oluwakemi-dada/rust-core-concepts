@@ -110,34 +110,42 @@
 // }
 
 // ---- Building Option from Scratch ----
-#[derive(Debug, Copy, Clone)]
-enum MyOption {
-    Some(i32),
-    None,
-}
+// #[derive(Debug, Copy, Clone)]
+// enum MyOption {
+//     Some(i32),
+//     None,
+// }
 
-impl MyOption {
-    fn unwrap(self) -> i32 {
-        match self {
-            MyOption::Some(value) => value,
-            MyOption::None => panic!("Uh oh"),
-        }
-    }
+// impl MyOption {
+//     fn unwrap(self) -> i32 {
+//         match self {
+//             MyOption::Some(value) => value,
+//             MyOption::None => panic!("Uh oh"),
+//         }
+//     }
 
-    fn unwrap_or(self, fallback_value: i32) -> i32 {
-        match self {
-            MyOption::Some(value) => value,
-            MyOption::None => fallback_value,
-        }
-    }
-}
+//     fn unwrap_or(self, fallback_value: i32) -> i32 {
+//         match self {
+//             MyOption::Some(value) => value,
+//             MyOption::None => fallback_value,
+//         }
+//     }
+// }
 
+// fn main() {
+//     let some_option = MyOption::Some(100);
+//     println!("{}", some_option.unwrap());
+//     println!("{}", some_option.unwrap_or(25));
+
+//     let none_option = MyOption::None;
+//     // println!("{}", none_option.unwrap());
+//     println!("{}", none_option.unwrap_or(25));
+// }
+
+// ---- The Result Enum ----
 fn main() {
-    let some_option = MyOption::Some(100);
-    println!("{}", some_option.unwrap());
-    println!("{}", some_option.unwrap_or(25));
-
-    let none_option = MyOption::None;
-    // println!("{}", none_option.unwrap());
-    println!("{}", none_option.unwrap_or(25));
+    let ok: Result<i32, &str> = Ok(5);
+    println!("{ok:?}");
+    let disaster: Result<i32, &str> = Err("Something went wrong");
+    println!("{:?}", disaster);
 }
