@@ -151,12 +151,30 @@
 // }
 
 // ---- The Result Enum Example ----
-fn main() {
-    let text = "50";
-    let text_as_number: Result<_, _> = text.parse::<i32>();
-    println!("{:?}", text_as_number);
+// fn main() {
+//     let text = "50";
+//     let text_as_number: Result<_, _> = text.parse::<i32>();
+//     println!("{:?}", text_as_number);
 
-    let text = "Alabama";
-    let text_as_number: Result<_, _> = text.parse::<i32>();
-    println!("{:?}", text_as_number);
+//     let text = "Alabama";
+//     let text_as_number: Result<_, _> = text.parse::<i32>();
+//     println!("{:?}", text_as_number);
+// }
+
+// ---- Returning a Result Enum from a Function ----
+fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
+    if denominator == 0.0 {
+        Err("Cannot divide by zero".to_string())
+    } else {
+        Ok(numerator / denominator)
+    }
+}
+
+fn main() {
+    let result = divide(10.0, 0.0);
+
+    match result {
+        Ok(calculation) => println!("Result: {}", calculation),
+        Err(message) => println!("Error: {}", message),
+    }
 }
