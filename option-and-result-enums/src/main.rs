@@ -161,7 +161,7 @@
 //     println!("{:?}", text_as_number);
 // }
 
-// ---- Returning a Result Enum from a Function | Result Methods----
+// ---- Returning a Result Enum from a Function | Result Methods ----
 // fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
 //     if denominator == 0.0 {
 //         Err("Cannot divide by zero".to_string())
@@ -179,18 +179,37 @@
 //     }
 // }
 
-// ---- Result Methods----
-fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
-    if denominator == 0.0 {
-        Err("Cannot divide by zero".to_string())
+// ---- Result Methods ----
+// fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
+//     if denominator == 0.0 {
+//         Err("Cannot divide by zero".to_string())
+//     } else {
+//         Ok(numerator / denominator)
+//     }
+// }
+
+// fn main() {
+//     let result = divide(10.0, 2.0);
+
+//   println!("{}", result.is_ok());
+//   println!("{}", result.is_err());
+// }
+
+// ---- Nuances of unwrap Method on Result ----
+fn operation(great_success: bool) -> Result<&'static str, &'static str> {
+    if great_success {
+        Ok("Success")
     } else {
-        Ok(numerator / denominator)
+        Err("Error")
     }
 }
-
 fn main() {
-    let result = divide(10.0, 2.0);
+    let my_result = operation(true);
 
-  println!("{}", result.is_ok());
-  println!("{}", result.is_err());
+    let content = match my_result {
+        Ok(message) => message,
+        Err(error) => error,
+    };
+
+    println!("{}", my_result.unwrap())
 }
