@@ -196,20 +196,29 @@
 // }
 
 // ---- Nuances of unwrap Method on Result ----
-fn operation(great_success: bool) -> Result<&'static str, &'static str> {
-    if great_success {
-        Ok("Success")
-    } else {
-        Err("Error")
-    }
-}
+// fn operation(great_success: bool) -> Result<&'static str, &'static str> {
+//     if great_success {
+//         Ok("Success")
+//     } else {
+//         Err("Error")
+//     }
+// }
+// fn main() {
+//     let my_result = operation(true);
+
+//     let content = match my_result {
+//         Ok(message) => message,
+//         Err(error) => error,
+//     };
+
+//     println!("{}", my_result.unwrap())
+// }
+
+// ---- The while let Construct ----
 fn main() {
-    let my_result = operation(true);
+    let mut sauces = vec!["Mayonnaise", "Ketchup", "Ranch"];
 
-    let content = match my_result {
-        Ok(message) => message,
-        Err(error) => error,
-    };
-
-    println!("{}", my_result.unwrap())
+    while let Some(sauce) = sauces.pop() {
+        println!("The next sauce is {sauce}");
+    }
 }
