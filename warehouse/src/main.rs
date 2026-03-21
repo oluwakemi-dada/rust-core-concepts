@@ -1,4 +1,4 @@
-// ---- Intro to Modules | The pub Keyword ----
+// ---- Intro to Modules | The pub Keyword | The Benefit of Namespaces ----
 mod inventory {
     const FLOOR_SPACE: i32 = 10000;
     pub const MANAGER: &str = "Ivan Inventory";
@@ -21,6 +21,11 @@ mod inventory {
     }
 }
 
+mod orders {
+    pub const MANAGER: &str = "Oliver Orderson";
+}
+
 fn main() {
     println!("The manager of our inventory is {}", inventory::MANAGER);
+    println!("The manager of our orders is {}", orders::MANAGER);
 }
