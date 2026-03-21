@@ -1,3 +1,56 @@
+// ---- Coding Challenge ----
+#[derive(Debug)]
+struct File {
+    name: String,
+}
+
+#[derive(Debug)]
+struct Folder {
+    name: String,
+    contents: Vec<File>,
+}
+
+impl Folder {
+    fn new(name: String) -> Self {
+        Self {
+            name,
+            contents: vec![],
+        }
+    }
+
+    fn create_file(&mut self, name: String) {
+        let file = File { name };
+        self.contents.push(file);
+    }
+
+    fn delete_file(&mut self, index: usize) -> File {
+        self.contents.remove(index)
+    }
+
+    fn get_file(&self, index: usize) -> Option<&File> {
+        self.contents.get(index)
+    }
+}
+
+fn main() {
+    let mut folder = Folder::new(String::from("Rust Core Concepts"));
+
+    folder.create_file(String::from("ownership.rs"));
+    folder.create_file(String::from("structs.rs"));
+    folder.create_file(String::from("functions.rs"));
+    println!("{folder:#?}");
+
+    folder.delete_file(1);
+    println!("{folder:#?}");
+
+    // let file = folder.get_file(1);
+    let file = folder.get_file(5);
+    match file {
+        Some(f) => print!("Retrieved file: {f:#?}"),
+        None => println!("There was no file"),
+    }
+}
+
 // ---- Create a Vector ----
 // fn main() {
 //     let pizza_diameters = vec![8, 10, 12, 14];
@@ -88,28 +141,28 @@
 // }
 
 // ---- Vector Capacity Behind the Scenes ----
-fn main() {
-    let mut seasons: Vec<&str> = Vec::with_capacity(4);
-    println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
+// fn main() {
+//     let mut seasons: Vec<&str> = Vec::with_capacity(4);
+//     println!(
+//         "Length: {}, Capacity: {}",
+//         seasons.len(),
+//         seasons.capacity()
+//     );
 
-    seasons.push("Summer");
-    seasons.push("Fall");
-    seasons.push("Winter");
-    seasons.push("Spring");
-    println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
+//     seasons.push("Summer");
+//     seasons.push("Fall");
+//     seasons.push("Winter");
+//     seasons.push("Spring");
+//     println!(
+//         "Length: {}, Capacity: {}",
+//         seasons.len(),
+//         seasons.capacity()
+//     );
 
-    seasons.push("Summer");
-      println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
-}
+//     seasons.push("Summer");
+//       println!(
+//         "Length: {}, Capacity: {}",
+//         seasons.len(),
+//         seasons.capacity()
+//     );
+// }
