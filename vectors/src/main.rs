@@ -8,18 +8,31 @@
 // }
 
 // ---- Adding and Removing Elements ----
+// fn main() {
+//     let mut pizza_diameters = vec![8, 10, 12, 14];
+//     pizza_diameters.push(16);
+//     pizza_diameters.push(18);
+
+//     pizza_diameters.insert(0, 4);
+
+//     let last_pizza_diameter = pizza_diameters.pop();
+//     println!("{last_pizza_diameter:?}");
+
+//     let third_diameter_from_start = pizza_diameters.remove(2);
+//     println!("{third_diameter_from_start:?}");
+
+//     println!("{pizza_diameters:?}");
+// }
+
+// ---- Reading Vector Elements ----
 fn main() {
-    let mut pizza_diameters = vec![8, 10, 12, 14];
-    pizza_diameters.push(16);
-    pizza_diameters.push(18);
+    let pizza_diameters = vec![8, 10, 12, 14];
 
-    pizza_diameters.insert(0, 4);
+    let pepperoni = String::from("Pepperoni");
+    let mushroom = String::from("Mushroom");
+    let sausage = String::from("Sausage");
+    let pizza_toppings = vec![pepperoni, mushroom, sausage];
 
-    let last_pizza_diameter = pizza_diameters.pop();
-    println!("{last_pizza_diameter:?}");
-
-    let third_diameter_from_start = pizza_diameters.remove(2);
-    println!("{third_diameter_from_start:?}");
-
-    println!("{pizza_diameters:?}");
+    let pizza_slice = &pizza_toppings[1..3];
+    println!("{pizza_slice:?}");
 }
