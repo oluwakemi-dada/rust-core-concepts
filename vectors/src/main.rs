@@ -53,16 +53,36 @@
 // }
 
 // ---- Ownership with Vectors ----
+// fn main() {
+//     let pepperoni = String::from("Pepperoni");
+//     let mushroom = String::from("Mushroom");
+//     let sausage = String::from("Sausage");
+//     let pizza_toppings = vec![pepperoni, mushroom, sausage];
+//     let mut delicious_toppings = pizza_toppings;
+
+//     let topping_reference = &delicious_toppings[1];
+//     println!("{topping_reference:?}");
+
+//     delicious_toppings.push(String::from("Olives"));
+//     // println!("The topping is {topping_reference:?}"); // this will not work
+// }
+
+// ---- Writing Vector Elements ----
 fn main() {
     let pepperoni = String::from("Pepperoni");
     let mushroom = String::from("Mushroom");
     let sausage = String::from("Sausage");
-    let pizza_toppings = vec![pepperoni, mushroom, sausage];
-    let mut delicious_toppings = pizza_toppings;
+    let mut pizza_toppings = vec![pepperoni, mushroom, sausage];
 
-    let topping_reference = &delicious_toppings[1];
-    println!("{topping_reference:?}");
+    pizza_toppings[1] = String::from("Olives");
+    println!("{pizza_toppings:#?}");
 
-    delicious_toppings.push(String::from("Olives"));
-    // println!("The topping is {topping_reference:?}"); // this will not work
+    let target_topping = &mut pizza_toppings[2];
+    target_topping.push_str(" and Meatballs");
+    let another_topping = &pizza_toppings[1];
+    let another_one = &pizza_toppings[1];
+
+    println!("{pizza_toppings:#?}");
+    println!("{another_topping:#?}");
+    println!("{another_one:#?}");
 }
