@@ -38,16 +38,31 @@
 // }
 
 // ---- The get Method ----
+// fn main() {
+//     let pepperoni = String::from("Pepperoni");
+//     let mushroom = String::from("Mushroom");
+//     let sausage = String::from("Sausage");
+//     let pizza_toppings = vec![pepperoni, mushroom, sausage];
+
+//     let option = pizza_toppings.get(5);
+
+//     match option {
+//         Some(topping) => println!("The topping is {topping}"),
+//         None => println!("No value at that index position"),
+//     }
+// }
+
+// ---- Ownership with Vectors ----
 fn main() {
     let pepperoni = String::from("Pepperoni");
     let mushroom = String::from("Mushroom");
     let sausage = String::from("Sausage");
     let pizza_toppings = vec![pepperoni, mushroom, sausage];
+    let mut delicious_toppings = pizza_toppings;
 
-    let option = pizza_toppings.get(5);
+    let topping_reference = &delicious_toppings[1];
+    println!("{topping_reference:?}");
 
-    match option {
-        Some(topping) => println!("The topping is {topping}"),
-        None => println!("No value at that index position"),
-    }
+    delicious_toppings.push(String::from("Olives"));
+    // println!("The topping is {topping_reference:?}"); // this will not work
 }
