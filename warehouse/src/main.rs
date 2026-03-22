@@ -1,6 +1,8 @@
 mod inventory;
 mod orders;
 
+use fake::{Fake, Faker};
+
 use inventory::{FLOOR_SPACE, Item, MANAGER as INVENTORY_MANAGER, ProductCategory};
 use orders::MANAGER as ORDERS_MANAGER;
 
@@ -10,9 +12,9 @@ fn main() {
         INVENTORY_MANAGER, ORDERS_MANAGER, FLOOR_SPACE
     );
 
-    let favorite_category = ProductCategory::Hammer;
-    println!("My favorite category of item is {favorite_category:?}");
+    let fake_item: Item = Faker.fake();
+    println!("{:#?}", fake_item);
 
-    let tall_ladder = Item::new(String::from("Ladder-o-matic 2000"), favorite_category, 100);
-    println!("{:#?}", tall_ladder)
+    let random_category: ProductCategory = Faker.fake();
+    println!("{:#?}", random_category)
 }
