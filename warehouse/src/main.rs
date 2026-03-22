@@ -1,10 +1,6 @@
-mod inventory;
-mod orders;
-
 use fake::{Fake, Faker};
 
-use inventory::{FLOOR_SPACE, Item, MANAGER as INVENTORY_MANAGER, ProductCategory};
-use orders::MANAGER as ORDERS_MANAGER;
+use warehouse::{FLOOR_SPACE, INVENTORY_MANAGER, Item, ORDERS_MANAGER, ProductCategory};
 
 fn main() {
     println!(
