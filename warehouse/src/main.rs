@@ -4,9 +4,9 @@ mod orders;
 fn main() {
     println!(
         "Our managers are {} and {}. We have {} square feet of floor space",
-        inventory::MANAGER,
-        orders::MANAGER,
-        inventory::FLOOR_SPACE
+        crate::inventory::MANAGER,
+        crate::orders::MANAGER,
+        crate::inventory::FLOOR_SPACE
     );
 
     inventory::talk_to_manager();
