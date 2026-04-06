@@ -15,12 +15,23 @@
 // }
 
 // ----- Concatenation -----
+// fn main() {
+//     let first_name = String::from("Sylvester");
+//     let last_name = String::from("Stallone");
+
+//     let full_name = first_name + &last_name;
+//     // let full_name = first_name.clone() + &last_name;
+//     println!("{full_name}");
+//     println!("{first_name}")
+// }
+
+// ----- The format! Macro -----
 fn main() {
     let first_name = String::from("Sylvester");
     let last_name = String::from("Stallone");
 
-    let full_name = first_name + &last_name;
-    // let full_name = first_name.clone() + &last_name;
-    println!("{full_name}");
-    println!("{first_name}")
+    let icon = format!("{first_name} {last_name}");
+    println!("{icon}");
+    println!("{first_name}");
+    println!("{last_name}");
 }
