@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::collections::HashSet;
 
 // ----- Create a HashMap with new Function -----
 // fn main() {
@@ -76,18 +77,42 @@ use std::collections::HashMap;
 // }
 
 // ----- The entry Method -----
+// fn main() {
+//     let mut coffee_pairings: HashMap<&str, &str> = HashMap::new();
+//     let drink = String::from("Latte");
+//     let milk = String::from("Oat Milk");
+//     coffee_pairings.insert(&drink, &milk);
+//     coffee_pairings.insert("Flat White", "Almond Milk");
+
+//     coffee_pairings.entry("Latte").or_insert("Pistachio Milk");
+//     println!("{:?}", coffee_pairings);
+
+//     coffee_pairings
+//         .entry("Cappuccino")
+//         .or_insert("Pistachio Milk");
+//     println!("{:?}", coffee_pairings);
+// }
+
+// ----- The HashSet -----
 fn main() {
-    let mut coffee_pairings: HashMap<&str, &str> = HashMap::new();
-    let drink = String::from("Latte");
-    let milk = String::from("Oat Milk");
-    coffee_pairings.insert(&drink, &milk);
-    coffee_pairings.insert("Flat White", "Almond Milk");
+    let mut concert_queue: HashSet<&str> = HashSet::new();
+    println!("{:?}", concert_queue);
 
-    coffee_pairings.entry("Latte").or_insert("Pistachio Milk");
-    println!("{:?}", coffee_pairings);
+    concert_queue.insert("Molly");
+    concert_queue.insert("Megan");
+    println!("{:?}", concert_queue);
+    println!("{}", concert_queue.len());
 
-    coffee_pairings
-        .entry("Cappuccino")
-        .or_insert("Pistachio Milk");
-    println!("{:?}", coffee_pairings);
+    concert_queue.insert("Molly");
+    println!("{:?}", concert_queue);
+
+    println!("{}", concert_queue.remove("Megan"));
+    println!("{}", concert_queue.remove("Franny"));
+    println!("{:?}", concert_queue);
+
+    println!("{}", concert_queue.contains("Molly"));
+    println!("{}", concert_queue.contains("Fred"));
+
+    println!("{:?}", concert_queue.get("Molly"));
+    println!("{:?}", concert_queue.get("Joe"));
 }
