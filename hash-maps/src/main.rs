@@ -1,6 +1,29 @@
 use std::collections::HashMap;
 use std::collections::HashSet;
 
+// ----- Coding Challenge -----
+fn main() {
+    let mut sauces_to_meals: HashMap<&str, Vec<&str>> = HashMap::from([
+        ("Ketchup", vec!["French Fries", "Burgers", "Hot Dogs"]),
+        ("Mayonnaise", vec!["Sandwiches", "Burgers", "Coleslaw"]),
+    ]);
+
+    sauces_to_meals.insert("Mustard", vec!["Hot dog", "Burgers", "Pretzels"]);
+
+    println!("{:?}", sauces_to_meals.remove("Mayonnaise").unwrap());
+
+    let mustard_meals = sauces_to_meals.get("Mustard");
+    match mustard_meals {
+        Some(meal) => println!("The meals were {meal:?}"),
+        None => println!("There were no meals for that sauce"),
+    }
+
+    sauces_to_meals
+        .entry("Soy Sauce")
+        .or_insert(vec!["Sushi", "Dumplings"]);
+    println!("{:#?}", sauces_to_meals);
+}
+
 // ----- Create a HashMap with new Function -----
 // fn main() {
 //     let mut menu: HashMap<String, f64> = HashMap::new();
@@ -118,31 +141,31 @@ use std::collections::HashSet;
 // }
 
 // ----- HashSet Operations -----
-fn main() {
-    let mut concert_queue: HashSet<&str> = HashSet::new(); // Boris, Melissa
-    let mut movie_queue: HashSet<&str> = HashSet::new(); // Boris, Phil
+// fn main() {
+//     let mut concert_queue: HashSet<&str> = HashSet::new(); // Boris, Melissa
+//     let mut movie_queue: HashSet<&str> = HashSet::new(); // Boris, Phil
 
-    concert_queue.insert("Boris");
-    concert_queue.insert("Melissa");
+//     concert_queue.insert("Boris");
+//     concert_queue.insert("Melissa");
 
-    movie_queue.insert("Boris");
-    movie_queue.insert("Phil");
+//     movie_queue.insert("Boris");
+//     movie_queue.insert("Phil");
 
-    println!("{:?}", concert_queue.union(&movie_queue));
-    println!("{:?}", movie_queue.union(&concert_queue));
+//     println!("{:?}", concert_queue.union(&movie_queue));
+//     println!("{:?}", movie_queue.union(&concert_queue));
 
-    println!("{:?}", concert_queue.difference(&movie_queue));
-    println!("{:?}", movie_queue.difference(&concert_queue));
+//     println!("{:?}", concert_queue.difference(&movie_queue));
+//     println!("{:?}", movie_queue.difference(&concert_queue));
 
-    println!("{:?}", concert_queue.symmetric_difference(&movie_queue));
-    println!("{:?}", movie_queue.symmetric_difference(&concert_queue));
+//     println!("{:?}", concert_queue.symmetric_difference(&movie_queue));
+//     println!("{:?}", movie_queue.symmetric_difference(&concert_queue));
 
-    println!("{:?}", concert_queue.is_disjoint(&movie_queue));
-    println!("{:?}", movie_queue.is_disjoint(&concert_queue));
+//     println!("{:?}", concert_queue.is_disjoint(&movie_queue));
+//     println!("{:?}", movie_queue.is_disjoint(&concert_queue));
 
-    let mut attendees = HashSet::new();
-    attendees.insert("Boris");
-    println!("{}", attendees.is_subset(&concert_queue));
+//     let mut attendees = HashSet::new();
+//     attendees.insert("Boris");
+//     println!("{}", attendees.is_subset(&concert_queue));
 
-    println!("{}", concert_queue.is_superset(&attendees));
-}
+//     println!("{}", concert_queue.is_superset(&attendees));
+// }
