@@ -26,12 +26,29 @@
 // }
 
 // ----- The format! Macro -----
-fn main() {
-    let first_name = String::from("Sylvester");
-    let last_name = String::from("Stallone");
+// fn main() {
+//     let first_name = String::from("Sylvester");
+//     let last_name = String::from("Stallone");
 
-    let icon = format!("{first_name} {last_name}");
-    println!("{icon}");
-    println!("{first_name}");
-    println!("{last_name}");
+//     let icon = format!("{first_name} {last_name}");
+//     println!("{icon}");
+//     println!("{first_name}");
+//     println!("{last_name}");
+// }
+
+// ----- Common String Methods (trim, casing, replace, split)-----
+fn main() {
+    let mut music_genres = "    Rock, Metal, Country, Rap  ";
+    println!("{}", music_genres.trim());
+    println!("{}", music_genres.trim_start());
+    println!("{}", music_genres.trim_end());
+
+    music_genres = music_genres.trim();
+    println!("{}", music_genres.to_uppercase());
+    println!("{}", music_genres.to_lowercase());
+
+    println!("{}", music_genres.replace("a", "@"));
+
+    let genres: Vec<&str> = music_genres.split(", ").collect();
+    println!("{genres:?}");
 }
