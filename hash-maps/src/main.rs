@@ -94,25 +94,55 @@ use std::collections::HashSet;
 // }
 
 // ----- The HashSet -----
+// fn main() {
+//     let mut concert_queue: HashSet<&str> = HashSet::new();
+//     println!("{:?}", concert_queue);
+
+//     concert_queue.insert("Molly");
+//     concert_queue.insert("Megan");
+//     println!("{:?}", concert_queue);
+//     println!("{}", concert_queue.len());
+
+//     concert_queue.insert("Molly");
+//     println!("{:?}", concert_queue);
+
+//     println!("{}", concert_queue.remove("Megan"));
+//     println!("{}", concert_queue.remove("Franny"));
+//     println!("{:?}", concert_queue);
+
+//     println!("{}", concert_queue.contains("Molly"));
+//     println!("{}", concert_queue.contains("Fred"));
+
+//     println!("{:?}", concert_queue.get("Molly"));
+//     println!("{:?}", concert_queue.get("Joe"));
+// }
+
+// ----- HashSet Operations -----
 fn main() {
-    let mut concert_queue: HashSet<&str> = HashSet::new();
-    println!("{:?}", concert_queue);
+    let mut concert_queue: HashSet<&str> = HashSet::new(); // Boris, Melissa
+    let mut movie_queue: HashSet<&str> = HashSet::new(); // Boris, Phil
 
-    concert_queue.insert("Molly");
-    concert_queue.insert("Megan");
-    println!("{:?}", concert_queue);
-    println!("{}", concert_queue.len());
+    concert_queue.insert("Boris");
+    concert_queue.insert("Melissa");
 
-    concert_queue.insert("Molly");
-    println!("{:?}", concert_queue);
+    movie_queue.insert("Boris");
+    movie_queue.insert("Phil");
 
-    println!("{}", concert_queue.remove("Megan"));
-    println!("{}", concert_queue.remove("Franny"));
-    println!("{:?}", concert_queue);
+    println!("{:?}", concert_queue.union(&movie_queue));
+    println!("{:?}", movie_queue.union(&concert_queue));
 
-    println!("{}", concert_queue.contains("Molly"));
-    println!("{}", concert_queue.contains("Fred"));
+    println!("{:?}", concert_queue.difference(&movie_queue));
+    println!("{:?}", movie_queue.difference(&concert_queue));
 
-    println!("{:?}", concert_queue.get("Molly"));
-    println!("{:?}", concert_queue.get("Joe"));
+    println!("{:?}", concert_queue.symmetric_difference(&movie_queue));
+    println!("{:?}", movie_queue.symmetric_difference(&concert_queue));
+
+    println!("{:?}", concert_queue.is_disjoint(&movie_queue));
+    println!("{:?}", movie_queue.is_disjoint(&concert_queue));
+
+    let mut attendees = HashSet::new();
+    attendees.insert("Boris");
+    println!("{}", attendees.is_subset(&concert_queue));
+
+    println!("{}", concert_queue.is_superset(&attendees));
 }
