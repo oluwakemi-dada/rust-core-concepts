@@ -1,3 +1,34 @@
+// ----- Coding Challenge -----
+use std::fs;
+use std::io;
+use std::process;
+
+fn main() {
+    match write_to_file() {
+        Ok(file_name) => println!("Successfully wrote to file {file_name}"),
+        Err(error) => {
+            eprintln!("There was an error: {error}");
+            process::exit(1)
+        }
+    }
+}
+
+fn write_to_file() -> io::Result<String> {
+    let input = io::stdin();
+
+    let mut requested_file = String::new();
+    println!("What file would you like to write to?");
+    input.read_line(&mut requested_file)?;
+
+    let mut file_content = String::new();
+    println!("What would you like to write to the file?");
+    input.read_line(&mut file_content)?;
+
+    fs::write(requested_file.trim(), file_content.trim())?;
+
+    Ok(requested_file)
+}
+
 // ----- The panic! Macro -----
 // fn main() {
 //     let num = 2;
@@ -198,15 +229,15 @@
 // }
 
 // ----- The ? Operator with Option -----
-fn main() {
-    let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
-}
+// fn main() {
+//     let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
+//     println!("{:?}", length_of_last_element(&mut animals));
+//     println!("{:?}", length_of_last_element(&mut animals));
+//     println!("{:?}", length_of_last_element(&mut animals));
+//     println!("{:?}", length_of_last_element(&mut animals));
+// }
 
-fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
-    let last_element = input.pop()?;
-    Some(last_element.len())
-}
+// fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
+//     let last_element = input.pop()?;
+//     Some(last_element.len())
+// }
