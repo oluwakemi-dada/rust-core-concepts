@@ -174,25 +174,39 @@
 // }
 
 // ----- The read_to_string Associated Function -----
-use std::fs;
-use std::io::{self, stdin};
+// use std::fs;
+// use std::io::{self, stdin};
 
+// fn main() {
+//     let file_result = read_file();
+
+//     match file_result {
+//         Ok(contents) => println!("{contents}"),
+//         Err(error) => {
+//             eprintln!("There was an error: {error:?}")
+//         }
+//     }
+// }
+
+// fn read_file() -> Result<String, io::Error> {
+//     println!("Please enter the name of the file you'd like to read:");
+
+//     let mut input = String::new();
+//     stdin().read_line(&mut input)?;
+
+//     fs::read_to_string(input.trim())
+// }
+
+// ----- The ? Operator with Option -----
 fn main() {
-    let file_result = read_file();
-
-    match file_result {
-        Ok(contents) => println!("{contents}"),
-        Err(error) => {
-            eprintln!("There was an error: {error:?}")
-        }
-    }
+    let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
 }
 
-fn read_file() -> Result<String, io::Error> {
-    println!("Please enter the name of the file you'd like to read:");
-
-    let mut input = String::new();
-    stdin().read_line(&mut input)?;
-
-    fs::read_to_string(input.trim())
+fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
+    let last_element = input.pop()?;
+    Some(last_element.len())
 }
