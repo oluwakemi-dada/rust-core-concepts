@@ -23,7 +23,7 @@ impl Hotel {
         }
     }
 
-    fn summarize (&self) -> String {
+    fn summarize(&self) -> String {
         format!("{}: {}", self.name, self.get_description())
     }
 }
@@ -63,16 +63,16 @@ impl Accommodation for AirBnB {
     }
 }
 
+fn book_for_one_night(entity: &mut impl Accommodation, guest: &str) {
+    entity.book(guest, 1);
+}
+
 fn main() {
     let mut hotel = Hotel::new("The Luxe");
-    println!("{}", hotel.summarize());
-    hotel.book("Piers", 5);
-    hotel.book("John", 2);
-    println!("{:#?}", hotel);
+    book_for_one_night(&mut hotel, "Pierce");
+    println!("{hotel:#?}");
 
     let mut airbnb = AirBnB::new("Peter");
-    println!("{}", airbnb.get_description());
-    airbnb.book("Simon", 3);
-    airbnb.book("Timothy", 7);
-    println!("{:#?}", airbnb);
+    book_for_one_night(&mut airbnb, "Thompson");
+    println!("{airbnb:#?}");
 }
