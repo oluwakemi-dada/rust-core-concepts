@@ -146,8 +146,36 @@
 // }
 
 // ----- The ? Operator (The Try Operator) -----
-use std::fs::File;
-use std::io::{self, Read, stdin};
+// use std::fs::File;
+// use std::io::{self, Read, stdin};
+
+// fn main() {
+//     let file_result = read_file();
+
+//     match file_result {
+//         Ok(contents) => println!("{contents}"),
+//         Err(error) => {
+//             eprintln!("There was an error: {error:?}")
+//         }
+//     }
+// }
+
+// fn read_file() -> Result<String, io::Error> {
+//     println!("Please enter the name of the file you'd like to read:");
+
+//     let mut input = String::new();
+//     stdin().read_line(&mut input)?;
+
+//     // .trim returns a string slice automatically
+//     let mut file_contents = String::new();
+//     File::open(input.trim())?.read_to_string(&mut file_contents)?;
+
+//     Ok(file_contents)
+// }
+
+// ----- The read_to_string Associated Function -----
+use std::fs;
+use std::io::{self, stdin};
 
 fn main() {
     let file_result = read_file();
@@ -166,9 +194,5 @@ fn read_file() -> Result<String, io::Error> {
     let mut input = String::new();
     stdin().read_line(&mut input)?;
 
-    // .trim returns a string slice automatically
-    let mut file_contents = String::new();
-    File::open(input.trim())?.read_to_string(&mut file_contents)?;
-
-    Ok(file_contents)
+    fs::read_to_string(input.trim())
 }
