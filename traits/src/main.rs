@@ -88,12 +88,16 @@ fn choose_best_place_to_stay() -> impl Accommodation + Description {
 }
 
 fn main() {
-    let hotel1 = Hotel::new(String::from("The Luxe"));
-    println!("{}", hotel1.summarize());
+    let mut hotel = Hotel::new(String::from("The Luxe"));
+    let mut airbnb = AirBnB::new("Peter");
 
-    let hotel2 = Hotel::new("The Golden Standard");
-    println!("{}", hotel2.summarize());
+    let stays: Vec<&dyn Description> = vec![&hotel, &airbnb];
+    println!("{}", stays[0].get_description());
+    println!("{}", stays[1].get_description());
 
-    let hotel3 = Hotel::new(vec!["The sweet Escape", "Hilton Edition"]);
-    //  println!("{}", hotel3.summarize()); ❌
+    let mut stays: Vec<&mut dyn Accommodation> = vec![&mut hotel, &mut airbnb];
+    stays[0].book("Piers", 2);
+    stays[1].book("Amanda", 3);
+    println!("{:#?}", hotel);
+    println!("{:#?}", airbnb);
 }
