@@ -84,10 +84,20 @@ where
     second.book(guest, 1);
 }
 
+fn choose_best_place_to_stay() -> impl Accommodation + Description {
+    let likes_luxury = true;
+
+    if likes_luxury {
+        Hotel::new("The Luxe")
+    } else {
+        Hotel::new("Holiday Inn")
+    }
+}
+
 fn main() {
-    let mut hotel = Hotel::new("The Luxe");
+    let mut hotel = choose_best_place_to_stay();
     let mut airbnb = AirBnB::new("Peter");
 
     mix_and_match(&mut hotel, &mut airbnb, "Piers");
-    println!("{hotel:#?} {airbnb:#?}");
+    // println!("{hotel:#?} {airbnb:#?}");
 }
