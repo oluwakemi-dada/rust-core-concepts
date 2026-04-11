@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::Display;
 
 // ----- Implementing Trait for Struct -----
 trait Accommodation {
@@ -12,35 +13,33 @@ trait Description {
 }
 
 #[derive(Debug)]
-struct Hotel {
-    name: String,
+struct Hotel<T> {
+    name: T,
     reservations: HashMap<String, u32>,
 }
 
-impl Hotel {
-    fn new(name: &str) -> Self {
+impl<T> Hotel<T> {
+    fn new(name: T) -> Self {
         Self {
-            name: name.to_string(),
+            name,
             reservations: HashMap::new(),
         }
     }
+}
 
+impl<T: Display> Hotel<T> {
     fn summarize(&self) -> String {
         format!("{}: {}", self.name, self.get_description())
     }
 }
 
-impl Accommodation for Hotel {
-    // fn get_description(&self) -> String {
-    //     format!("{} is the pinnacle of luxury", self.name)
-    // }
-
+impl<T> Accommodation for Hotel<T> {
     fn book(&mut self, name: &str, nights: u32) {
         self.reservations.insert(name.to_string(), nights);
     }
 }
 
-impl Description for Hotel {}
+impl<T> Description for Hotel<T> {}
 
 #[derive(Debug)]
 struct AirBnB {
@@ -85,19 +84,16 @@ where
 }
 
 fn choose_best_place_to_stay() -> impl Accommodation + Description {
-    let likes_luxury = true;
-
-    if likes_luxury {
-        Hotel::new("The Luxe")
-    } else {
-        Hotel::new("Holiday Inn")
-    }
+    Hotel::new("The Luxe")
 }
 
 fn main() {
-    let mut hotel = choose_best_place_to_stay();
-    let mut airbnb = AirBnB::new("Peter");
+    let hotel1 = Hotel::new(String::from("The Luxe"));
+    println!("{}", hotel1.summarize());
 
-    mix_and_match(&mut hotel, &mut airbnb, "Piers");
-    // println!("{hotel:#?} {airbnb:#?}");
+    let hotel2 = Hotel::new("The Golden Standard");
+    println!("{}", hotel2.summarize());
+
+    let hotel3 = Hotel::new(vec!["The sweet Escape", "Hilton Edition"]);
+    //  println!("{}", hotel3.summarize()); ❌
 }
