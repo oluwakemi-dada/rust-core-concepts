@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-// ----- Implementing Trait for Struct | Default Implementations -----
+// ----- Implementing Trait for Struct -----
 trait Accommodation {
     fn get_description(&self) -> String {
         String::from("A wonderful place to stay")
@@ -63,16 +63,24 @@ impl Accommodation for AirBnB {
     }
 }
 
-fn book_for_one_night(entity: &mut impl Accommodation, guest: &str) {
+fn book_for_one_night<T: Accommodation>(entity: &mut T, guest: &str) {
     entity.book(guest, 1);
+}
+
+fn mix_and_match(first: &mut impl Accommodation, second: &mut impl Accommodation, guest: &str) {
+    first.book(guest, 1);
+    second.book(guest, 1);
 }
 
 fn main() {
     let mut hotel = Hotel::new("The Luxe");
-    book_for_one_night(&mut hotel, "Pierce");
-    println!("{hotel:#?}");
+    // book_for_one_night(&mut hotel, "Pierce");
+    // println!("{hotel:#?}");
 
     let mut airbnb = AirBnB::new("Peter");
-    book_for_one_night(&mut airbnb, "Thompson");
-    println!("{airbnb:#?}");
+    // book_for_one_night(&mut airbnb, "Thompson");
+    // println!("{airbnb:#?}");
+
+    mix_and_match(&mut hotel, &mut airbnb, "Piers");
+    println!("{hotel:#?} {airbnb:#?}");
 }
