@@ -73,11 +73,11 @@ fn book_for_one_night<T: Accommodation + Description>(entity: &mut T, guest: &st
     entity.book(guest, 1);
 }
 
-fn mix_and_match(
-    first: &mut (impl Accommodation + Description),
-    second: &mut impl Accommodation,
-    guest: &str,
-) {
+fn mix_and_match<T, U>(first: &mut T, second: &mut U, guest: &str)
+where
+    T: Accommodation + Description,
+    U: Accommodation,
+{
     first.book(guest, 1);
     first.get_description();
 
