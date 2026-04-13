@@ -35,12 +35,12 @@ impl Display for Apple {
 }
 
 impl Debug for Apple {
-    fn fmt(&self, formatter: &mut Formatter<'_>) -> Result {
-        write!(
-            formatter,
-            "Apple ::: [ Kind: {} Price: {} ]",
-            self.kind, self.price
-        )
+    fn fmt(&self, formatter: &mut Formatter) -> Result {
+        formatter
+            .debug_struct("** Apple **")
+            .field("Kind", &self.kind)
+            .field("Price", &self.price)
+            .finish()
     }
 }
 
@@ -58,6 +58,7 @@ fn main() {
     println!("{:?}", lunch_snack);
     println!("{:?}", dinner_snack);
 }
+
 
 // -------------------------------------------------------------- //
 
