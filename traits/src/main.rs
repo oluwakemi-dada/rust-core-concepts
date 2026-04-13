@@ -1,84 +1,104 @@
-trait Investment<T> {
-    fn amount(&self) -> T;
+use std::fmt::{Display, Formatter, Result};
 
-    fn double_amount(&mut self);
-}
-trait Taxable: Investment<f64> {
-    const TAX_RATE: f64 = 0.25;
-
-    fn tax_bill(&self) -> f64 {
-        self.amount() * Self::TAX_RATE
-    }
+struct Apple {
+    kind: String,
+    price: f64,
 }
 
-#[derive(Debug)]
-struct Income {
-    amount: f64,
-}
-
-impl Investment<f64> for Income {
-    fn amount(&self) -> f64 {
-        self.amount
-    }
-
-    fn double_amount(&mut self) {
-        self.amount *= 2.0
-    }
-}
-
-impl Taxable for Income {}
-
-#[derive(Debug)]
-struct Bonus {
-    value: f64,
-}
-
-impl Investment<f64> for Bonus {
-    fn amount(&self) -> f64 {
-        self.value
-    }
-
-    fn double_amount(&mut self) {
-        self.value *= 2.0
-    }
-}
-
-impl Taxable for Bonus {
-    const TAX_RATE: f64 = 0.50;
-}
-
-#[derive(Debug)]
-struct QualityTime {
-    minutes: u32,
-}
-
-impl Investment<u32> for QualityTime {
-    fn amount(&self) -> u32 {
-        self.minutes
-    }
-
-    fn double_amount(&mut self) {
-        self.minutes *= 2
+impl Display for Apple {
+    fn fmt(&self, formatter: &mut Formatter<'_>) -> Result {
+        write!(formatter, "{} 🍏 for {}", self.kind, self.price)
     }
 }
 
 fn main() {
-    let mut income = Income { amount: 50000.50 };
-    let mut bonus = Bonus { value: 10000.23 };
-    let mut rust_programming_time = QualityTime { minutes: 120 };
+    let lunch_snack = Apple {
+        kind: String::from("Granny Smith"),
+        price: 1.04,
+    };
 
-    income.double_amount();
-    bonus.double_amount();
-    rust_programming_time.double_amount();
-
-    println!("Total tax owed: ${:.2}", income.tax_bill());
-    println!("Total tax owed: ${:.2}", income.tax_bill());
-
-    println!("Bonus tax owed : ${:.2}", bonus.tax_bill());
-    println!("Bonus tax owed : ${:.2}", bonus.tax_bill());
-
-    println!("{:#?}", rust_programming_time.amount());
+    println!("{}", lunch_snack);
 }
+
+// -------------------------------------------------------------- //
+
+// trait Investment<T> {
+//     fn amount(&self) -> T;
+
+//     fn double_amount(&mut self);
+// }
+// trait Taxable: Investment<f64> {
+//     const TAX_RATE: f64 = 0.25;
+
+//     fn tax_bill(&self) -> f64 {
+//         self.amount() * Self::TAX_RATE
+//     }
+// }
+
+// #[derive(Debug)]
+// struct Income {
+//     amount: f64,
+// }
+
+// impl Investment<f64> for Income {
+//     fn amount(&self) -> f64 {
+//         self.amount
+//     }
+
+//     fn double_amount(&mut self) {
+//         self.amount *= 2.0
+//     }
+// }
+
+// impl Taxable for Income {}
+
+// #[derive(Debug)]
+// struct Bonus {
+//     value: f64,
+// }
+
+// impl Investment<f64> for Bonus {
+//     fn amount(&self) -> f64 {
+//         self.value
+//     }
+
+//     fn double_amount(&mut self) {
+//         self.value *= 2.0
+//     }
+// }
+
+// impl Taxable for Bonus {
+//     const TAX_RATE: f64 = 0.50;
+// }
+
+// #[derive(Debug)]
+// struct QualityTime {
+//     minutes: u32,
+// }
+
+// impl Investment<u32> for QualityTime {
+//     fn amount(&self) -> u32 {
+//         self.minutes
+//     }
+
+//     fn double_amount(&mut self) {
+//         self.minutes *= 2
+//     }
+// }
+
+// fn main() {
+//     let mut income = Income { amount: 50000.50 };
+//     let mut bonus = Bonus { value: 10000.23 };
+//     let mut rust_programming_time = QualityTime { minutes: 120 };
+
+//     income.double_amount();
+//     bonus.double_amount();
+//     rust_programming_time.double_amount();
+
+//     println!("Total tax owed: ${:.2}", income.tax_bill());
+//     println!("Bonus tax owed : ${:.2}", bonus.tax_bill());
+//     println!("{:#?}", rust_programming_time.amount());
+// }
 
 // -------------------------------------------------------------- //
 
