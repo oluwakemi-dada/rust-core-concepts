@@ -1,28 +1,84 @@
-#[derive(PartialEq, Eq)]
-struct Flight {
-    origin: String,
-    destination: String,
-    time: String,
+use std::cmp::Ordering;
+
+struct Job {
+    salary: u32,
+    commute_time: u32,
 }
 
-impl Flight {
-    fn new(origin: &str, destination: &str, time: &str) -> Self {
-        Self {
-            origin: origin.to_string(),
-            destination: destination.to_string(),
-            time: time.to_string(),
-        }
+impl PartialEq for Job {
+    fn eq(&self, other: &Self) -> bool {
+        self.salary == other.salary
+    }
+}
+
+impl Eq for Job {}
+
+impl PartialOrd for Job {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        self.salary.partial_cmp(&other.salary)
     }
 }
 
 fn main() {
-    let division = 0.0 / 0.0;
-    println!("{}", division);
+    let long_commute_job = Job {
+        salary: 100000,
+        commute_time: 2,
+    };
 
-    let value = 3.4;
-    println!("{}", value == value);
-    println!("{}", division == division);
+    let short_commute_job = Job {
+        salary: 75000,
+        commute_time: 1,
+    };
+
+    println!("{}", long_commute_job > short_commute_job);
+    println!("{}", long_commute_job < short_commute_job);
+    println!("{}", long_commute_job == short_commute_job);
+    println!("{}", long_commute_job >= short_commute_job);
+    println!("{}", long_commute_job <= short_commute_job);
+
+    let new_opportunity = Job {
+        salary: 100000,
+        commute_time: 1,
+    };
+
+    println!("{}", long_commute_job > new_opportunity);
+    println!("{}", long_commute_job < new_opportunity);
+
+    println!("{}", long_commute_job == new_opportunity);
+    println!("{}", long_commute_job != new_opportunity);
+
+    println!("{}", long_commute_job >= new_opportunity);
+    println!("{}", long_commute_job <= new_opportunity);
 }
+
+
+// -------------------------------------------------------------- //
+
+// #[derive(PartialEq, Eq)]
+// struct Flight {
+//     origin: String,
+//     destination: String,
+//     time: String,
+// }
+
+// impl Flight {
+//     fn new(origin: &str, destination: &str, time: &str) -> Self {
+//         Self {
+//             origin: origin.to_string(),
+//             destination: destination.to_string(),
+//             time: time.to_string(),
+//         }
+//     }
+// }
+
+// fn main() {
+//     let division = 0.0 / 0.0;
+//     println!("{}", division);
+
+//     let value = 3.4;
+//     println!("{}", value == value);
+//     println!("{}", division == division);
+// }
 
 // -------------------------------------------------------------- //
 
