@@ -1,28 +1,64 @@
-#[derive(Clone, Debug)]
-struct Duration {
-    hours: u32,
-    minutes: u32,
-    seconds: u32,
+struct Flight {
+    origin: String,
+    destination: String,
+    time: String,
 }
 
-impl Duration {
-    fn new(hours: u32, minutes: u32, seconds: u32) -> Self {
+impl Flight {
+    fn new(origin: &str, destination: &str, time: &str) -> Self {
         Self {
-            hours,
-            minutes,
-            seconds,
+            origin: origin.to_string(),
+            destination: destination.to_string(),
+            time: time.to_string(),
         }
     }
 }
 
-impl Copy for Duration {}
+impl PartialEq for Flight {
+    fn eq(&self, other: &Self) -> bool {
+        self.origin == other.origin && self.destination == other.destination
+    }
+}
 
 fn main() {
-    let one_hour = Duration::new(60, 0, 0);
-    let another_hour = one_hour;
+    let a = Flight::new("New York", "London", "08:00");
+    let b = Flight::new("New York", "London", "23:20");
+    let c = Flight::new("New York", "Los Angeles", "08:00");
 
-    println!("{:?}", one_hour);
+    println!("{}", a == b);
+    println!("{}", a.eq(&b));
+    println!("{}", a.ne(&b));
+    println!("{}", a == c);
+    println!("{}", a != c);
 }
+
+// -------------------------------------------------------------- //
+
+// #[derive(Clone, Debug)]
+// struct Duration {
+//     hours: u32,
+//     minutes: u32,
+//     seconds: u32,
+// }
+
+// impl Duration {
+//     fn new(hours: u32, minutes: u32, seconds: u32) -> Self {
+//         Self {
+//             hours,
+//             minutes,
+//             seconds,
+//         }
+//     }
+// }
+
+// impl Copy for Duration {}
+
+// fn main() {
+//     let one_hour = Duration::new(60, 0, 0);
+//     let another_hour = one_hour;
+
+//     println!("{:?}", one_hour);
+// }
 
 // -------------------------------------------------------------- //
 
