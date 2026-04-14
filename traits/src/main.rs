@@ -1,63 +1,104 @@
-#[derive(PartialEq)]
-struct BusTrip {
-    origin: String,
-    destination: String,
-    time: String,
+enum Musician {
+    SingerSongwriter(String),
+    Band(u32),
 }
 
-impl BusTrip {
-    fn new(origin: &str, destination: &str, time: &str) -> Self {
-        Self {
-            origin: origin.to_string(),
-            destination: destination.to_string(),
-            time: time.to_string(),
-        }
-    }
-}
+use Musician::{Band, SingerSongwriter};
 
-impl PartialEq<Flight> for BusTrip {
-    fn eq(&self, other: &Flight) -> bool {
-        self.time == other.time
-    }
-}
-
-struct Flight {
-    origin: String,
-    destination: String,
-    time: String,
-}
-
-impl Flight {
-    fn new(origin: &str, destination: &str, time: &str) -> Self {
-        Self {
-            origin: origin.to_string(),
-            destination: destination.to_string(),
-            time: time.to_string(),
-        }
-    }
-}
-
-impl PartialEq for Flight {
+impl PartialEq for Musician {
     fn eq(&self, other: &Self) -> bool {
-        self.origin == other.origin && self.destination == other.destination
-    }
-}
-
-impl PartialEq<BusTrip> for Flight {
-    fn eq(&self, other: &BusTrip) -> bool {
-        self.time == other.time
+        match self {
+            SingerSongwriter(name) => match other {
+                SingerSongwriter(other_name) => name == other_name,
+                Band(_) => false,
+            },
+            Band(members) => match other {
+                SingerSongwriter(_) => false,
+                Band(other_members) => members == other_members,
+            },
+        }
     }
 }
 
 fn main() {
-    let a = Flight::new("New York", "London", "08:00");
-    let b = BusTrip::new("Los Angeles", "Tokyo", "08:00");
+    let rustin_bieber = SingerSongwriter("Rustin".to_string());
+    let rustin_timberlake = SingerSongwriter("Rustin".to_string());
+    let holly = SingerSongwriter("Holly".to_string());
 
-    println!("{}", a == a);
-    println!("{}", a == b);
-    println!("{}", b == a);
-    println!("{}", b == b);
+    let rust_no_one = Band(5);
+    let unrustworthy = Band(4);
+    let rust_for_vengeance = Band(5);
+
+    println!("{}", rustin_bieber == holly);
+    println!("{}", rustin_bieber == rustin_timberlake);
+    println!("{}", rustin_timberlake == rust_no_one);
+    println!("{}", rust_no_one == unrustworthy);
+    println!("{}", rust_no_one == rust_for_vengeance)
 }
+
+
+// -------------------------------------------------------------- //
+
+// #[derive(PartialEq)]
+// struct BusTrip {
+//     origin: String,
+//     destination: String,
+//     time: String,
+// }
+
+// impl BusTrip {
+//     fn new(origin: &str, destination: &str, time: &str) -> Self {
+//         Self {
+//             origin: origin.to_string(),
+//             destination: destination.to_string(),
+//             time: time.to_string(),
+//         }
+//     }
+// }
+
+// impl PartialEq<Flight> for BusTrip {
+//     fn eq(&self, other: &Flight) -> bool {
+//         self.time == other.time
+//     }
+// }
+
+// struct Flight {
+//     origin: String,
+//     destination: String,
+//     time: String,
+// }
+
+// impl Flight {
+//     fn new(origin: &str, destination: &str, time: &str) -> Self {
+//         Self {
+//             origin: origin.to_string(),
+//             destination: destination.to_string(),
+//             time: time.to_string(),
+//         }
+//     }
+// }
+
+// impl PartialEq for Flight {
+//     fn eq(&self, other: &Self) -> bool {
+//         self.origin == other.origin && self.destination == other.destination
+//     }
+// }
+
+// impl PartialEq<BusTrip> for Flight {
+//     fn eq(&self, other: &BusTrip) -> bool {
+//         self.time == other.time
+//     }
+// }
+
+// fn main() {
+//     let a = Flight::new("New York", "London", "08:00");
+//     let b = BusTrip::new("Los Angeles", "Tokyo", "08:00");
+
+//     println!("{}", a == a);
+//     println!("{}", a == b);
+//     println!("{}", b == a);
+//     println!("{}", b == b);
+// }
 
 // -------------------------------------------------------------- //
 
