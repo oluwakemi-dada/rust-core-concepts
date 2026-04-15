@@ -30,9 +30,33 @@
 
 // ---------------------------------------------------- //
 
+// fn main() {
+//     let dog = String::from("Watson");
+//     let my_pet = &dog;
+//     println!("{my_pet};")
+//     // 100 lines of code
+// }
+
+// ---------------------------------------------------- //
+
 fn main() {
-    let dog = String::from("Watson");
-    let my_pet = &dog;
-    println!("{my_pet};")
-    // 100 lines of code
+    // let some_cities = {
+    //     let cities = vec![
+    //         String::from("London"),
+    //         String::from("New York"),
+    //         String::from("Barcelona"),
+    //     ];
+    //     // Invalid line
+    //     &cities[..2]
+    // };
+
+    let cities = vec![
+        String::from("London"),
+        String::from("New York"),
+        String::from("Barcelona"),
+    ];
+
+    let favorite_cities = &cities[0..2];
+    println!("{favorite_cities:?}");
+    let places = cities;
 }
