@@ -185,14 +185,39 @@
 
 // ---------------------------------------------------- //
 
+// #[derive(Debug)]
+// struct TrainSystem<'a> {
+//     name: &'a str,
+// }
+
+// fn main() {
+//     let name = String::from("AmTrak");
+//     let nj_transit = { TrainSystem { name: &name } };
+
+//     println!("{:#?}", nj_transit.name);
+// }
+
+// ---------------------------------------------------- //
+
 #[derive(Debug)]
-struct TrainSystem<'a> {
-    name: &'a str,
+struct TravelPlan<'a, 'b> {
+    from: &'b str,
+    to: &'a str,
 }
 
 fn main() {
-    let name = String::from("AmTrak");
-    let nj_transit = { TrainSystem { name: &name } };
-
-    println!("{:#?}", nj_transit.name);
+    let from = String::from("Portland");
+    let plan = figure_out_ending_point(&from);
+    println!("{plan}");
 }
+
+fn figure_out_ending_point(from: &str) -> &str {
+    let to = String::from("Bangor");
+
+    let travel_plan = TravelPlan {
+        from: &from,
+        to: &to,
+    };
+    travel_plan.from
+}
+
