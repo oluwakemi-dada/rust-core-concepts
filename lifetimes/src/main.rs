@@ -1,3 +1,45 @@
+// Doesn't need lifetime annotation because it doesn't return a reference
+fn double_the_length<T>(collection: &Vec<T>) -> usize {
+    collection.len() * 2
+}
+
+// Doesn't need lifetime annotation because it accepts one reference parameter (even though it returns a reference)
+fn last_two<T>(collection: &[T]) -> &[T] {
+    &collection[collection.len() - 2..]
+}
+
+// Needs lifetime annotation because it accepts more than one reference parameter and returns a reference
+fn first_five<'a>(text: &'a str, announcement: &str) -> &'a str {
+    println!("{announcement}");
+    &text[..5]
+}
+
+// Needs lifetime annotation because it accepts more than one reference parameter and returns a reference linked to either of the parameters
+fn find_string_that_has_content<'a>(first: &'a str, second: &'a str, target: &str) -> &'a str {
+    if first.contains(target) {
+        first
+    } else {
+        second
+    }
+}
+
+fn main() {
+    println!("{}", double_the_length(&vec![1, 2, 3]));
+    println!("{}", double_the_length(&vec![1, 2, 3, 4]));
+
+    println!("{:?}", last_two(&vec![1, 2, 3]));
+    println!("{:?}", last_two(&vec![1, 2, 3, 4, 5, 6]));
+
+    println!("{}", first_five("refrigerator", "Hello"));
+
+    println!(
+        "{}",
+        find_string_that_has_content("programming", "dining", "gram")
+    )
+}
+
+// ---------------------------------------------------- //
+
 // fn main() {
 //     let a = 1;
 
@@ -223,20 +265,20 @@
 
 // ---------------------------------------------------- //
 
-const COUNT: i32 = 400;
+// const COUNT: i32 = 400;
 
-fn say_hello() -> &'static str {
-    "Hello"
-}
+// fn say_hello() -> &'static str {
+//     "Hello"
+// }
 
-fn value() -> &'static i32 {
-    &COUNT
-}
+// fn value() -> &'static i32 {
+//     &COUNT
+// }
 
-fn main() {
-    let greeting = say_hello();
-    println!("{greeting}");
+// fn main() {
+//     let greeting = say_hello();
+//     println!("{greeting}");
 
-    let value = value();
-    println!("{value}");
-}
+//     let value = value();
+//     println!("{value}");
+// }
