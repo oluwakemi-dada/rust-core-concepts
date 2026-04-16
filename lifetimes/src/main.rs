@@ -199,25 +199,44 @@
 
 // ---------------------------------------------------- //
 
-#[derive(Debug)]
-struct TravelPlan<'a, 'b> {
-    from: &'b str,
-    to: &'a str,
+// #[derive(Debug)]
+// struct TravelPlan<'a, 'b> {
+//     from: &'b str,
+//     to: &'a str,
+// }
+
+// fn main() {
+//     let from = String::from("Portland");
+//     let plan = figure_out_ending_point(&from);
+//     println!("{plan}");
+// }
+
+// fn figure_out_ending_point(from: &str) -> &str {
+//     let to = String::from("Bangor");
+
+//     let travel_plan = TravelPlan {
+//         from: &from,
+//         to: &to,
+//     };
+//     travel_plan.from
+// }
+
+// ---------------------------------------------------- //
+
+const COUNT: i32 = 400;
+
+fn say_hello() -> &'static str {
+    "Hello"
+}
+
+fn value() -> &'static i32 {
+    &COUNT
 }
 
 fn main() {
-    let from = String::from("Portland");
-    let plan = figure_out_ending_point(&from);
-    println!("{plan}");
+    let greeting = say_hello();
+    println!("{greeting}");
+
+    let value = value();
+    println!("{value}");
 }
-
-fn figure_out_ending_point(from: &str) -> &str {
-    let to = String::from("Bangor");
-
-    let travel_plan = TravelPlan {
-        from: &from,
-        to: &to,
-    };
-    travel_plan.from
-}
-
