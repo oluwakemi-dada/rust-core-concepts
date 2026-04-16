@@ -139,21 +139,47 @@
 
 // ---------------------------------------------------- //
 
-fn choose_favorite<'a>(first: &str, second: &'a str) -> &'a str {
-    println!("{first}");
-    second
+// fn choose_favorite<'a>(first: &str, second: &'a str) -> &'a str {
+//     println!("{first}");
+//     second
+// }
+
+// fn longest<'a, 'b>(first: &'a str, second: &'b str) -> &'a str {
+//     println!("The second is {second}");
+//     first
+// }
+
+// fn main() {
+//     let orlando = String::from("Orlando");
+//     let result = {
+//         let san_francisco = String::from("San Francisco");
+//         longest(&orlando, &san_francisco)
+//     };
+//     println!("{result}")
+// }
+
+// ---------------------------------------------------- //
+
+struct DentistAppointment {
+    doctor: String,
 }
 
-fn longest<'a, 'b>(first: &'a str, second: &'b str) -> &'a str {
-    println!("The second is {second}");
-    first
+impl DentistAppointment {
+    fn book<'a>(&self, check_in_time: &'a str, check_out_time: &str) -> &'a str {
+        println!(
+            "You are booked from {} to {} with doctor {}",
+            check_in_time, check_out_time, self.doctor
+        );
+        check_in_time
+    }
 }
 
 fn main() {
-    let orlando = String::from("Orlando");
-    let result = {
-        let san_francisco = String::from("San Francisco");
-        longest(&orlando, &san_francisco)
+    let appt = DentistAppointment {
+        doctor: String::from("David"),
     };
-    println!("{result}")
+    let result = appt.book("03:00PM", "11:00AM");
+    drop(appt);
+    println!("{result}");
 }
+
