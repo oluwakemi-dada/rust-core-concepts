@@ -110,31 +110,50 @@
 
 // ---------------------------------------------------- //
 
+// fn my_awesome_function(first: &i32, second: String) -> &i32 {
+//     first
+// }
 
-fn my_awesome_function(first: &i32, second: String) -> &i32 {
+// fn select_first_two_elements(items: &[String]) -> &[String] {
+//     &items[0..2]
+// }
+
+// fn main() {
+//     let cities = vec![
+//         String::from("London"),
+//         String::from("New York"),
+//         String::from("Barcelona"),
+//     ];
+//     let two_cities = {
+//         let cities_ref = &cities;
+//         select_first_two_elements(cities_ref)
+//     };
+//     println!("{two_cities:?}");
+
+//     {
+//         let coffees = [String::from("Latte"), String::from("Mocha")];
+//         let two_coffees = select_first_two_elements(&coffees);
+//         println!("{two_coffees:?}");
+//     }
+// }
+
+// ---------------------------------------------------- //
+
+fn choose_favorite<'a>(first: &str, second: &'a str) -> &'a str {
+    println!("{first}");
+    second
+}
+
+fn longest<'a, 'b>(first: &'a str, second: &'b str) -> &'a str {
+    println!("The second is {second}");
     first
 }
 
-fn select_first_two_elements(items: &[String]) -> &[String] {
-    &items[0..2]
-}
-
 fn main() {
-    let cities = vec![
-        String::from("London"),
-        String::from("New York"),
-        String::from("Barcelona"),
-    ];
-    let two_cities = {
-        let cities_ref = &cities;
-        select_first_two_elements(cities_ref)
+    let orlando = String::from("Orlando");
+    let result = {
+        let san_francisco = String::from("San Francisco");
+        longest(&orlando, &san_francisco)
     };
-    println!("{two_cities:?}");
-
-    {
-        let coffees = [String::from("Latte"), String::from("Mocha")];
-        let two_coffees = select_first_two_elements(&coffees);
-        println!("{two_coffees:?}");
-    }
+    println!("{result}")
 }
-
