@@ -141,21 +141,77 @@
 
 // --------------------------------------------------- //
 
-fn main() {
-    let mut game_console = String::from("PlayStation");
-    let mut deleted_characters = String::new();
+// fn main() {
+//     let mut game_console = String::from("PlayStation");
+//     let mut deleted_characters = String::new();
 
-    let closure = |character| {
-        let is_not_a = character != 'a';
-        if is_not_a {
-            true
-        } else {
-            deleted_characters.push(character);
-            false
-        }
-    };
-    game_console.retain(closure);
-    println!("{game_console}");
-    println!("{deleted_characters}");
+//     let closure = |character| {
+//         let is_not_a = character != 'a';
+//         if is_not_a {
+//             true
+//         } else {
+//             deleted_characters.push(character);
+//             false
+//         }
+//     };
+//     game_console.retain(closure);
+//     println!("{game_console}");
+//     println!("{deleted_characters}");
+// }
+
+// --------------------------------------------------- //
+
+#[derive(Debug)]
+struct Location {
+    name: String,
+    treasures: u32,
 }
 
+struct Map<'a> {
+    locations: &'a [Location],
+}
+
+impl<'a> Map<'a> {
+    fn explore<F>(&self, mut action: F)
+    where
+        F: FnMut(&Location),
+    {
+        let final_index = self.locations.len() - 1;
+        let mut current_index = 0;
+        while current_index <= final_index {
+            let current_location = &self.locations[current_index];
+            action(current_location);
+            current_index += 1;
+        }
+    }
+}
+
+fn main() {
+    let locations = [
+        Location {
+            name: String::from("Enchanted Forest"),
+            treasures: 5,
+        },
+        Location {
+            name: String::from("Mystic Mountain"),
+            treasures: 10,
+        },
+    ];
+    let map = Map {
+        locations: &locations,
+    };
+    let mut total_treasures = 0;
+
+    map.explore(|location| {
+        total_treasures += location.treasures;
+    });
+
+    println!("Total treasures collected: {}", total_treasures);
+
+    let mut location_names: Vec<String> = Vec::new();
+
+    map.explore(|location| {
+        location_names.push(location.name.clone());
+    });
+    println!("{location_names:?}");
+}

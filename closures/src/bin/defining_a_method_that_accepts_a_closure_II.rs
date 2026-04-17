@@ -35,7 +35,7 @@ fn main() {
             treasures: 10,
         },
     ];
-    let map = Map {
+    let map = Map { 
         locations: &locations,
     };
     let mut total_treasures = 0;
