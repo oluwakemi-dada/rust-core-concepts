@@ -49,20 +49,35 @@
 
 // --------------------------------------------------- //
 
+// fn main() {
+//     let number = 13;
+//     let capture_number = || number;
+
+//     let a = capture_number();
+//     let b = capture_number();
+//     println!("{a} {b} {number}");
+
+//     let first_name = String::from("Alice");
+//     let capture_string = || {
+//         let person = first_name;
+//         println!("{person}");
+//     };
+//     capture_string();
+//     // capture_string(); cannot be called more than once
+// }
+
+// --------------------------------------------------- //
+
 fn main() {
-    let number = 13;
-    let capture_number = || number;
-
-    let a = capture_number();
-    let b = capture_number();
-    println!("{a} {b} {number}");
-
     let first_name = String::from("Alice");
-    let capture_string = || {
-        let person = first_name;
-        println!("{person}");
+    let last_name = String::from("Wonder");
+    let capture_string = move || {
+        println!("{first_name} {last_name}");
     };
     capture_string();
-    // capture_string(); cannot be called more than once
-  
+    capture_string();
+    capture_string();
+    
+    // println!("{first_name}");
+    // println!("{last_name}");
 }
