@@ -19,14 +19,30 @@
 // }
 
 // --------------------------------------------------- //
+
+// fn main() {
+//     let multiplier = 5;
+
+//     let multiply_by = |value| value * multiplier;
+//     println!("{}", multiply_by(3 as u8));
+
+//     let numbers = vec![4, 8, 15, 16, 23, 42];
+
+//     let print_number = || println!("{:?}", numbers);
+//     print_number();
+//     print_number();
+//     print_number();
+//     println!("{:?}", numbers);
+// }
+
+// --------------------------------------------------- //
+
 fn main() {
-    let multiplier = 5;
-
-    let multiply_by = |value| value * multiplier;
-    println!("{}", multiply_by(3 as u8));
-
-    let numbers = vec![4, 8, 15, 16, 23, 42];
-    // println!("{:?}", numbers);
-
-    let print_number = || println!("{:?}", numbers);
+    let mut numbers = vec![4, 8, 15, 16, 23, 42];
+    let mut add_number = || numbers.push(100);
+    add_number();
+    // println!("{:?}", numbers); // not possible
+    add_number();
+    add_number();
+    println!("{:?}", numbers);
 }
