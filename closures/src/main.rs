@@ -37,12 +37,32 @@
 
 // --------------------------------------------------- //
 
+// fn main() {
+//     let mut numbers = vec![4, 8, 15, 16, 23, 42];
+//     let mut add_number = || numbers.push(100);
+//     add_number();
+//     // println!("{:?}", numbers); // not possible
+//     add_number();
+//     add_number();
+//     println!("{:?}", numbers);
+// }
+
+// --------------------------------------------------- //
+
 fn main() {
-    let mut numbers = vec![4, 8, 15, 16, 23, 42];
-    let mut add_number = || numbers.push(100);
-    add_number();
-    // println!("{:?}", numbers); // not possible
-    add_number();
-    add_number();
-    println!("{:?}", numbers);
+    let number = 13;
+    let capture_number = || number;
+
+    let a = capture_number();
+    let b = capture_number();
+    println!("{a} {b} {number}");
+
+    let first_name = String::from("Alice");
+    let capture_string = || {
+        let person = first_name;
+        println!("{person}");
+    };
+    capture_string();
+    // capture_string(); cannot be called more than once
+  
 }
