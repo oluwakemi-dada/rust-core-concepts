@@ -68,16 +68,32 @@
 
 // --------------------------------------------------- //
 
+// fn main() {
+//     let first_name = String::from("Alice");
+//     let last_name = String::from("Wonder");
+//     let capture_string = move || {
+//         println!("{first_name} {last_name}");
+//     };
+//     capture_string();
+//     capture_string();
+//     capture_string();
+
+//     // println!("{first_name}");
+//     // println!("{last_name}");
+// }
+
+// --------------------------------------------------- //
+
 fn main() {
-    let first_name = String::from("Alice");
-    let last_name = String::from("Wonder");
-    let capture_string = move || {
-        println!("{first_name} {last_name}");
-    };
-    capture_string();
-    capture_string();
-    capture_string();
-    
-    // println!("{first_name}");
-    // println!("{last_name}");
+    let option = Some("Salami");
+    let closure = || "Pizza";
+    let food = option.unwrap_or_else(closure);
+    println!("{food}");
+
+    let option: Option<&str> = None;
+    let pizza_fan = false;
+    let closure = || if pizza_fan { "Pizza" } else { "Hot Pockets" };
+    let food = option.unwrap_or_else(closure);
+    println!("{food}");
 }
+
