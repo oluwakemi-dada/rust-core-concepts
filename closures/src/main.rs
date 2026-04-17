@@ -25,9 +25,8 @@ fn main() {
     let multiply_by = |value| value * multiplier;
     println!("{}", multiply_by(3 as u8));
 
-    let mirror = |value| value;
-    println!("{}", mirror(10));
+    let numbers = vec![4, 8, 15, 16, 23, 42];
+    // println!("{:?}", numbers);
 
-    // Invalid due to inference
-    // println!("{}", mirror("Why"));
+    let print_number = || println!("{:?}", numbers);
 }
