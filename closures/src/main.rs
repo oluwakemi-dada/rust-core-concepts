@@ -98,42 +98,64 @@
 // }
 
 // --------------------------------------------------- //
-use std::io::stdin;
 
-#[derive(Debug)]
-struct Vault {
-    password: String,
-    treasure: String,
-}
+// use std::io::stdin;
 
-impl Vault {
-    fn unlock<F>(self, procedure: F) -> Option<String>
-    where
-        F: FnOnce() -> String,
-    {
-        let user_password = procedure();
-        if user_password == self.password {
-            Some(self.treasure)
-        } else {
-            None
-        }
-    }
-}
+// #[derive(Debug)]
+// struct Vault {
+//     password: String,
+//     treasure: String,
+// }
+
+// impl Vault {
+//     fn unlock<F>(self, procedure: F) -> Option<String>
+//     where
+//         F: FnOnce() -> String,
+//     {
+//         let user_password = procedure();
+//         if user_password == self.password {
+//             Some(self.treasure)
+//         } else {
+//             None
+//         }
+//     }
+// }
+
+// fn main() {
+//     let vault = Vault {
+//         password: String::from("topsecret"),
+//         treasure: String::from("Gold"),
+//     };
+
+//     let hack = || {
+//         let mut user_input = String::new();
+//         println!("Please provide a password to crack the vault");
+//         stdin().read_line(&mut user_input);
+//         user_input.trim().to_string()
+//     };
+
+//     let extraction = vault.unlock(hack);
+
+//     println!("{:?}", extraction);
+// }
+
+// --------------------------------------------------- //
 
 fn main() {
-    let vault = Vault {
-        password: String::from("topsecret"),
-        treasure: String::from("Gold"),
+    let mut game_console = String::from("PlayStation");
+    let mut deleted_characters = String::new();
+
+    let closure = |character| {
+        let is_not_a = character != 'a';
+        if is_not_a {
+            true
+        } else {
+            deleted_characters.push(character);
+            false
+        }
     };
-
-    let hack = || {
-        let mut user_input = String::new();
-        println!("Please provide a password to crack the vault");
-        stdin().read_line(&mut user_input);
-        user_input.trim().to_string()
-    };
-
-    let extraction = vault.unlock(hack);
-
-    println!("{:?}", extraction);
+    game_console.retain(closure);
+    println!("{game_console}");
+    println!("{deleted_characters}");
 }
+
