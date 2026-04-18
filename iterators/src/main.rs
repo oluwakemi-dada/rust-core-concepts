@@ -7,15 +7,36 @@
 // }
 
 // --------------------------------------------------------- //
-use std::{collections::HashMap, hash::Hash};
+
+// use std::{collections::HashMap, hash::Hash};
+// fn main() {
+//     let my_vector = vec![4, 8, 15, 16, 23, 42];
+//     let my_iterator = my_vector.into_iter();
+
+//     let my_vector = vec![false, true, false, true];
+//     let my_iterator = my_vector.into_iter();
+
+//     let mut my_hashmap = HashMap::new();
+//     my_hashmap.insert("CBS", 2);
+//     let my_iterator  = my_hashmap.into_iter();
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
     let my_vector = vec![4, 8, 15, 16, 23, 42];
-    let my_iterator = my_vector.into_iter();
+    let mut my_iterator = my_vector.into_iter();
 
-    let my_vector = vec![false, true, false, true];
-    let my_iterator = my_vector.into_iter();
+    println!("{:?}", my_iterator);
 
-    let mut my_hashmap = HashMap::new();
-    my_hashmap.insert("CBS", 2);
-    let my_iterator  = my_hashmap.into_iter();
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+
+    println!("{:?}", my_iterator);
 }
