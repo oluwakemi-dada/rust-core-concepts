@@ -42,13 +42,35 @@
 // }
 
 // --------------------------------------------------------- //
+
+// fn main() {
+//     let my_vector = vec![4, 8, 15, 16, 23, 42];
+//     // let  my_iterator = my_vector.into_iter();
+
+//     for number in my_vector {
+//       println!("{number}");
+//     }
+
+//     // println!("{:?}", my_vector);
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
     let my_vector = vec![4, 8, 15, 16, 23, 42];
-    // let  my_iterator = my_vector.into_iter();
 
-    for number in my_vector {
-      println!("{number}");
+    for number in &my_vector {
+        println!("{number}");
     }
 
-    // println!("{:?}", my_vector);
+    println!("{:?}", my_vector);
+
+    let cities = vec![String::from("Phoenix"), String::from("Dallas")];
+
+    // cities.iter()
+    for city in &cities {
+        println!("{}", city)
+    }
+
+    println!("{:?}", cities);
 }
