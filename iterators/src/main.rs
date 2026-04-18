@@ -103,17 +103,37 @@
 // }
 
 // --------------------------------------------------------- //
-use std::collections::HashMap;
+
+// use std::collections::HashMap;
+
+// fn main() {
+//     let mut todos: HashMap<_, _> = HashMap::new();
+//     todos.insert("Pick up groceries", false);
+//     todos.insert("Study Rust", true);
+//     todos.insert("Sleep", false);
+
+//     for (_, completion_status) in &mut todos {
+//        *completion_status = true;
+//     }
+
+//     println!("{todos:?}");
+// }
+
+// --------------------------------------------------------- //
 
 fn main() {
-    let mut todos: HashMap<_, _> = HashMap::new();
-    todos.insert("Pick up groceries", false);
-    todos.insert("Study Rust", true);
-    todos.insert("Sleep", false);
+    let seafood = String::from("Oyster🦪");
 
-    for (_, completion_status) in &mut todos {
-       *completion_status = true;
-    }
+    // for byte in seafood.bytes() {
+    //     println!("{byte}/");
+    // }
 
-    println!("{todos:?}");
+    // for character in seafood.chars() {
+    //     println!("{character}/");
+    // }
+
+    // println!("{seafood}");
+
+    println!("{:?}", seafood.bytes().len());
+    println!("{:?}", seafood.chars().count());
 }
