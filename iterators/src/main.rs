@@ -376,25 +376,34 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let stocks = ["nvda", "", "aapl", "", "msft", "goog"];
+
+//     let capitalized_stocks: Vec<String> = stocks
+//         .iter()
+//         .filter(|stock| !stock.is_empty())
+//         .map(|stock| stock.to_uppercase())
+//         .collect();
+//     println!("{:?}", capitalized_stocks);
+
+//     let capitalized_stocks: Vec<String> = stocks
+//         .iter()
+//         .filter_map(|stock| {
+//             if stock.is_empty() {
+//                 None
+//             } else {
+//                 Some(stock.to_uppercase())
+//             }
+//         })
+//         .collect();
+//     println!("{:?}", capitalized_stocks);
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
-    let stocks = ["nvda", "", "aapl", "", "msft", "goog"];
-
-    let capitalized_stocks: Vec<String> = stocks
-        .iter()
-        .filter(|stock| !stock.is_empty())
-        .map(|stock| stock.to_uppercase())
-        .collect();
-    println!("{:?}", capitalized_stocks);
-
-    let capitalized_stocks: Vec<String> = stocks
-        .iter()
-        .filter_map(|stock| {
-            if stock.is_empty() {
-                None
-            } else {
-                Some(stock.to_uppercase())
-            }
-        })
-        .collect();
-    println!("{:?}", capitalized_stocks);
+    let spreadsheet = vec![[100, 200, 300], [123, 456, 789], [987, 654, 321]];
+    
+    let values: Vec<i32> = spreadsheet.into_iter().flatten().collect();
+    println!("{:?}", values);
 }
