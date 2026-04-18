@@ -410,18 +410,38 @@
 
 // --------------------------------------------------------- //
 
-fn main() {
-    let attendees = [
-        "Bob, Mary, Kevin",
-        "Mike, Robbie, Matt, Austin",
-        "Piers, Liam",
-    ];
+// fn main() {
+//     let attendees = [
+//         "Bob, Mary, Kevin",
+//         "Mike, Robbie, Matt, Austin",
+//         "Piers, Liam",
+//     ];
 
-    let attendees: Vec<&str> = attendees
-        .iter()
-        .flat_map(|group| group.split(", "))
+//     let attendees: Vec<&str> = attendees
+//         .iter()
+//         .flat_map(|group| group.split(", "))
+//         .collect();
+
+//     println!("{attendees:#?}");
+
+// }
+
+// --------------------------------------------------------- //
+
+fn main() {
+    let applicants = vec!["Bob", "Rob", "Cob", "Alex", "Piers", "John", "Dan"];
+
+    let winners: Vec<&str> = applicants
+        .into_iter()
+        .enumerate()
+        .filter_map(|(index, applicant)| {
+            if index % 3 == 0 {
+                Some(applicant)
+            } else {
+                None
+            }
+        })
         .collect();
 
-    println!("{attendees:#?}");
-
+    println!("{winners:?}");
 }
