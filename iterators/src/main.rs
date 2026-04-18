@@ -172,12 +172,25 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let numbers = vec![4, 8, 15, 16, 23, 42];
+
+//     for number in numbers.into_iter().map(|number: i32| number.pow(2)) {
+//         println!("Square: {number}");
+//     }
+
+//     // println!("{:?}", squares);
+// }
+
+// --------------------------------------------------------- //
+use std::{collections::HashSet, hash::Hash};
+
 fn main() {
-    let numbers = vec![4, 8, 15, 16, 23, 42];
-
-    for number in numbers.into_iter().map(|number: i32| number.pow(2)) {
-        println!("Square: {number}");
-    }
-
-    // println!("{:?}", squares);
+    let numbers = vec![4, 8, 8, 15, 16, 23, 42];
+    let squares = numbers
+        .iter()
+        .map(|number: &i32| number.pow(2))
+        .collect::<HashSet<i32>>();
+    println!("{:?}", squares);
+    println!("{:?}", numbers);
 }
