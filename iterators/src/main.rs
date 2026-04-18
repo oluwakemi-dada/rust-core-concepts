@@ -198,19 +198,48 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let names = [
+//         String::from("Jimmy"),
+//         String::from("Cleveland"),
+//         String::from("Boris"),
+//     ];
+
+//     let name_lengths: Vec<usize> = names
+//         .iter()
+//         .map(|name| name.to_lowercase())
+//         .map(|name| name.replace("i", "@@"))
+//         .map(|name| name.len())
+//         .collect();
+
+//     println!("{:?}", name_lengths);
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
-    let names = [
-        String::from("Jimmy"),
-        String::from("Cleveland"),
-        String::from("Boris"),
-    ];
+    let numbers = [10, 13, 23, 2, 8, 9, 6];
 
-    let name_lengths: Vec<usize> = names
+    let evens: Vec<i32> = numbers
         .iter()
-        .map(|name| name.to_lowercase())
-        .map(|name| name.replace("i", "@@"))
-        .map(|name| name.len())
+        .filter(|number| *number % 2 == 0)
+        .copied()
         .collect();
+    println!("{:?}", evens);
+    println!("{:?}", numbers);
 
-    println!("{:?}", name_lengths);
+    let first_even = numbers.into_iter().find(|number| number % 2 == 0);
+    println!("{:?}", first_even);
+
+    let first_odd = numbers.into_iter().find(|number| number % 2 != 0);
+    println!("{:?}", first_odd);
+
+    let nothing = numbers.into_iter().find(|number| *number > 100);
+    println!("{:?}", nothing);
+
+    let last_even = numbers.iter().rfind(|number| *number % 2 == 0);
+    println!("{last_even:?}");
+
+    let last_odd = numbers.iter().rfind(|number| *number % 2 != 0);
+    println!("{last_odd:?}");
 }
