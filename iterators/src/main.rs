@@ -140,32 +140,44 @@
 
 // --------------------------------------------------------- //
 
-use std::collections::HashMap;
+// use std::collections::HashMap;
 
-fn count_words(text: &str) -> HashMap<char, u32> {
-    let words = text.split_whitespace();
-    let mut counts = HashMap::new();
+// fn count_words(text: &str) -> HashMap<char, u32> {
+//     let words = text.split_whitespace();
+//     let mut counts = HashMap::new();
 
-    // for word in words {
-    //     for character in word.chars() {
-    //         let count = counts.entry(character).or_insert(0);
-    //         *count += 1
-    //     }
-    // }
+//     // for word in words {
+//     //     for character in word.chars() {
+//     //         let count = counts.entry(character).or_insert(0);
+//     //         *count += 1
+//     //     }
+//     // }
 
-    words.for_each(|word| {
-        word.chars().for_each(|character| {
-            let count = counts.entry(character).or_insert(0);
-            *count += 1
-        })
-    });
+//     words.for_each(|word| {
+//         word.chars().for_each(|character| {
+//             let count = counts.entry(character).or_insert(0);
+//             *count += 1
+//         })
+//     });
 
-    counts
-}
+//     counts
+// }
+
+// fn main() {
+//     println!(
+//         "{:#?}",
+//         count_words("Sally sells sea shells by the sea shore")
+//     );
+// }
+
+// --------------------------------------------------------- //
 
 fn main() {
-    println!(
-        "{:#?}",
-        count_words("Sally sells sea shells by the sea shore")
-    );
+    let numbers = vec![4, 8, 15, 16, 23, 42];
+
+    for number in numbers.into_iter().map(|number: i32| number.pow(2)) {
+        println!("Square: {number}");
+    }
+
+    // println!("{:?}", squares);
 }
