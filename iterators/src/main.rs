@@ -428,20 +428,33 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let applicants = vec!["Bob", "Rob", "Cob", "Alex", "Piers", "John", "Dan"];
+
+//     let winners: Vec<&str> = applicants
+//         .into_iter()
+//         .enumerate()
+//         .filter_map(|(index, applicant)| {
+//             if index % 3 == 0 {
+//                 Some(applicant)
+//             } else {
+//                 None
+//             }
+//         })
+//         .collect();
+
+//     println!("{winners:?}");
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
-    let applicants = vec!["Bob", "Rob", "Cob", "Alex", "Piers", "John", "Dan"];
+    let numbers = [4, 8, 15, 16, 23, 42];
 
-    let winners: Vec<&str> = applicants
-        .into_iter()
-        .enumerate()
-        .filter_map(|(index, applicant)| {
-            if index % 3 == 0 {
-                Some(applicant)
-            } else {
-                None
-            }
-        })
-        .collect();
+    let (evens, odds): (Vec<i32>, Vec<i32>) =
+        numbers.into_iter().partition(|number| number % 2 == 0);
 
-    println!("{winners:?}");
+    // println!("{groups:?}");
+    println!("{evens:?}");
+    println!("{odds:?}");
 }
