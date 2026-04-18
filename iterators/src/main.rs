@@ -121,19 +121,43 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let seafood = String::from("Oyster🦪");
+
+//     // for byte in seafood.bytes() {
+//     //     println!("{byte}/");
+//     // }
+
+//     // for character in seafood.chars() {
+//     //     println!("{character}/");
+//     // }
+
+//     // println!("{seafood}");
+
+//     println!("{:?}", seafood.bytes().len());
+//     println!("{:?}", seafood.chars().count());
+// }
+
+// --------------------------------------------------------- //
+
+use std::collections::HashMap;
+
+fn count_words(text: &str) -> HashMap<char, u32> {
+    let mut counts = HashMap::new();
+
+    for word in text.split_whitespace() {
+        for character in word.chars() {
+            let count = counts.entry(character).or_insert(0);
+            *count += 1
+        }
+    }
+
+    counts
+}
+
 fn main() {
-    let seafood = String::from("Oyster🦪");
-
-    // for byte in seafood.bytes() {
-    //     println!("{byte}/");
-    // }
-
-    // for character in seafood.chars() {
-    //     println!("{character}/");
-    // }
-
-    // println!("{seafood}");
-
-    println!("{:?}", seafood.bytes().len());
-    println!("{:?}", seafood.chars().count());
+    println!(
+        "{:#?}",
+        count_words("Sally sells sea shells by the sea shore")
+    );
 }
