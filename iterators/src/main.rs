@@ -77,27 +77,43 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let mut flavors = [
+//         String::from("Chocolate"),
+//         String::from("Vanilla"),
+//         String::from("Strawberry"),
+//     ];
+
+//     // let iterator = flavors.iter_mut();
+//     // flavors.iter_mut()
+
+//     for flavor in &mut flavors {
+//         flavor.push_str(" Ice Cream");
+//     }
+
+//     println!("{:?}", flavors);
+
+//     let mut school_grades = [85, 90, 72, 92];
+
+//     for grades in &mut school_grades {
+//         *grades -= 2;
+//     }
+
+//     println!("{:?}", school_grades);
+// }
+
+// --------------------------------------------------------- //
+use std::collections::HashMap;
+
 fn main() {
-    let mut flavors = [
-        String::from("Chocolate"),
-        String::from("Vanilla"),
-        String::from("Strawberry"),
-    ];
+    let mut todos: HashMap<_, _> = HashMap::new();
+    todos.insert("Pick up groceries", false);
+    todos.insert("Study Rust", true);
+    todos.insert("Sleep", false);
 
-    // let iterator = flavors.iter_mut();
-    // flavors.iter_mut()
-
-    for flavor in &mut flavors {
-        flavor.push_str(" Ice Cream");
+    for (_, completion_status) in &mut todos {
+       *completion_status = true;
     }
 
-    println!("{:?}", flavors);
-
-    let mut school_grades = [85, 90, 72, 92];
-
-    for grades in &mut school_grades {
-        *grades -= 2;
-    }
-
-    println!("{:?}", school_grades);
+    println!("{todos:?}");
 }
