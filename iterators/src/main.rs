@@ -56,21 +56,48 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let my_vector = vec![4, 8, 15, 16, 23, 42];
+
+//     for number in &my_vector {
+//         println!("{number}");
+//     }
+
+//     println!("{:?}", my_vector);
+
+//     let cities = vec![String::from("Phoenix"), String::from("Dallas")];
+
+//     // cities.iter()
+//     for city in &cities {
+//         println!("{}", city)
+//     }
+
+//     println!("{:?}", cities);
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
-    let my_vector = vec![4, 8, 15, 16, 23, 42];
+    let mut flavors = [
+        String::from("Chocolate"),
+        String::from("Vanilla"),
+        String::from("Strawberry"),
+    ];
 
-    for number in &my_vector {
-        println!("{number}");
+    // let iterator = flavors.iter_mut();
+    // flavors.iter_mut()
+
+    for flavor in &mut flavors {
+        flavor.push_str(" Ice Cream");
     }
 
-    println!("{:?}", my_vector);
+    println!("{:?}", flavors);
 
-    let cities = vec![String::from("Phoenix"), String::from("Dallas")];
+    let mut school_grades = [85, 90, 72, 92];
 
-    // cities.iter()
-    for city in &cities {
-        println!("{}", city)
+    for grades in &mut school_grades {
+        *grades -= 2;
     }
 
-    println!("{:?}", cities);
+    println!("{:?}", school_grades);
 }
