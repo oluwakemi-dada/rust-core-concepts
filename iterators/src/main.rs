@@ -183,14 +183,34 @@
 // }
 
 // --------------------------------------------------------- //
-use std::{collections::HashSet, hash::Hash};
+
+// use std::{collections::HashSet, hash::Hash};
+
+// fn main() {
+//     let numbers = vec![4, 8, 8, 15, 16, 23, 42];
+//     let squares = numbers
+//         .iter()
+//         .map(|number: &i32| number.pow(2))
+//         .collect::<HashSet<i32>>();
+//     println!("{:?}", squares);
+//     println!("{:?}", numbers);
+// }
+
+// --------------------------------------------------------- //
 
 fn main() {
-    let numbers = vec![4, 8, 8, 15, 16, 23, 42];
-    let squares = numbers
+    let names = [
+        String::from("Jimmy"),
+        String::from("Cleveland"),
+        String::from("Boris"),
+    ];
+
+    let name_lengths: Vec<usize> = names
         .iter()
-        .map(|number: &i32| number.pow(2))
-        .collect::<HashSet<i32>>();
-    println!("{:?}", squares);
-    println!("{:?}", numbers);
+        .map(|name| name.to_lowercase())
+        .map(|name| name.replace("i", "@@"))
+        .map(|name| name.len())
+        .collect();
+
+    println!("{:?}", name_lengths);
 }
