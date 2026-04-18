@@ -359,17 +359,42 @@
 
 // --------------------------------------------------------- //
 
-fn main() {
-    let teas = [
-        String::from("Hot Earl Grey"),
-        String::from("Iced Green"),
-        String::from("Hot Matcha"),
-    ];
+// fn main() {
+//     let teas = [
+//         String::from("Hot Earl Grey"),
+//         String::from("Iced Green"),
+//         String::from("Hot Matcha"),
+//     ];
 
-    let more_teas: Vec<String> = teas
+//     let more_teas: Vec<String> = teas
+//         .iter()
+//         .filter(|tea| tea.contains("Hot"))
+//         .cloned()
+//         .collect();
+//     println!("{more_teas:#?}");
+// }
+
+// --------------------------------------------------------- //
+
+fn main() {
+    let stocks = ["nvda", "", "aapl", "", "msft", "goog"];
+
+    let capitalized_stocks: Vec<String> = stocks
         .iter()
-        .filter(|tea| tea.contains("Hot"))
-        .cloned()
+        .filter(|stock| !stock.is_empty())
+        .map(|stock| stock.to_uppercase())
         .collect();
-    println!("{more_teas:#?}");
+    println!("{:?}", capitalized_stocks);
+
+    let capitalized_stocks: Vec<String> = stocks
+        .iter()
+        .filter_map(|stock| {
+            if stock.is_empty() {
+                None
+            } else {
+                Some(stock.to_uppercase())
+            }
+        })
+        .collect();
+    println!("{:?}", capitalized_stocks);
 }
