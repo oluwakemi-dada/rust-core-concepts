@@ -217,29 +217,82 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let numbers = [10, 13, 23, 2, 8, 9, 6];
+
+//     let evens: Vec<i32> = numbers
+//         .iter()
+//         .filter(|number| *number % 2 == 0)
+//         .copied()
+//         .collect();
+//     println!("{:?}", evens);
+//     println!("{:?}", numbers);
+
+//     let first_even = numbers.into_iter().find(|number| number % 2 == 0);
+//     println!("{:?}", first_even);
+
+//     let first_odd = numbers.into_iter().find(|number| number % 2 != 0);
+//     println!("{:?}", first_odd);
+
+//     let nothing = numbers.into_iter().find(|number| *number > 100);
+//     println!("{:?}", nothing);
+
+//     let last_even = numbers.iter().rfind(|number| *number % 2 == 0);
+//     println!("{last_even:?}");
+
+//     let last_odd = numbers.iter().rfind(|number| *number % 2 != 0);
+//     println!("{last_odd:?}");
+// }
+
+// --------------------------------------------------------- //
+
+#[derive(Debug, PartialEq, Eq)]
+enum ChannelType {
+    Comedy,
+    News,
+    ProgrammingTutorials,
+}
+
+#[derive(Debug)]
+struct TVChannel {
+    name: String,
+    channel_type: ChannelType,
+}
+
 fn main() {
-    let numbers = [10, 13, 23, 2, 8, 9, 6];
+    let channels = [
+        TVChannel {
+            name: String::from("CBS"),
+            channel_type: ChannelType::Comedy,
+        },
+        TVChannel {
+            name: String::from("RustLive"),
+            channel_type: ChannelType::ProgrammingTutorials,
+        },
+        TVChannel {
+            name: String::from("NBC"),
+            channel_type: ChannelType::News,
+        },
+        TVChannel {
+            name: String::from("RustTV"),
+            channel_type: ChannelType::ProgrammingTutorials,
+        },
+    ];
 
-    let evens: Vec<i32> = numbers
+    let good_channels: Vec<String> = channels
         .iter()
-        .filter(|number| *number % 2 == 0)
-        .copied()
+        .filter(|channel| channel.channel_type == ChannelType::ProgrammingTutorials)
+        .map(|channel| channel.name.clone())
         .collect();
-    println!("{:?}", evens);
-    println!("{:?}", numbers);
 
-    let first_even = numbers.into_iter().find(|number| number % 2 == 0);
-    println!("{:?}", first_even);
+    println!("{:#?}", good_channels);
 
-    let first_odd = numbers.into_iter().find(|number| number % 2 != 0);
-    println!("{:?}", first_odd);
+    let good_channel = channels
+        .iter()
+        .find(|channel| channel.channel_type == ChannelType::ProgrammingTutorials);
 
-    let nothing = numbers.into_iter().find(|number| *number > 100);
-    println!("{:?}", nothing);
-
-    let last_even = numbers.iter().rfind(|number| *number % 2 == 0);
-    println!("{last_even:?}");
-
-    let last_odd = numbers.iter().rfind(|number| *number % 2 != 0);
-    println!("{last_odd:?}");
+    match good_channel {
+        Some(channel) => println!("Great choice to watch {channel:#?}"),
+        None => println!("There was no Rust programming on the TV (literally and metaphorically)."),
+    }
 }
