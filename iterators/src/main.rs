@@ -461,18 +461,59 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let first_names = ["Casey", "Robert", "Cargo", "Dan"];
+//     let last_names = ["Johnson", "Smith", "Rustman"];
+
+//     for (first_name, last_name) in first_names.iter().zip(last_names) {
+//         println!("{first_name} {last_name}");
+//     }
+
+//     let complete_names = first_names
+//         .iter()
+//         .zip(last_names)
+//         .map(|(first_name, last_name)| format!("{first_name} {last_name}"))
+//         .collect::<Vec<String>>();
+//     println!("{complete_names:#?}");
+// }
+
+// --------------------------------------------------------- //
+use std::collections::HashMap;
+
+struct SupportStaff {
+    day: String,
+    employee: String,
+}
+
 fn main() {
-    let first_names = ["Casey", "Robert", "Cargo", "Dan"];
-    let last_names = ["Johnson", "Smith", "Rustman"];
+    let earnings = [4, 7, 9, 13];
 
-    for (first_name, last_name) in first_names.iter().zip(last_names) {
-        println!("{first_name} {last_name}");
-    }
+    let sum = earnings.into_iter().fold(0, |total, current| {
+        println!("Toatal: {total}, current: {current}");
+        total + current
+    });
+    println!("{sum}");
 
-    let complete_names = first_names
-        .iter()
-        .zip(last_names)
-        .map(|(first_name, last_name)| format!("{first_name} {last_name}"))
-        .collect::<Vec<String>>();
-    println!("{complete_names:#?}");
+    let week = [
+        SupportStaff {
+            day: String::from("Monday"),
+            employee: String::from("Brian"),
+        },
+        SupportStaff {
+            day: String::from("Tuesday"),
+            employee: String::from("Cam"),
+        },
+        SupportStaff {
+            day: String::from("Wednesday"),
+            employee: String::from("Walter"),
+        },
+    ];
+
+    let map = week
+        .into_iter()
+        .fold(HashMap::new(), |mut data, entry: SupportStaff| {
+            data.insert(entry.day, entry.employee);
+            data
+        });
+    println!("{map:?}");
 }
