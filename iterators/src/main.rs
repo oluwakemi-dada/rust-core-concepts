@@ -549,37 +549,60 @@
 
 // --------------------------------------------------------- //
 
+// fn main() {
+//     let numbers = vec![4, 8, 15, 16, 23, 42];
+
+//     let total: i32 = numbers.iter().sum();
+//     println!("{total}");
+
+//     let product: i32 = numbers.iter().product();
+//     println!("{product}");
+
+//     let max = numbers.iter().max().unwrap();
+//     println!("{max}");
+
+//     let min = numbers.iter().min().unwrap();
+//     println!("{min}");
+
+//     let count = numbers.iter().count();
+//     println!("{count}");
+
+//     let numbers = vec![4.6, 8.8, 0.0 / 0.0, 6.2, f64::NAN];
+
+//     let sum = numbers
+//         .iter()
+//         .filter(|number| !number.is_nan())
+//         .copied()
+//         .fold(0.0, |total, current| total + current);
+//     println!("{sum}");
+
+//     let max = numbers
+//         .iter()
+//         .filter(|number| !number.is_nan())
+//         .copied()
+//         .reduce(|accum, current| accum.max(current));
+//     println!("{max:?}");
+// }
+
+// --------------------------------------------------------- //
+
 fn main() {
-    let numbers = vec![4, 8, 15, 16, 23, 42];
+    let performers = ["Rustful Five", "Rust in Peace", "Rustin Bieber"];
 
-    let total: i32 = numbers.iter().sum();
-    println!("{total}");
+    let last = performers.iter().last().unwrap();
+    println!("{last}");
 
-    let product: i32 = numbers.iter().product();
-    println!("{product}");
+    let second = performers.iter().nth(1).unwrap();
+    println!("{second}");
 
-    let max = numbers.iter().max().unwrap();
-    println!("{max}");
+    let last = performers.iter().nth_back(0).unwrap();
+    println!("{last}");
 
-    let min = numbers.iter().min().unwrap();
-    println!("{min}");
+    let second_to_last = performers.iter().nth_back(1).unwrap();
+    println!("{second_to_last}");
 
-    let count = numbers.iter().count();
-    println!("{count}");
-
-    let numbers = vec![4.6, 8.8, 0.0 / 0.0, 6.2, f64::NAN];
-    
-    let sum = numbers
+    let target_index = performers
         .iter()
-        .filter(|number| !number.is_nan())
-        .copied()
-        .fold(0.0, |total, current| total + current);
-    println!("{sum}");
-
-    let max = numbers
-        .iter()
-        .filter(|number| !number.is_nan())
-        .copied()
-        .reduce(|accum, current| accum.max(current));
-    println!("{max:?}");
+        .position(|element| *element == "Rustin Bieber");
+    println!("{:?}", target_index);
 }
