@@ -684,38 +684,59 @@
 // }
 
 // --------------------------------------------------------- //
-use std::env;
-use std::process;
 
-#[derive(Debug)]
-struct Settings {
-    video_file: String,
-    subtitles: bool,
-    high_definition: bool,
-}
+// use std::env;
+// use std::process;
 
-fn main() {
-    let settings = collect_settings();
-    println!("{:?}", settings);
-}
+// #[derive(Debug)]
+// struct Settings {
+//     video_file: String,
+//     subtitles: bool,
+//     high_definition: bool,
+// }
 
-fn collect_settings() -> Settings {
-    // target/debug/iterators -> rust.mp4 true false nonsense
-    let mut args = env::args().skip(1).take(3);
+// fn main() {
+//     let settings = collect_settings();
+//     println!("{:?}", settings);
+// }
 
-    let video_file = args.next().unwrap_or_else(|| {
-        eprint!("No video file specified!");
-        process::exit(1);
-    });
+// fn collect_settings() -> Settings {
+//     // target/debug/iterators -> rust.mp4 true false nonsense
+//     let mut args = env::args().skip(1).take(3);
 
-    let mut settings = args.map(|setting| setting.parse::<bool>().unwrap_or(false));
+//     let video_file = args.next().unwrap_or_else(|| {
+//         eprint!("No video file specified!");
+//         process::exit(1);
+//     });
 
-    let subtitles = settings.next().unwrap_or(false);
-    let high_definition = settings.next().unwrap_or(false);
+//     let mut settings = args.map(|setting| setting.parse::<bool>().unwrap_or(false));
 
-    Settings {
-        video_file,
-        subtitles,
-        high_definition,
+//     let subtitles = settings.next().unwrap_or(false);
+//     let high_definition = settings.next().unwrap_or(false);
+
+//     Settings {
+//         video_file,
+//         subtitles,
+//         high_definition,
+//     }
+// }
+
+// --------------------------------------------------------- //
+
+use std::fs;
+use std::io;
+
+fn main() -> io::Result<()> {
+    for entry_result in fs::read_dir("./")? {
+        let entry = entry_result?;
+        let entry_name = entry.path();
+        let metadata = fs::metadata(&entry_name)?;
+        if metadata.is_file() {
+            println!("{entry_name:?}\n-------------");
+            let contents = fs::read_to_string(&entry_name)?;
+            println!("{contents}");
+        }
     }
+
+    Ok(())
 }
