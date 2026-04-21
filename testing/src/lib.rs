@@ -25,9 +25,14 @@ impl Museum {
     }
 }
 
-#[test]
-fn museum_sells_ticket_to_increase_revenue() {
-    let mut museum = Museum::new();
-    museum.sell_ticket();
-    assert_eq!(museum.revenue, 25)
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn museum_sells_ticket_to_increase_revenue() {
+        let mut museum = Museum::new();
+        museum.sell_ticket();
+        assert_eq!(museum.revenue, 25)
+    }
 }
