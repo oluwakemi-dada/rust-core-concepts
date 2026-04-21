@@ -33,6 +33,7 @@ mod tests {
     fn museum_sells_ticket_to_increase_revenue() {
         let mut museum = Museum::new();
         museum.sell_ticket();
+        // assert_ne!(museum.revenue, 0);
         assert_eq!(museum.revenue, 25)
     }
 
