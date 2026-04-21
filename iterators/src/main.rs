@@ -743,45 +743,82 @@
 
 // --------------------------------------------------------- //
 
-use std::collections::HashSet;
+// use std::collections::HashSet;
 
-#[derive(Debug)]
-struct Playlist {
-    songs: Vec<String>,
-    users: HashSet<String>,
-}
+// #[derive(Debug)]
+// struct Playlist {
+//     songs: Vec<String>,
+//     users: HashSet<String>,
+// }
 
-impl FromIterator<(String, String)> for Playlist {
-    fn from_iter<T: IntoIterator<Item = (String, String)>>(iter: T) -> Self {
-        let mut songs = Vec::new();
-        let mut users = HashSet::new();
-        for (song, user) in iter {
-            songs.push(song);
-            users.insert(user);
-        }
-        Self { songs, users }
-    }
-}
+// impl FromIterator<(String, String)> for Playlist {
+//     fn from_iter<T: IntoIterator<Item = (String, String)>>(iter: T) -> Self {
+//         let mut songs = Vec::new();
+//         let mut users = HashSet::new();
+//         for (song, user) in iter {
+//             songs.push(song);
+//             users.insert(user);
+//         }
+//         Self { songs, users }
+//     }
+// }
+// fn main() {
+//     let fifty_numbers = 1..=50;
+
+//     let results = Vec::from_iter(fifty_numbers.clone());
+//     println!("{results:?}");
+
+//     let results: Vec<_> = fifty_numbers.clone().collect();
+//     println!("{results:?}");
+
+//     let unique_set: HashSet<_> = HashSet::from_iter(fifty_numbers);
+//     println!("{unique_set:?}");
+
+//     let songs = [
+//         (String::from("I Rust Go On"), String::from("Bob")),
+//         (String::from("A Rust of Wind"), String::from("Bob")),
+//         (String::from("A Rustworthy Man"), String::from("Sheila")),
+//     ];
+
+//     // let playlist: Playlist = Playlist::from_iter(songs);
+//     // println!("{playlist:?}");
+
+//     let playlist = songs.into_iter().collect::<Playlist>();
+// }
+
+// --------------------------------------------------------- //
+
+use colored::Colorize;
+use std::io::{self, Write};
+
 fn main() {
-    let fifty_numbers = 1..=50;
+    let word = "trait";
+    let input = io::stdin();
 
-    let results = Vec::from_iter(fifty_numbers.clone());
-    println!("{results:?}");
+    for _ in 1..=6 {
+        let mut user_input = String::new();
 
-    let results: Vec<_> = fifty_numbers.clone().collect();
-    println!("{results:?}");
+        input
+            .read_line(&mut user_input)
+            .expect("Failed to provide input");
 
-    let unique_set: HashSet<_> = HashSet::from_iter(fifty_numbers);
-    println!("{unique_set:?}");
+        for (word_character, user_character) in word.chars().zip(user_input.chars().take(5)) {
+            if word_character == user_character {
+                print!("{}|", format!(" {user_character} ").on_green());
+            } else if word.contains(user_character) {
+                print!("{}|", format!(" {user_character} ").on_yellow());
+            } else {
+                print!("{}|", format!(" {user_character} ").on_black());
+            }
 
-    let songs = [
-        (String::from("I Rust Go On"), String::from("Bob")),
-        (String::from("A Rust of Wind"), String::from("Bob")),
-        (String::from("A Rustworthy Man"), String::from("Sheila")),
-    ];
+            io::stdout().flush().unwrap();
+        }
 
-    // let playlist: Playlist = Playlist::from_iter(songs);
-    // println!("{playlist:?}");
+        println!();
 
-    let playlist = songs.into_iter().collect::<Playlist>();
+        if word == user_input.trim() {
+            println!("You got it! The word is {word}");
+            break;
+        }
+    }
 }
