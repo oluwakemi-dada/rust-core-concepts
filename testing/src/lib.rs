@@ -36,14 +36,23 @@ mod tests {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn museum_sells_ticket_to_increase_revenue() {
+    fn museum_sells_ticket_to_increase_revenue() -> Result<(), String> {
         let mut museum = Museum::new();
         museum.sell_ticket();
+
+        if museum.revenue == 25 {
+            Ok(())
+        } else {
+            Err(String::from(
+                "The revenue from selling 1 ticket did not match expectations",
+            ))
+        }
+
         // assert_ne!(museum.revenue, 0);
-        assert_eq!(
-            museum.revenue, 25,
-            "The revenue from selling 1 ticket did not match expectations"
-        )
+        // assert_eq!(
+        //     museum.revenue, 25,
+        //     "The revenue from selling 1 ticket did not match expectations"
+        // )
     }
 
     #[test]
@@ -55,15 +64,24 @@ mod tests {
     }
 
     #[test]
-    fn museum_can_have_impressive_art_collection() {
+    fn museum_can_have_impressive_art_collection() -> Result<(), String> {
         let mut museum = Museum::new();
         museum.buy_painting("Mona Lisa");
         museum.buy_painting("The Starry Night");
         museum.buy_painting("Girl with a Pearl Earring");
-        assert!(
-            museum.has_impressive_collection(),
-            "The museum did not have an impressive collection despite having more than 2 paintings"
-        );
+
+        if museum.has_impressive_collection() {
+            Ok(())
+        } else {
+            Err(String::from(
+                "The museum did not have an impressive collection despite having more than 2 paintings",
+            ))
+        }
+
+        // assert!(
+        //     museum.has_impressive_collection(),
+        //     "The museum did not have an impressive collection despite having more than 2 paintings"
+        // );
     }
 
     #[test]
