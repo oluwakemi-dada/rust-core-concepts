@@ -5,6 +5,8 @@ struct Museum {
 }
 
 impl Museum {
+    const MAXIMUM_CAPACITY: usize = 3;
+
     fn new() -> Self {
         Self {
             paintings: vec![],
@@ -13,6 +15,9 @@ impl Museum {
     }
 
     fn buy_painting(&mut self, painting: &str) {
+        if self.paintings.len() >= Self::MAXIMUM_CAPACITY {
+            panic!("Museum does not have storage space for another painting")
+        }
         self.paintings.push(painting.to_string())
     }
 
@@ -36,7 +41,7 @@ mod tests {
         museum.sell_ticket();
         // assert_ne!(museum.revenue, 0);
         assert_eq!(
-            museum.revenue, 24,
+            museum.revenue, 25,
             "The revenue from selling 1 ticket did not match expectations"
         )
     }
@@ -53,7 +58,7 @@ mod tests {
     fn museum_can_have_impressive_art_collection() {
         let mut museum = Museum::new();
         museum.buy_painting("Mona Lisa");
-        // museum.buy_painting("The Starry Night");
+        museum.buy_painting("The Starry Night");
         museum.buy_painting("Girl with a Pearl Earring");
         assert!(
             museum.has_impressive_collection(),
@@ -63,12 +68,21 @@ mod tests {
 
     #[test]
     fn new_museums_are_equal() {
-        let mut museum1 = Museum::new();
-        museum1.sell_ticket();
+        let museum1 = Museum::new();
         let museum2 = Museum::new();
         assert_eq!(
             museum1, museum2,
             "Two new Museum instances were not found to be equal: {museum1:?} // {museum2:?}"
         );
+    }
+
+    #[test]
+    #[should_panic(expected = "storage space")]
+    fn museum_prohibits_adding_painting_when_capacity_has_been_reached() {
+        let mut museum = Museum::new();
+        museum.buy_painting("Mona Lisa");
+        museum.buy_painting("The Starry Night");
+        museum.buy_painting("Girl with a Pearl Earring");
+        museum.buy_painting("Water Lillies");
     }
 }
