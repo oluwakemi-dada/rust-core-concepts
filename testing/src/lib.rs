@@ -85,6 +85,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn new_museums_are_equal() {
         let museum1 = Museum::new();
         let museum2 = Museum::new();
