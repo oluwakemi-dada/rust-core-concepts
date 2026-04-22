@@ -35,7 +35,10 @@ mod tests {
         let mut museum = Museum::new();
         museum.sell_ticket();
         // assert_ne!(museum.revenue, 0);
-        assert_eq!(museum.revenue, 25)
+        assert_eq!(
+            museum.revenue, 24,
+            "The revenue from selling 1 ticket did not match expectations"
+        )
     }
 
     #[test]
@@ -50,9 +53,12 @@ mod tests {
     fn museum_can_have_impressive_art_collection() {
         let mut museum = Museum::new();
         museum.buy_painting("Mona Lisa");
-        museum.buy_painting("The Starry Night");
+        // museum.buy_painting("The Starry Night");
         museum.buy_painting("Girl with a Pearl Earring");
-        assert!(museum.has_impressive_collection());
+        assert!(
+            museum.has_impressive_collection(),
+            "The museum did not have an impressive collection despite having more than 2 paintings"
+        );
     }
 
     #[test]
@@ -60,6 +66,9 @@ mod tests {
         let mut museum1 = Museum::new();
         museum1.sell_ticket();
         let museum2 = Museum::new();
-        assert_eq!(museum1, museum2);
+        assert_eq!(
+            museum1, museum2,
+            "Two new Museum instances were not found to be equal: {museum1:?} // {museum2:?}"
+        );
     }
 }
