@@ -36,6 +36,19 @@ mod tests {
     use pretty_assertions::assert_eq;
 
     #[test]
+    fn print_success() {
+        println!("Success inside the function");
+        assert!(true);
+    }
+
+    #[test]
+    fn print_failure() {
+        println!("Failure inside the function");
+        assert!(false);
+    }
+    // cargo test -- --show-output 
+
+    #[test]
     fn museum_sells_ticket_to_increase_revenue() -> Result<(), String> {
         let mut museum = Museum::new();
         museum.sell_ticket();
@@ -85,7 +98,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn new_museums_are_equal() {
         let museum1 = Museum::new();
         let museum2 = Museum::new();
