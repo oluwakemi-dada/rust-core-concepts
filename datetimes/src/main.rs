@@ -155,10 +155,25 @@
 
 // ------------------------------------------------------------------- //
 
+// use chrono::prelude::*;
+
+// fn main() {
+//     let someday = "31-Oct-1995 18:07:54 -0600";
+//     let dt = DateTime::parse_from_str(someday, "%d-%b-%Y %H:%M:%S %z");
+//     println!("{dt:?}"); // Ok(1995-10-31T18:07:54-06:00)
+// }
+
+// ------------------------------------------------------------------- //
+
 use chrono::prelude::*;
 
 fn main() {
-    let someday = "31-Oct-1995 18:07:54 -0600";
-    let dt = DateTime::parse_from_str(someday, "%d-%b-%Y %H:%M:%S %z");
-    println!("{dt:?}"); // Ok(1995-10-31T18:07:54-06:00)
+    let utc_time = Utc::now();
+    println!("{}", utc_time.format("%m-%d-%Y"));
+    println!("{}", utc_time.format("%m/%d/%Y"));
+    println!("{}", utc_time.format("%m/%d/%y"));
+
+    println!("{}", utc_time.format("%b %d, %y %H:%M:%S"));
+
+    println!("{}", utc_time.format("%A %I:%M %p %Z"));
 }
