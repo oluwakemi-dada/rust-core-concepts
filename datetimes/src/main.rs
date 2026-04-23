@@ -49,23 +49,46 @@
 
 // ------------------------------------------------------------------- //
 
-use chrono::{NaiveDate, TimeDelta};
-use std::ops::{Add, Sub};
+// use chrono::{NaiveDate, TimeDelta};
+// use std::ops::{Add, Sub};
+
+// fn main() {
+//     let birthday = NaiveDate::from_ymd_opt(1997, 11, 29).unwrap();
+//     println!("{}", birthday.add(TimeDelta::days(5)));
+
+//     println!("{}", birthday.add(TimeDelta::weeks(2) + TimeDelta::days(5)));
+
+//     println!("{}", birthday.sub(TimeDelta::weeks(3)));
+
+//     println!("{}", birthday + TimeDelta::days(5));
+
+//     println!("{}", birthday + (TimeDelta::weeks(2) + TimeDelta::days(5)));
+
+//     println!("{}", birthday - TimeDelta::weeks(3));
+//     println!("{}", birthday + TimeDelta::weeks(-3));
+
+//     // println!("{}", birthday.add(TimeDelta::days(100_000_000)));
+// }
+
+// ------------------------------------------------------------------- //
+
+use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeDelta};
 
 fn main() {
-    let birthday = NaiveDate::from_ymd_opt(1997, 11, 29).unwrap();
-    println!("{}", birthday.add(TimeDelta::days(5)));
+    let four_thirty_am = NaiveTime::from_hms_opt(4, 30, 0);
+    println!("{:?}", four_thirty_am);
 
-    println!("{}", birthday.add(TimeDelta::weeks(2) + TimeDelta::days(5)));
+    let four_thirty_pm = NaiveTime::from_hms_opt(16, 30, 0);
+    println!("{:?}", four_thirty_pm);
 
-    println!("{}", birthday.sub(TimeDelta::weeks(3)));
+    let day = NaiveDate::from_ymd_opt(1969, 7, 20).unwrap();
+    let time = NaiveTime::from_hms_opt(20, 17, 0).unwrap();
+    let moon_landing = NaiveDateTime::new(day, time);
+    println!("{moon_landing:?}");
 
-    println!("{}", birthday + TimeDelta::days(5));
-
-    println!("{}", birthday + (TimeDelta::weeks(2) + TimeDelta::days(5)));
-
-    println!("{}", birthday - TimeDelta::weeks(3));
-    println!("{}", birthday + TimeDelta::weeks(-3));
-
-    // println!("{}", birthday.add(TimeDelta::days(100_000_000)));
+    println!("{}", moon_landing + TimeDelta::days(1000));
+    println!(
+        "{}",
+        moon_landing + TimeDelta::days(1000) + TimeDelta::minutes(45)
+    );
 }
