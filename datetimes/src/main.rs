@@ -95,40 +95,60 @@
 
 // ------------------------------------------------------------------- //
 
+// use chrono::prelude::*;
+// use chrono_tz::Etc::GMTPlus1;
+
+// fn main() {
+//     let system_time = Local::now();
+//     let utc_time = Utc::now();
+
+//     println!("1) {}", system_time);
+//     println!("2) {}", utc_time);
+
+//     println!("3) {}", system_time.date_naive());
+//     println!("4) {}", utc_time.date_naive());
+
+//     println!("5) {}", system_time.time());
+//     println!("6) {}", utc_time.time());
+
+//     println!("7) {}", system_time.year());
+//     println!("8) {}", utc_time.year());
+
+//     println!("9) {}", system_time.month());
+//     println!("10) {}", utc_time.month());
+
+//     println!("11) {}", system_time.day());
+//     println!("12) {}", utc_time.day());
+
+//     println!("13) {}", system_time.hour());
+//     println!("14) {}", utc_time.hour());
+
+//     println!("15) {}", system_time.minute());
+//     println!("16) {}", utc_time.minute());
+
+//     println!("17) {}", system_time.second());
+//     println!("18) {}", utc_time.second());
+
+//     println!("19) {}", system_time.offset());
+//     println!("20) {}", utc_time.offset());
+// }
+
+// ------------------------------------------------------------------- //
+
 use chrono::prelude::*;
-use chrono_tz::Etc::GMTPlus1;
+use chrono_tz::America::Los_Angeles;
 
 fn main() {
-    let system_time = Local::now();
-    let utc_time = Utc::now();
+    let local_time = Local::now();
+    let utc_time = local_time.with_timezone(&Utc);
 
-    println!("1) {}", system_time);
-    println!("2) {}", utc_time);
+    println!("{}", local_time);
+    println!("{}", utc_time);
 
-    println!("3) {}", system_time.date_naive());
-    println!("4) {}", utc_time.date_naive());
+    println!("{}", utc_time.with_timezone(&Local));
 
-    println!("5) {}", system_time.time());
-    println!("6) {}", utc_time.time());
+    let la_time = local_time.with_timezone(&Los_Angeles);
 
-    println!("7) {}", system_time.year());
-    println!("8) {}", utc_time.year());
-
-    println!("9) {}", system_time.month());
-    println!("10) {}", utc_time.month());
-
-    println!("11) {}", system_time.day());
-    println!("12) {}", utc_time.day());
-
-    println!("13) {}", system_time.hour());
-    println!("14) {}", utc_time.hour());
-
-    println!("15) {}", system_time.minute());
-    println!("16) {}", utc_time.minute());
-
-    println!("17) {}", system_time.second());
-    println!("18) {}", utc_time.second());
-
-    println!("19) {}", system_time.offset());
-    println!("20) {}", utc_time.offset());
+    println!("{}", local_time);
+    println!("{}", la_time);
 }
