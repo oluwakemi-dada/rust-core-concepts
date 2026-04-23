@@ -72,23 +72,63 @@
 
 // ------------------------------------------------------------------- //
 
-use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeDelta};
+// use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeDelta};
+
+// fn main() {
+//     let four_thirty_am = NaiveTime::from_hms_opt(4, 30, 0);
+//     println!("{:?}", four_thirty_am);
+
+//     let four_thirty_pm = NaiveTime::from_hms_opt(16, 30, 0);
+//     println!("{:?}", four_thirty_pm);
+
+//     let day = NaiveDate::from_ymd_opt(1969, 7, 20).unwrap();
+//     let time = NaiveTime::from_hms_opt(20, 17, 0).unwrap();
+//     let moon_landing = NaiveDateTime::new(day, time);
+//     println!("{moon_landing:?}");
+
+//     println!("{}", moon_landing + TimeDelta::days(1000));
+//     println!(
+//         "{}",
+//         moon_landing + TimeDelta::days(1000) + TimeDelta::minutes(45)
+//     );
+// }
+
+// ------------------------------------------------------------------- //
+
+use chrono::prelude::*;
+use chrono_tz::Etc::GMTPlus1;
 
 fn main() {
-    let four_thirty_am = NaiveTime::from_hms_opt(4, 30, 0);
-    println!("{:?}", four_thirty_am);
+    let system_time = Local::now();
+    let utc_time = Utc::now();
 
-    let four_thirty_pm = NaiveTime::from_hms_opt(16, 30, 0);
-    println!("{:?}", four_thirty_pm);
+    println!("1) {}", system_time);
+    println!("2) {}", utc_time);
 
-    let day = NaiveDate::from_ymd_opt(1969, 7, 20).unwrap();
-    let time = NaiveTime::from_hms_opt(20, 17, 0).unwrap();
-    let moon_landing = NaiveDateTime::new(day, time);
-    println!("{moon_landing:?}");
+    println!("3) {}", system_time.date_naive());
+    println!("4) {}", utc_time.date_naive());
 
-    println!("{}", moon_landing + TimeDelta::days(1000));
-    println!(
-        "{}",
-        moon_landing + TimeDelta::days(1000) + TimeDelta::minutes(45)
-    );
+    println!("5) {}", system_time.time());
+    println!("6) {}", utc_time.time());
+
+    println!("7) {}", system_time.year());
+    println!("8) {}", utc_time.year());
+
+    println!("9) {}", system_time.month());
+    println!("10) {}", utc_time.month());
+
+    println!("11) {}", system_time.day());
+    println!("12) {}", utc_time.day());
+
+    println!("13) {}", system_time.hour());
+    println!("14) {}", utc_time.hour());
+
+    println!("15) {}", system_time.minute());
+    println!("16) {}", utc_time.minute());
+
+    println!("17) {}", system_time.second());
+    println!("18) {}", utc_time.second());
+
+    println!("19) {}", system_time.offset());
+    println!("20) {}", utc_time.offset());
 }
