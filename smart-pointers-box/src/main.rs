@@ -66,39 +66,74 @@
 
 // ---------------------------------------------------------- //
 
-#[derive(Debug)]
-enum LinkedListUsingBox<T> {
-    Empty,
-    Node {
-        value: T,
-        next: Box<LinkedListUsingBox<T>>,
-    },
-}
+// #[derive(Debug)]
+// enum LinkedListUsingBox<T> {
+//     Empty,
+//     Node {
+//         value: T,
+//         next: Box<LinkedListUsingBox<T>>,
+//     },
+// }
+
+// #[derive(Debug)]
+// enum LinkedListUsingReference<'a, T> {
+//     Empty,
+//     Node {
+//         value: T,
+//         next: &'a LinkedListUsingReference<'a, T>,
+//     },
+// }
+
+// fn create_list() -> LinkedListUsingBox<i32> {
+//     let second_node = LinkedListUsingBox::Node {
+//         value: 2,
+//         next: Box::new(LinkedListUsingBox::Empty),
+//     };
+
+//     let first_node = LinkedListUsingBox::Node {
+//         value: 1,
+//         next: Box::new(second_node),
+//     };
+
+//     first_node
+// }
+
+// fn main() {
+//     let list = create_list();
+//     println!("{list:#?}");
+// }
+
+// ---------------------------------------------------------- //
 
 #[derive(Debug)]
-enum LinkedListUsingReference<'a, T> {
-    Empty,
-    Node {
-        value: T,
-        next: &'a LinkedListUsingReference<'a, T>,
+enum FileSystemEntity {
+    File {
+        name: String,
     },
-}
-
-fn create_list() -> LinkedListUsingBox<i32> {
-    let second_node = LinkedListUsingBox::Node {
-        value: 2,
-        next: Box::new(LinkedListUsingBox::Empty),
-    };
-
-    let first_node = LinkedListUsingBox::Node {
-        value: 1,
-        next: Box::new(second_node),
-    };
-
-    first_node
+    Folder {
+        name: String,
+        content: Vec<FileSystemEntity>,
+    },
 }
 
 fn main() {
-    let list = create_list();
-    println!("{list:#?}");
+    let rust_file = FileSystemEntity::File {
+        name: String::from("my_rust_code.rs"),
+    };
+    let python_file = FileSystemEntity::File {
+        name: String::from("my_python_code.py"),
+    };
+        let code_folder = FileSystemEntity::Folder {
+        name: String::from("Code Stuff"),
+        content: vec![rust_file, python_file],
+    };
+    let screenplay = FileSystemEntity::File {
+        name: String::from("My Screenplay.txt"),
+    };
+    let all_documents = FileSystemEntity::Folder {
+        name: String::from("Documents"),
+        content: vec![screenplay, code_folder],
+    };
+
+    println!("{all_documents:#?}");
 }
