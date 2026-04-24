@@ -14,14 +14,51 @@
 // }
 
 // ---------------------------------------------------------- //
+
+// fn main() {
+//     let my_box = Box::new(100);
+
+//     println!("{}", *my_box);
+//     println!("{my_box}");
+//     println!("{}", my_box);
+//     println!("{:?}", *my_box);
+
+//     let your_box = my_box;
+//     println!("{your_box}");
+// }
+
+// ---------------------------------------------------------- //
+#[derive(Debug)]
+enum LinkedList<T> {
+    Empty,
+    Node { value: T, next: Box<LinkedList<T>> },
+}
+
 fn main() {
-    let my_box = Box::new(100);
+    let list = LinkedList::Node {
+        value: 1.3,
+        next: Box::new(LinkedList::Node {
+            value: 2.6,
+            next: Box::new(LinkedList::Node {
+                value: 3.9,
+                next: Box::new(LinkedList::Empty),
+            }),
+        }),
+    };
+    println!("{:#?}", list);
 
-    println!("{}", *my_box);
-    println!("{my_box}");
-    println!("{}", my_box);
-    println!("{:?}", *my_box);
+    let im_with_you = LinkedList::Node {
+        value: String::from("I'm With You"),
+        next: Box::new(LinkedList::Empty),
+    };
+    let sk8er_boi = LinkedList::Node {
+        value: String::from("Sk8er Boi"),
+        next: Box::new(im_with_you),
+    };
+    let complicated = LinkedList::Node {
+        value: String::from("Complicated"),
+        next: Box::new(sk8er_boi),
+    };
 
-    let your_box = my_box;
-    println!("{your_box}");
+    println!("{complicated:#?}");
 }
