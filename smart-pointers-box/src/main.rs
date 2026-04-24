@@ -84,21 +84,7 @@ enum LinkedListUsingReference<'a, T> {
     },
 }
 
-fn main() {
-    let second_node = LinkedListUsingReference::Node {
-        value: 2,
-        next: &LinkedListUsingReference::Empty,
-    };
-
-    let first_node = LinkedListUsingReference::Node {
-        value: 1,
-        next: &second_node,
-    };
-
-    println!("{first_node:#?}");
-    println!("{second_node:#?}");
-
-
+fn create_list() -> LinkedListUsingBox<i32> {
     let second_node = LinkedListUsingBox::Node {
         value: 2,
         next: Box::new(LinkedListUsingBox::Empty),
@@ -109,8 +95,10 @@ fn main() {
         next: Box::new(second_node),
     };
 
-    // drop(first_node);
-    println!("{first_node:#?}");
-    // println!("{second_node:#?}");
+    first_node
+}
 
+fn main() {
+    let list = create_list();
+    println!("{list:#?}");
 }
