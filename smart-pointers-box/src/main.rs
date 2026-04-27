@@ -266,8 +266,18 @@ impl<T, U> DerefMut for CustomBox<T, U> {
         &mut self.more_data
     }
 }
+impl<T, U> Drop for CustomBox<T, U> {
+    fn drop(&mut self) {
+        println!("I'm removing the CustomBox from memory!");
+    }
+}
 
 fn main() {
-    let boxy = CustomBox::new("Ham and Eggs", 15);
-    println!("{}", *boxy); // 15
+    let mut boxy: Box<f64> = Box::new(3.14);
+    *boxy = 6.28;
+    println!("{}", *boxy); // 25
+
+    let mut custom_boxy = CustomBox::new(3.14, "Hello");
+    *custom_boxy = "Goodbye";
+    println!("{}", *custom_boxy);
 }
