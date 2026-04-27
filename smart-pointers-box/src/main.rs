@@ -1,3 +1,128 @@
+use std::error::Error;
+use std::fmt::Display;
+
+trait TextTransformer {
+    fn transform(&self, text: &str) -> Result<String, Box<dyn Error>>;
+}
+
+#[derive(Debug)]
+struct PizzaEmojiInString;
+
+impl Display for PizzaEmojiInString {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            formatter,
+            "Hey, there's a pizza emoji in the text -- so cheesy."
+        )
+    }
+}
+
+impl Error for PizzaEmojiInString {}
+
+#[derive(Debug)]
+struct NoContentInString;
+
+impl Display for NoContentInString {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(formatter, "The string has nothing left in it")
+    }
+}
+
+impl Error for NoContentInString {}
+
+struct WhitespaceTransformer {
+    start: bool,
+    end: bool,
+}
+
+impl TextTransformer for WhitespaceTransformer {
+    fn transform(&self, text: &str) -> Result<String, Box<dyn Error>> {
+        if text.contains("🍕") {
+            return Err(Box::new(PizzaEmojiInString));
+        }
+
+        let transformed = if self.start && self.end {
+            text.trim()
+        } else if self.start {
+            text.trim_start()
+        } else if self.end {
+            text.trim_end()
+        } else {
+            text
+        };
+
+        if transformed.is_empty() {
+            return Err(Box::new(NoContentInString));
+        }
+
+        Ok(transformed.to_string())
+    }
+}
+
+enum Case {
+    Uppercase,
+    Lowercase,
+}
+
+struct CaseTransformer {
+    case: Case,
+}
+
+impl TextTransformer for CaseTransformer {
+    fn transform(&self, text: &str) -> Result<String, Box<dyn Error>> {
+        match self.case {
+            Case::Uppercase => Ok(text.to_uppercase()),
+            Case::Lowercase => Ok(text.to_lowercase()),
+        }
+    }
+}
+
+fn apply_transformations(text: String, pipeline: Vec<Box<dyn TextTransformer>>) -> String {
+    pipeline.into_iter().fold(text, |accumulator, transformer| {
+        match transformer.transform(&accumulator) {
+            Ok(new_value) => new_value,
+            Err(error) => {
+                eprintln!("Something went wrong: {error} Moving on to next transform");
+                accumulator
+            }
+        }
+    })
+}
+
+fn main() {
+    // Input
+    let text = String::from("  homer simpson  ");
+    // Output
+    // Content: "HOMER SIMPSON"
+
+    // Input
+    // let text = String::from("  data  🍕  ");
+    // Output
+    // Error Message: Something went wrong: Hey, there's a pizza emoji in the text. So cheesy. Moving on to next transform
+    // Content: "  DATA  🍕  "
+
+    // Input
+    // let text = String::from("    ");
+    // Output:
+    // Error Message: Something went wrong: The string has nothing left in it. Moving on to next transform
+    // Content: "    "
+
+    let pipeline: Vec<Box<dyn TextTransformer>> = vec![
+        Box::new(WhitespaceTransformer {
+            start: true,
+            end: true,
+        }),
+        Box::new(CaseTransformer {
+            case: Case::Uppercase,
+        }),
+    ];
+
+    let transformed_text = apply_transformations(text, pipeline);
+    println!("Output: {transformed_text}");
+}
+
+// ---------------------------------------------------------- //
+
 // fn main() {
 //     let mut sushi = String::from("Yellowtail");
 //     let sushi_raw_pointer_1 = &raw const sushi;
@@ -346,42 +471,42 @@
 
 // ---------------------------------------------------------- //
 
-use std::error::Error;
-use std::fmt::Display;
-use std::fs;
+// use std::error::Error;
+// use std::fmt::Display;
+// use std::fs;
 
-#[derive(Debug)]
-struct NumberIsUnimpressiveError;
+// #[derive(Debug)]
+// struct NumberIsUnimpressiveError;
 
-impl Display for NumberIsUnimpressiveError {
-    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(formatter, "That number is just too small")
-    }
-}
+// impl Display for NumberIsUnimpressiveError {
+//     fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+//         write!(formatter, "That number is just too small")
+//     }
+// }
 
-impl Error for NumberIsUnimpressiveError {}
+// impl Error for NumberIsUnimpressiveError {}
 
-fn read_number_from_file(path: &str) -> Result<i32, Box<dyn Error>> {
-    let file_read = match fs::read_to_string(path) {
-        Ok(content) => content,
-        Err(error) => return Err(Box::new(error)),
-    };
+// fn read_number_from_file(path: &str) -> Result<i32, Box<dyn Error>> {
+//     let file_read = match fs::read_to_string(path) {
+//         Ok(content) => content,
+//         Err(error) => return Err(Box::new(error)),
+//     };
 
-    let number = match file_read.trim().parse::<i32>() {
-        Ok(number) => number,
-        Err(error) => return Err(Box::new(error)),
-    };
+//     let number = match file_read.trim().parse::<i32>() {
+//         Ok(number) => number,
+//         Err(error) => return Err(Box::new(error)),
+//     };
 
-    if number < 100 {
-        Err(Box::new(NumberIsUnimpressiveError))
-    } else {
-        Ok(number)
-    }
-}
+//     if number < 100 {
+//         Err(Box::new(NumberIsUnimpressiveError))
+//     } else {
+//         Ok(number)
+//     }
+// }
 
-fn main() {
-    match read_number_from_file("value.txt") {
-        Ok(value) => println!("The number is {value}"),
-        Err(error) => println!("The error is {error}"),
-    }
-}
+// fn main() {
+//     match read_number_from_file("value.txt") {
+//         Ok(value) => println!("The number is {value}"),
+//         Err(error) => println!("The error is {error}"),
+//     }
+// }
